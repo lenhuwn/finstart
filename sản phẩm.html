@@ -1,122 +1,347 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>FinStart - Trợ lý tài chính sinh viên</title>
-  <link href="https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; color: #333; line-height: 1.6; }
-    section { padding: 50px 10%; }
-    h1 { color: #004d40; font-size: 32px; }
-    h2 { color: #004d40; text-align: center; margin-bottom: 30px; }
-    
-    /* Căn chỉnh các khối thành hàng ngang */
-    .grid-3-cot { display: flex; gap: 20px; justify-content: space-between; }
-    .the-gia { border: 1px solid #ddd; border-radius: 12px; padding: 24px; width: 30%; background: #fff; }
-    .the-gia.pro { border: 2px solid #004d40; background: #f0fbf8; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    
-    .nut-bam { display: inline-block; background: #004d40; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 30px; font-weight: bold; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm - FinStart</title>
 </head>
 <body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <a href="san-pham.html">
+                    <img src="https://cdn.prod.website-files.com/5ff2db09bcc6434534e4382b/62c2ae2c934c9c08d1b50967_FinStart_Logo_long.png" alt="FinStart" width="100">
+                </a>
+            </div>
+            <nav>
+                <a href="ve-du-an.html">Về dự án</a>
+                <a href="tinh-nang.html">Tính năng</a>
+                <a href="san-pham.html">Sản phẩm</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="tai-khoan">
+                <a href="dang-nhap.html">Đăng nhập</a>
+                <a href="dang-ky.html">Đăng ký</a>
+            </div>
+        </div>
+    </header>
 
-  <!-- 1. THANH MENU (Dùng thẻ <nav> chuẩn web) -->
-  <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; background: #fff;">
-    <a href="index.html" style="font-weight: 800; font-size: 24px; color: #004d40; text-decoration: none;">FinStart</a>
-    
-    <div style="display: flex; gap: 30px; font-weight: 600;">
-      <!-- ĐÂY CHÍNH LÀ NƠI KẾT NỐI CÁC TRANG -->
-      <a href="index.html" style="text-decoration: none; color: #004d40;">Trang chủ</a>
-      <a href="tinh-nang.html" style="text-decoration: none; color: #333;">Tính năng</a>
-      <a href="ve-du-an.html" style="text-decoration: none; color: #333;">Về dự án</a>
-      <a href="blog.html" style="text-decoration: none; color: #333;">Cẩm nang</a>
-    </div>
+    <main>
+        <center>
+            <section id="tat-ca" class="gioi-thieu">
+                <p>
+                    Nền tảng quản lý thu chi dành cho sinh viên
+                </p>
+                <h1>
+                    Mọi tính năng bạn cần để
+                    <br>
+                    <span>
+                        quản lý thu chi
+                    </span>
+                    dễ dàng
+                </h1>
+                <p>
+                    FinStart giúp sinh viên ghi chép, theo dõi và lưu trữ
+                    các khoản thu chi cá nhân một cách đơn giản, nhanh chóng.   
+                </p>
+            </section>
+        </center>
 
-    <div>
-      <a href="#" style="text-decoration: none; color: #333; font-weight: bold; margin-right: 20px;">Đăng nhập</a>
-      <a href="#" class="nut-bam">Đăng ký miễn phí</a>
-    </div>
-  </nav>
+        <center>
+            <div class="nut-tinh-nang">
+                <a href="#tat-ca">Tất cả tính năng</a>
+                <a href="#ghi-chep">Ghi chép thu chi</a>
+                <a href="#quan-ly">Quản lý giao dịch</a>
+                <a href="#xuat-du-lieu">Xuất dữ liệu</a>
+                <a href="blog.html">Blog tài chính</a>
+            </div>
+        </center>
 
-  <!-- 2. PHẦN MỞ ĐẦU (Hero Section) -->
-  <section style="background: #f4fcf9; text-align: center;">
-    <h1>Trợ lý tài chính cá nhân hoàn hảo cho sinh viên</h1>
-    <p style="max-width: 800px; margin: 0 auto 20px;">Từ bài toán tiền trọ đầu tháng đến các mục tiêu tích lũy tự lập. FinStart mang công nghệ trợ lý số vào túi tiền của bạn với chi phí chỉ bằng 1 ly trà sữa mỗi tháng.</p>
-    
-    <div style="background: #fff; padding: 20px; border-radius: 12px; max-width: 600px; margin: 30px auto; font-style: italic; border-left: 4px solid #004d40;">
-      "Từ đứa sinh viên luôn nợ nần tiền phòng, mình đã để dành được 15 triệu để mua laptop mới nhờ giảm bớt các khoản ăn vặt." <br>
-      <strong>- Nguyễn Mai Phương, Sinh viên năm 3</strong>
-    </div>
-  </section>
+        <section id="ghi-chep" class="ghi-chep-thu-chi">
+            <p>
+                Ghi chép tài chính cá nhân
+            </p>
+            <h2>
+                Ghi chép thu chi thông minh
+            </h2>
+            <p>
+                Cho phép sinh viên ghi nhận thu nhập,
+                chi tiêu hằng ngày hoặc nhập nhiều
+                giao dịch cùng lúc một cách nhanh chóng.
+            </p>
 
-  <!-- 3. HƯỚNG DẪN SỬ DỤNG (Dùng danh sách <ol>) -->
-  <section>
-    <h2>Cách FinStart Hoạt Động</h2>
-    <div class="grid-3-cot">
-      <div>
-        <h3>1. Khởi tạo mục tiêu</h3>
-        <p>Đặt cột mốc (Học phí, Laptop), FinStart tự động tính toán số tiền cần để dành mỗi ngày.</p>
-      </div>
-      <div>
-        <h3>2. Tự động trích lập</h3>
-        <p>Phân bổ thu nhập làm thêm theo quy tắc 50/30/20 vào hệ thống hũ chi tiêu.</p>
-      </div>
-      <div>
-        <h3>3. Nhận cảnh báo AI</h3>
-        <p>AI phát hiện các khoản tiêu ngẫu hứng (trà sữa, shopping) và cảnh báo tức thì.</p>
-      </div>
-    </div>
-  </section>
+            <div class="chuc-nang-chi-tiet">
+                 <p>✓ Ghi chép từng khoản thu chi</p>
+                <p>✓ Ghi chép hàng loạt</p>
+                <p>✓ Phân loại giao dịch</p>
+                <p>✓ Lưu lịch sử tự động</p>
+            </div>
 
-  <!-- 4. BẢNG GIÁ (Dùng cấu trúc dạng Thẻ - Card) -->
-  <section style="background: #fafafa;">
-    <h2>Bảng Giá Sinh Viên</h2>
-    <div class="grid-3-cot">
-      
-      <!-- Gói 1 -->
-      <div class="the-gia">
-        <h3 style="color: #666;">Sinh viên Khởi đầu</h3>
-        <p style="font-size: 24px; font-weight: bold;">0 ₫</p>
-        <ul style="padding-left: 20px;">
-          <li>Ghi chép thu chi không giới hạn</li>
-          <li>Quản lý 3 ví chi tiêu cơ bản</li>
-          <li>Quét bằng AI: 30 hóa đơn/tháng</li>
-        </ul>
-      </div>
+            <div class="minh-hoa-ghi-chep">
+                <table border="1" width="700">
+                    <tr>
+                        <th>TỔNG THU</th>
+                        <th>TỔNG CHI</th>
+                        <th>SỐ DƯ HIỆN TẠI</th>
+                    </tr>
+                    <tr>
+                        <td align="center">+4.500.000 đ</td>
+                        <td align="center">-2.270.000 đ</td>
+                        <td align="center">2.230.000 đ</td>
+                    </tr>
+                </table>
+            </div>
 
-      <!-- Gói 2 (Nổi bật) -->
-      <div class="the-gia pro">
-        <div style="background: #004d40; color: #fff; padding: 5px 10px; border-radius: 20px; font-size: 12px; display: inline-block; margin-bottom: 10px;">PHỔ BIẾN NHẤT</div>
-        <h3 style="margin-top: 0;">FinStart PRO</h3>
-        <p style="font-size: 24px; font-weight: bold; color: #004d40;">23.200 ₫ <span style="font-size: 14px; font-weight: normal;">/ tháng</span></p>
-        <ul style="padding-left: 20px;">
-          <li>Quét hóa đơn AI <b>không giới hạn</b></li>
-          <li>Cảnh báo cắt giảm quỹ bằng AI</li>
-          <li>Quản lý quỹ nhóm/CLB (Quỹ trọ)</li>
-        </ul>
-        <div style="text-align: center; margin-top: 20px;"><a href="#" class="nut-bam">Nâng cấp ngay</a></div>
-      </div>
+            <div class="khung-giao-dich">
+                <div class="mot-giao-dich">
+                    <div>
+                        <p>↓</p>
+                    </div>
+                    <div>
+                        <p>Trợ cấp gia đình</p>
+                        <p>Khoản thu • Chuyển khoản</p>
+                    </div>
+                    <div>
+                        <strong>+4.500.000 đ</strong>
+                    </div>
+                </div>
 
-      <!-- Gói 3 -->
-      <div class="the-gia">
-        <h3 style="color: #666;">Gói Chuyên sâu</h3>
-        <p style="font-size: 24px; font-weight: bold;">79.200 ₫ <span style="font-size: 14px; font-weight: normal;">/ tháng</span></p>
-        <ul style="padding-left: 20px;">
-          <li>Tất cả tính năng PRO</li>
-          <li>Mentor AI tư vấn 1-1</li>
-          <li>Lộ trình đầu tư vi mô an toàn</li>
-        </ul>
-      </div>
+                <div class="mot-giao-dich">
+                    <div>
+                        <p>⌂</p>
+                    </div>
+                    <div>
+                        <p>Tiền trọ</p>
+                        <p>Khoản chi • Cố định</p>
+                    </div>
+                    <div>
+                        <strong>-1.800.000 đ</strong>
+                    </div>
+                </div>
 
-    </div>
-  </section>
+                <div class="mot-giao-dich">
+                    <div>
+                        <p>🍴</p>
+                    </div>
+                    <div>
+                        <p>Tiền ăn</p>
+                        <p>Khoản chi • Sinh hoạt</p>
+                    </div>
+                    <div>
+                        <strong>-350.000 đ</strong>
+                    </div>
+                </div>
 
-  <!-- 5. CHÂN TRANG (Footer) -->
-  <footer style="background: #222; color: #ccc; text-align: center; padding: 30px;">
-    <h2>FinStart</h2>
-    <p>Giải pháp tài chính thông minh - Đồ án môn học của nhóm sinh viên năm 2</p>
-    <p style="font-size: 12px; margin-top: 20px;">© 2026 Bản quyền thuộc về Nhóm FinStart.</p>
-  </footer>
+                <div class="mot-giao-dich">
+                    <div>
+                        <p>📖</p>
+                    </div>
+                    <div>
+                        <p>Mua giáo trình</p>
+                        <p>Khoản chi • Học tập</p>
+                    </div>
+                    <div>
+                        <strong>-120.000 đ</strong>
+                    </div>
+                </div>
 
+                <button>
+                    + Thêm giao dịch
+                </button>
+            </div>
+        </section>
+
+        <section id="quan-ly" class="quan-ly-giao-dich">
+            <p>
+                Quản lý dòng tiền minh bạch
+            </p>
+            <h2>
+                Quản lý giao dịch và dòng tiền
+            </h2>
+            <p>
+                Theo dõi toàn bộ lịch sử thu chi
+                theo thời gian thực.
+            </p>
+
+            <div class="chuc-nang-quan-ly">
+                <p>✓ Lọc theo ngày, tuần, tháng</p>
+                <p>✓ Tìm kiếm giao dịch</p>
+                <p>✓ Theo dõi dòng tiền</p>
+                <p>✓ Thống kê thu chi</p>
+            </div>
+
+            <div class="lich-su-giao-dich">
+                <strong>
+                    Tháng 10/2026
+                </strong>
+                <span>
+                    18 giao dịch
+                </span>
+                <button>
+                    Bộ lọc
+                </button>
+            </div>
+
+            <p>
+                HÔM NAY - 24 THÁNG 10
+            </p>
+
+            <div class="minh-hoa-1">
+                <p>Lương trợ giảng part-time</p>
+                <p>14:20 - #ThuNhap</p>
+                <strong>+1.500.000 đ</strong>
+                
+                <hr>
+
+                <p>Cà phê họp nhóm</p>
+                <p>09:15 - #AnUong</p>
+                <strong>-45.000 đ</strong>
+            </div>
+
+            <p>HÔM QUA - 23 THÁNG 10</p>
+
+            <div class="minh-hoa-2">
+                <p>Đồ dùng sinh hoạt trọ</p>
+                <p>18:40 - #SinhHoat</p>
+                <strong>-85.000 đ</strong>
+            </div>
+        </section>
+
+        <section id="xuat-du-lieu" class="xuat-du-lieu">
+            <p>
+                Tiện ích dữ liệu
+            </p>
+            <h2>
+                Xuất dữ liệu nhanh chóng
+            </h2>
+            <p>
+                Dễ dàng xuất và lưu trữ dữ liệu thu chi
+                để phục vụ theo dõi, đối chiếu và quản lý tài chính cá nhân.
+            </p>
+
+            <div class="chuc-nang-xuat-du-lieu">
+                <p>✓ Xuất Excel (.xlsx)</p>
+                <p>✓ Xuất CSV</p>
+                <p>✓ Chọn khoảng thời gian</p>
+                <p>✓ Lưu trữ và đối chiếu dữ liệu</p>
+            </div>
+
+            <div class="khung-xuat-du-lieu">
+                <h3>
+                    Xuất dữ liệu thu chi
+                </h3>
+                <p>
+                    Định dạng file xuất
+                </p>
+                <p>
+                    Excel (.xlsx) / CSV
+                </p>
+                <p>
+                    Khoảng thời gian:
+                    01/10/2026 - 31/10/2026
+                </p>
+                <button>
+                    Tải dữ liệu
+                </button>
+            </div>
+        </section>  
+
+        <section class="ly-do-su-dung">
+            <h2>
+                Tại sao nên sử dụng FinStart?
+            </h2>
+            <p>
+                Giải pháp đơn giản giúp sinh viên quản lý tài chính cá nhân
+                hiệu quả và chủ động hơn trong chi tiêu hằng ngày.
+            </p>
+
+            <div class="cac-loi-ich">
+                <div class="loi-ich">
+                    <h3>
+                        Hiểu rõ dòng tiền cá nhân
+                    </h3>
+                    <p>
+                        Nắm bắt chính xác nguồn thu và các khoản chi tiêu mỗi ngày.
+                    </p>
+                </div>
+        
+                <div class="loi-ich">
+                    <h3>
+                        Duy trì thói quen ghi chép
+                    </h3>
+                    <p>
+                        Xây dựng thói quen ghi chép thu chi đều đặn và nhanh chóng.
+                    </p>
+                </div>
+
+                <div class="loi-ich">
+                    <h3>
+                        Kiểm soát chi tiêu hiệu quả
+                    </h3>
+                    <p>
+                        Theo dõi ngân sách và hạn chế các khoản chi tiêu không cần thiết.
+                    </p>
+                </div>
+        
+                <div class="loi-ich">
+                    <h3>
+                        Hình thành tư duy tài chính
+                    </h3>
+                    <p>
+                        Chủ động tích lũy và chuẩn bị cho các mục tiêu tài chính trong tương lai.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="logo">
+                <a href="san-pham.html">
+                    <img src="https://cdn.prod.website-files.com/5ff2db09bcc6434534e4382b/62c2ae2c934c9c08d1b50967_FinStart_Logo_long.png" alt="FinStart" width="100">
+                </a>
+            </div>
+            <p>
+                Đồng hành cùng thế hệ trẻ Việt Nam xây dựng nền tảng tài chính vững vàng ngay từ giảng đường đại học.
+            </p>
+            <p>
+                © 2026 FinStart. Bảo lưu mọi quyền.
+            </p>
+        </div>
+
+        <div class="footer-menu">
+            <h3>Giới thiệu</h3>
+            <a href="ve-du-an.html">Về dự án</a>
+            <a href="tinh-nang.html">Tính năng</a>
+            <a href="san-pham.html">Sản phẩm</a>
+            <a href="blog.html">Blog & Cẩm nang</a>
+        </div>
+
+        <div class="footer-policy">
+            <h3>Chính sách & bảo mật</h3>
+            <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a>
+            <a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a>
+            <a href="quy-chuan-ma-hoa-tai-chinh.html">Quy chuẩn mã hóa tài chính</a>
+            <a href="ho-tro.html">Hỗ trợ</a>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Liên hệ</h3>
+            <p>
+                Hotline:
+                <a href="tel:19006868">1900 6868</a>
+            </p>
+            <p>
+                Email:
+                <a href="mailto:hotro@finstart.vn">
+                    hotro@finstart.vn
+                </a>
+            </p>
+            <p>
+                Tòa nhà FinTech Hub, TP. Hồ Chí Minh
+            </p>
+        </div>  
+    </footer>
 </body>
 </html>
