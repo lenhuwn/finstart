@@ -1,0 +1,581 @@
+
+/* BLOG INTRO - PHẦN GIỚI THIỆU BLOG */
+
+/* BLOG INTRO */
+.blog-intro {
+    width: 100%;
+    margin: 0;
+    padding: 32px 24px 18px;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            ellipse at 7% 15%,
+            rgba(116, 246, 203, 0.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 96% 20%,
+            rgba(218, 202, 255, 0.23),
+            transparent 35%
+        ),
+        #f3f5f7;
+}
+
+.blog-intro > div {
+    margin-bottom: 10px;
+    color: #087e52;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.blog-intro h1 {
+    max-width: 760px;
+    margin: 0 auto 8px;
+
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.7px;
+
+    color: #191d20;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.blog-intro p {
+    max-width: 680px;
+    margin: 0 auto;
+
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.6;
+
+    color: #646b75;
+}
+
+
+/* BLOG FILTER */
+
+.blog-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    width: 100%;
+    margin: 0;
+    padding: 12px 4.2% 28px;
+
+    background:
+        radial-gradient(
+            ellipse at 7% 15%,
+            rgba(116, 246, 203, 0.13),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 96% 20%,
+            rgba(218, 202, 255, 0.13),
+            transparent 35%
+        ),
+        #f3f5f7;
+}
+
+/* Nhóm nút danh mục */
+.categories {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    min-width: 0;
+}
+
+/* Liên kết bao quanh nút */
+.categories a {
+    display: inline-flex;
+    text-decoration: none;
+}
+
+/* Nút danh mục */
+.categories button {
+    padding: 8px 13px;
+    min-height: 30px;
+
+    border: 1px solid transparent;
+    border-radius: 999px;
+
+    background: #ffffff;
+    color: #454951;
+
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Nút Tất cả được chọn */
+.categories a:first-child button {
+    background: #080d0b;
+    color: #ffffff;
+}
+
+/* Hiệu ứng di chuột */
+.categories button:hover {
+    background: #e4f8ee;
+    color: #087e52;
+}
+
+/* Khung tìm kiếm */
+.search-bar {
+    flex: 0 1 330px;
+    min-width: 220px;
+}
+
+/* Ô nhập từ khóa */
+.search-bar input {
+    display: block;
+    width: 100%;
+    height: 38px;
+
+    padding: 0 15px;
+
+    border: 1px solid #edf0f3;
+    border-radius: 11px;
+    outline: none;
+
+    background: #ffffff;
+    color: #343a43;
+
+    font-size: 11px;
+
+    box-shadow: 0 3px 10px rgba(25, 35, 45, 0.03);
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+/* Chữ gợi ý */
+.search-bar input::placeholder {
+    color: #9298a1;
+}
+
+.search-bar input:focus {
+    border-color: #16a36a;
+    box-shadow: 0 0 0 3px rgba(22, 163, 106, 0.10);
+}
+
+
+
+/* BÀI VIẾT NỔI BẬT */
+
+.article-images {
+    display: grid;
+    grid-template-columns: 58% minmax(0, 42%);
+    align-items: stretch;
+
+    width: 91.6%;
+    max-width: 1280px;
+    margin: 28px auto 30px;
+    padding: 0;
+
+    box-sizing: border-box;
+    overflow: hidden;
+
+    background: #ffffff;
+    border: 1px solid #edf0f3;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(20, 30, 45, 0.04);
+
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.article-images .image {
+    min-width: 0;
+    margin: 0;
+}
+
+.article-images .image a {
+    display: block;
+    height: 100%;
+}
+
+.article-images .image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    object-fit: cover;
+}
+
+.article-images > h2 {
+    display: flex;
+    align-items: center;
+
+    min-width: 0;
+    margin: 0;
+    padding: 28px;
+
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.article-images > h2 a {
+    color: #171e2d;
+    text-decoration: none;
+}
+
+.article-images > h2 a:hover {
+    color: #087d59;
+}
+
+
+/* BỐ CỤC BLOG */
+
+.blog-content {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(260px, 0.9fr);
+    align-items: start;
+    gap: 24px;
+
+    width: 91.6%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 0 60px;
+
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #171e2d;
+}
+
+
+/* BÀI VIẾT MỚI NHẤT */
+
+.blog-content > .lastest-posts {
+    grid-column: 1;
+    grid-row: 1;
+
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+/* Tiêu đề khu vực */
+.lastest-posts > h2 {
+    margin: 0 0 18px;
+    padding-bottom: 13px;
+
+    border-bottom: 1px solid #e9edf2;
+
+    color: #172033;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+/* Lưới các thẻ bài viết */
+.lastest-posts .post {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 22px 16px;
+
+    width: 100%;
+    min-width: 0;
+}
+
+/* Từng thẻ bài viết */
+.lastest-posts .post > div {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+    box-sizing: border-box;
+
+    background: #ffffff;
+    border: 1px solid #edf0f3;
+    border-radius: 11px;
+    box-shadow: 0 3px 8px rgba(20, 30, 45, 0.04);
+
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.lastest-posts .post > div:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(20, 30, 45, 0.08);
+}
+
+/* Ảnh bài viết */
+.lastest-posts .post > div > a:first-child {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.lastest-posts .post > div img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+/* Nút danh mục */
+.lastest-posts .post button {
+    align-self: flex-start;
+
+    max-width: calc(100% - 20px);
+    margin: 9px 10px 7px;
+    padding: 5px 8px;
+
+    border: none;
+    border-radius: 5px;
+    background: #edf4ff;
+
+    color: #2764c5;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.4;
+
+    cursor: pointer;
+}
+
+/* Nội dung mô tả */
+.lastest-posts .post p {
+    margin: 0 10px 8px;
+
+    color: #697386;
+    font-size: 11px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+}
+
+/* Tác giả */
+.lastest-posts .post > div > p:last-child {
+    margin-top: auto;
+    padding-top: 2px;
+    padding-bottom: 8px;
+
+    color: #555e6c;
+    font-size: 10px;
+}
+
+
+/* ĐỌC NHIỀU NHẤT TUẦN */
+
+.blog-content > .most-read {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 19px 18px;
+
+    box-sizing: border-box;
+
+    background: #101a2e;
+    border: 1px solid #202b40;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(16, 26, 46, 0.12);
+
+    color: #f5f7fb;
+}
+
+/* Tiêu đề sidebar */
+.most-read h2 {
+    margin: 0 0 14px;
+    padding-bottom: 13px;
+
+    border-bottom: 1px solid #263146;
+
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+/* Danh sách bài đọc nhiều */
+.most-read ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: popular;
+}
+
+/* Từng bài */
+.most-read li {
+    position: relative;
+    counter-increment: popular;
+
+    min-width: 0;
+    margin: 0 0 13px;
+    padding: 0 0 13px 29px;
+
+    border-bottom: 1px solid #263146;
+
+    color: #e6eaf1;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* Số thứ tự */
+.most-read li::before {
+    content: counter(popular);
+    position: absolute;
+    top: -3px;
+    left: 0;
+
+    color: #cbd4e2;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.most-read li:first-child::before {
+    color: #10d6a0;
+}
+
+/* Link bài viết */
+.most-read li a {
+    color: #f3f5fa;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.6;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.most-read li a:hover {
+    color: #35d9ae;
+}
+
+.most-read li:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+/* Hàng tiêu đề và nút xem tất cả */
+.lastest-posts .posts-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    width: 100%;
+    margin: 0 0 18px;
+    padding: 0 0 12px;
+
+    border-bottom: 1px solid #e9edf2;
+    box-sizing: border-box;
+}
+
+/* Tiêu đề bên trái */
+.lastest-posts .posts-header h2 {
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    color: #172033;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+/* Liên kết bên phải */
+.lastest-posts .posts-header .view-all {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+
+    flex-shrink: 0;
+    color: #087d59;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+.lastest-posts .posts-header .view-all span {
+    font-size: 16px;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.lastest-posts .posts-header .view-all:hover {
+    color: #05a875;
+}
+
+.lastest-posts .posts-header .view-all:hover span {
+    transform: translateX(3px);
+}
+
+
+
+
+
+/* Chống tràn chiều ngang */
+* {
+    box-sizing: border-box;
+}
+
+.blog-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.search-bar {
+    flex: 0 1 280px;
+    width: 280px;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.search-bar input {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0 12px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 11px;
+}
+
+@media (max-width: 600px) {
+    .search-bar {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
