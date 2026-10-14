@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>blog</title>
+    <link rel="stylesheet" href="../assests/css/main.css">
+    <link rel="stylesheet" href="../assests/css/blog.css">
 </head>
 <body>
 
@@ -11,7 +13,7 @@
     <header>
         <div class="header">
             <div class="logo">
-                <a href="index.html"><img src="https://cdn.prod.website-files.com/5ff2db09bcc6434534e4382b/62c2ae2c934c9c08d1b50967_FinStart_Logo_long.png" alt="FinStart" 
+                <a href="về dự án.html"><img src="https://cdn.prod.website-files.com/5ff2db09bcc6434534e4382b/62c2ae2c934c9c08d1b50967_FinStart_Logo_long.png" alt="FinStart" 
                     width="100"></a>
             </div>
             <nav>
@@ -31,8 +33,8 @@
     <!--Main content-->
     <main>
         <section class="blog-intro">
-            <div style="text-align: center;">THƯ VIỆN TRÍ THỨC SINH VIÊN</div>
-            <h1 style="text-align: center;">Cẩm nang tài chính sinh viên:
+            <div>THƯ VIỆN TRÍ THỨC SINH VIÊN</div>
+            <h1>Cẩm nang tài chính sinh viên:
                 Học cách để tiền phục vụ bạn </h1>
             <p style="text-align: center;">Giải pháp chi tiêu thông minh, săn học bổng, đầu tư mô thức
                 chiến và kỹ năng tự chủ tài chính dành riêng cho thế hệ sinh viên Việt Nam.</p>
@@ -41,11 +43,11 @@
         <!--Blog Filter Section-->
         <section class="blog-filter">
             <div class="categories">
-                <a href="tất cả các bài viết.html"><button>Tất cả</button></a>
-                <a href="mẹo tiết kiệm.html"><button>Mẹo tiết kiệm</button></a>
-                <a href="việc làm.html"><button>Việc làm</button></a>
-                <a href="học bổng.html"><button>Học bổng</button></a>
-                <a href="chuyện giảng đường.html"><button>Chuyện giảng đường</button></a>
+                <a href="blog.html"><button>Tất cả</button></a>
+                <a href="..\pages\button\mẹo tiết kiệm.html"><button>Mẹo tiết kiệm</button></a>
+                <a href="..\pages\button\việc làm.html"><button>Việc làm & parttime</button></a>
+                <a href="..\pages\button\học bổng.html"><button>Học bổng</button></a>
+                <a href="..\pages\button\chuyện giảng đường.html"><button>Chuyện giảng đường</button></a>
             </div>
             <div class="search-bar">
                 <input type="text" placeholder="Tìm kiếm bài viết...">
@@ -69,65 +71,87 @@
         </section>
         <section class="blog-content">
             <section class="lastest-posts">
-                <h2>Bài viết mới nhất</h2>
+                <div class="posts-header">
+                    <h2>Bài viết mới cập nhật</h2>
+
+                    <a href="..\pages\tất cả các bài viết\tất cả bài viết.html"
+                    class="view-all">
+                        Xem tất cả bài viết
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
                 <div class="post">
-                    <a href="..\pages\tất cả các bài viết\bài viết 1.html" target="_blank">
+                    <div>
+                        <a href="..\pages\tất cả các bài viết\bài viết 1.html" target="_blank">
                         <img src="https://cafefcdn.com/thumb_w/1200/203337114487263232/2023/10/10/680102046-16895799278471917433353-1691306399394-16913064001931013067454-1691308374474-1691308375004138969037711zon-1696919-39-0-1289-2000-crop-16969197753441933566221.png" 
                         alt="Việc làm" width="300" height="200">
-                    </a>
-                    <a href="../pages/viec-lam-part-time.html">
-                        <button type="button">
+                        </a>
+                        <a href="..\pages\button\việc làm.html">
+                            <button type="button">
                             Việc làm & Part-time
-                        </button>
-                    </a>
-                    <p>
-                        Tránh xa các việc làm 0 đồng chân tay lại phải không tạo giá trị. Khám phá cơ hội Content, Trợ lý dữ liệu, Quản trị...
-                    </p>
-                    <p>
-                        Tác giả: Minh Trang
-                    </p>
-                    <a href="..\pages\tất cả các bài viết\bài viết 2.html" target="_blank">
-                        <img src="https://timo.vn/wp-content/uploads/cach-tiet-kiem-tien-cho-hoc-sinh.png" 
+                            </button>
+                        </a>
+                        <p>
+                            Tránh xa các việc làm 0 đồng chân tay lại phải không tạo giá trị. Khám phá cơ hội Content, Trợ lý dữ liệu, Quản trị...
+                        </p>
+                        <p>
+                            Tác giả: Minh Trang
+                        </p>
+                    </div>
+                    <div>
+                        <a href="..\pages\tất cả các bài viết\bài viết 2.html" target="_blank">
+                            <img src="https://timo.vn/wp-content/uploads/cach-tiet-kiem-tien-cho-hoc-sinh.png" 
                         alt="Mẹo tiết kiệm" width="300" height="200">
-                    </a>
-                    <a href="../pages/mẹo-tiết-kiệm.html">
-                        <button type="button">
-                            Mẹo tiết kiệm
-                        </button>
-                    </a>
-                    <p>
-                        20 cách tiết kiệm tiền cho học sinh, sinh viên, du học sinh hiệu quả
-                    </p>
-                    <p>
-                        Tác giả: Timo
-                    </p>
+                        </a>
+                        <a href="..\pages\button\mẹo tiết kiệm.html">
+                            <button type="button">
+                                Mẹo tiết kiệm
+                            </button>
+                        </a>
+                        <p>
+                            20 cách tiết kiệm tiền cho học sinh, sinh viên, du học sinh hiệu quả
+                        </p>
+                        <p>
+                            Tác giả: Timo
+                        </p> 
+                    </div>
+                    <div>
+                        <a href ="..\pages\tất cả các bài viết\bài viết 3.html" target="_blank">
+                            <img src="https://thanhnien.mediacdn.vn/Uploaded/ngoclong/2022_12_20/img-0088-4-9505.jpg" 
+                            alt="Chuyện giảng đường" width="300" height="200">
+                        </a>
+                        <a href="..\pages\button\chuyện giảng đường.html">
+                            <button type="button">
+                            Chuyện giảng đường
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </section>
-        </section>
 
-        <!--Đọc nhiều nhất tuần-->
-        <section class="most-read">
-            <h2>Đọc nhiều nhất tuần</h2>
-            <ol>
-                <li>
-                    <a href="..\pages\tất cả các bài viết\bài viết 1.html" target="_blank">
+             <!--Đọc nhiều nhất tuần-->
+            <section class="most-read">
+                <h2>Đọc nhiều nhất tuần</h2>
+                <ol>
+                    <li>
+                        <a href="..\pages\tất cả các bài viết\bài viết 1.html" target="_blank">
                         Bí quyết sống thoải mái với 3 triệu/tháng
-                    </a>
-                </li>
-                <li>
-                    <a href="..\pages\tất cả các bài viết\bài viết 2.html" target="_blank">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="..\pages\tất cả các bài viết\bài viết 2.html" target="_blank">
                         Top 5 công việc part-time vừa có thu nhập vừa tích lũy kinh nghiệm xịn
-                    </a>
-                </li>
-            </ol>
-        </section>
-    </main>
+                        </a>
+                    </li>
+                </ol>
+            </section>
+        </main>
 
     <!-- Footer -->
     <footer>
         <div class="footer">
             <div class="logo">
-                <a href="index.html"><img src="https://cdn.prod.website-files.com/5ff2db09bcc6434534e4382b/62c2ae2c934c9c08d1b50967_FinStart_Logo_long.png" alt="FinStart" 
+                <a href="về dự án.html"><img src="https://cdn.prod.website-files.com/5ff2db09bcc6434534e4382b/62c2ae2c934c9c08d1b50967_FinStart_Logo_long.png" alt="FinStart" 
                     width="100"></a>
             </div>
             <p>
