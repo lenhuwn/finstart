@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tính năng</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tính năng - FinStart</title>
+    
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+         <link rel="stylesheet" href=".vscode/css_header_and_footer.css">
+        <link rel="stylesheet" href=".vscode/tinh-nang1.css">
+    </head>
 <body>
     <header>
         <div class="header">
@@ -63,27 +67,41 @@
             </div>
         
         </center>
-    <section id="ghi-chep" class="ghi-chep-thu-chi">
-    <p>
-        Ghi chép tài chính cá nhân
-    </p>
-    <h2>
-        Ghi chép thu chi thông minh
-    </h2>
-    <p>
-        Cho phép sinh viên ghi nhận thu nhập,
-        chi tiêu hằng ngày hoặc nhập nhiều
-        giao dịch cùng lúc một cách nhanh chóng.
-    </p>
-    <div class="Chức năng chi tiết của ghi chép thu chi">
-         <p>✓ Ghi chép từng khoản thu chi</p>
+        <section id="ghi-chep" class="ghi-chep-thu-chi">
+        <p class="nhan-ghi-chep">
+            <img src="FINSTARTicons/ghichep.svg" alt="">
+            Ghi chép tài chính cá nhân
+        </p>
+        
+        <h2>Ghi chép thu chi thông minh</h2>
+        
+        <p>
+            Cho phép sinh viên ghi nhận thu nhập,
+            chi tiêu hằng ngày hoặc nhập nhiều
+            giao dịch cùng lúc một cách nhanh chóng.
+        </p>
+        
+        <div class="chuc-nang-ghi-chep">
+            <p>
+                <img src="FINSTARTicons/tick.svg" alt="">
+                Ghi chép từng khoản thu chi
+            </p>
+        
+            <p>
+                <img src="FINSTARTicons/tick.svg" alt="">
+                Ghi chép hàng loạt
+            </p>
+        
+            <p>
+                <img src="FINSTARTicons/tick.svg" alt="">
+                Phân loại giao dịch
+            </p>
 
-        <p>✓ Ghi chép hàng loạt</p>
-
-        <p>✓ Phân loại giao dịch</p>
-
-        <p>✓ Lưu lịch sử tự động</p>
-    </div>
+            <p>
+                <img src="FINSTARTicons/tick.svg" alt="">
+                Lưu lịch sử tự động
+            </p>
+        </div>
     <div class="Minh họa của ghi chép thu chi">
         <table border="1" width="700">
             <tr>
@@ -102,11 +120,11 @@
     <div class="khung-giao-dich">
 
         <div class="mot-giao-dich">
-            <div>
-                <p>↓</p>
+            <div class="icon-giao-dich thu">
+                <img src="FINSTARTicons/down.svg" alt="Khoản thu">
             </div>
     
-            <div>
+            <div class="thong-tin-giao-dich">
                 <p>Trợ cấp gia đình</p>
                 <p>Khoản thu • Chuyển khoản</p>
             </div>
@@ -116,13 +134,12 @@
             </div>
         </div>
     
-    
         <div class="mot-giao-dich">
-            <div>
-                <p>⌂</p>
+            <div class="icon-giao-dich chi">
+                <img src="FINSTARTicons/home.svg" alt="Tiền trọ">
             </div>
     
-            <div>
+            <div class="thong-tin-giao-dich">
                 <p>Tiền trọ</p>
                 <p>Khoản chi • Cố định</p>
             </div>
@@ -132,13 +149,12 @@
             </div>
         </div>
     
-    
         <div class="mot-giao-dich">
-            <div>
-                <p>🍴</p>
+            <div class="icon-giao-dich chi">
+                <img src="FINSTARTicons/thia.svg" alt="Tiền ăn">
             </div>
     
-            <div>
+            <div class="thong-tin-giao-dich">
                 <p>Tiền ăn</p>
                 <p>Khoản chi • Sinh hoạt</p>
             </div>
@@ -148,13 +164,12 @@
             </div>
         </div>
     
-    
         <div class="mot-giao-dich">
-            <div>
-                <p>📖</p>
+            <div class="icon-giao-dich chi">
+                <img src="FINSTARTicons/book.svg" alt="Mua giáo trình">
             </div>
     
-            <div>
+            <div class="thong-tin-giao-dich">
                 <p>Mua giáo trình</p>
                 <p>Khoản chi • Học tập</p>
             </div>
@@ -164,33 +179,36 @@
             </div>
         </div>
     
-        <button>
-            + Thêm giao dịch
+        <button type="button">
+            ⊕ Thêm giao dịch
         </button>
     
     </div>
 
 </section>
 <section id="quan-ly" class="quan-ly-giao-dich">
-    <p>
-        Quản lý dòng tiền minh bạch
+
+    <div class="noi-dung-quan-ly">
+
+        <p class="nhan-quan-ly">
+            <img src="FINSTARTicons/dongho.svg" alt="">
+            Quản lý dòng tiền minh bạch
+        </p>
+        <h2>Quản lý giao dịch và dòng tiền</h2>
+    
+    <p class="mo-ta-quan-ly">
+        Theo dõi toàn bộ lịch sử thu chi theo thời gian thực.
     </p>
-    <h2>
-        Quản lý giao dịch và dòng tiền
-    </h2>
-    <p>
-        Theo dõi toàn bộ lịch sử thu chi
-        theo thời gian thực.
-    </p>
-    <div class="Chức năng chi tiết của quản lý giao dịch">
-            <p>✓ Lọc theo ngày, tuần, tháng</p>
-            <p>✓ Tìm kiếm giao dịch</p>
-            <p>✓ Theo dõi dòng tiền</p>
-            <p>✓ Thống kê thu chi</p>
- 
+    <div class="chuc-nang-quan-ly">
+        <p><img src="FINSTARTicons/tick.svg" alt=""> Lọc theo ngày, tuần, tháng</p>
+        <p><img src="FINSTARTicons/tick.svg" alt=""> Tìm kiếm giao dịch</p>
+        <p><img src="FINSTARTicons/tick.svg" alt=""> Theo dõi dòng tiền</p>
+        <p><img src="FINSTARTicons/tick.svg" alt=""> Thống kê thu chi</p>
     </div>
-    <div class="Lịch sử giao dịch">
-        <strong>
+</div>
+<div class="khung-lich-su">
+<div class="tieu-de-lich-su">
+            <strong>
             Tháng 10/2024
         </strong>
     
@@ -203,48 +221,62 @@
         </button>
 
     </div>
-    <p>
-        HÔM NAY - 24 THÁNG 10
-    </p>
+    <p class="ngay-giao-dich">HÔM NAY - 24 THÁNG 10</p>
     <div class="minh-hoa-1">
 
-        <p>
-            Lương trợ giảng part-time
-        </p>
-    
-        <p>
-            14:20 - #ThuNhap
-        </p>
-    
-        <strong>
-            +1.500.000 đ
-        </strong>
-
-     <hr>
-
-        <p>
-            Cà phê họp nhóm
-        </p>
-    
-        <p>
-            09:15 - #AnUong
-        </p>
-    
-        <strong>
-            -45.000 đ
-        </strong>
-    </div>
-    <p>HÔM QUA - 23 THÁNG 10</p>
-
-    <div class="minh-hoa-2">
-        <p>Đồ dùng sinh hoạt trọ</p>
-        <p>18:40 - #SinhHoat</p>
-        <strong>-85.000 đ</strong>
-    </div>
+            <div class="giao-dich-lich-su">
+                <div class="icon-giao-dich thu">
+                    <img src="FINSTARTicons/luong.svg" alt="">
+                </div>
+        
+                <div class="thong-tin-giao-dich">
+                    <p>Lương trợ giảng part-time</p>
+                    <p>14:20 • #ThuNhap</p>
+                </div>
+        
+                <strong class="so-tien-thu">+1.500.000 đ</strong>
+            </div>
+        
+            <div class="giao-dich-lich-su">
+                <div class="icon-giao-dich chi">
+                    <img src="FINSTARTicons/cafe.svg" alt="">
+                </div>
+        
+                <div class="thong-tin-giao-dich">
+                    <p>Cà phê họp nhóm</p>
+                    <p>09:15 • #AnUong</p>
+                </div>
+        
+                <strong class="so-tien-chi">-45.000 đ</strong>
+            </div>
+        
+        </div>
+        
+        <p class="ngay-giao-dich">HÔM QUA - 23 THÁNG 10</p>
+        
+        <div class="minh-hoa-2">
+        
+            <div class="giao-dich-lich-su">
+                <div class="icon-giao-dich chi">
+                    <img src="FINSTARTicons/shopping.svg" alt="">
+                </div>
+        
+                <div class="thong-tin-giao-dich">
+                    <p>Đồ dùng sinh hoạt trọ</p>
+                    <p>18:40 • #SinhHoat</p>
+                </div>
+        
+                <strong class="so-tien-chi">-85.000 đ</strong>
+            </div>
+        
+        </div>
+        
+        </div> <!-- Đóng khung-lich-su -->
 </section>
 
 <section id="xuat-du-lieu" class="xuat-du-lieu">
     <p>
+        <img src="FINSTARTicons/taixuong.svg" alt="">
         Tiện ích dữ liệu
     </p>
     <h2>
@@ -255,17 +287,14 @@
     để phục vụ theo dõi, đối chiếu và quản lý tài chính cá nhân.
     </p>
     <div class="chuc-nang-xuat-du-lieu">
-        <p>✓ Xuất Excel (.xlsx)</p>
-
-        <p>✓ Xuất CSV</p>
-
-        <p>✓ Chọn khoảng thời gian</p>
-
-        <p>✓ Lưu trữ và đối chiếu dữ liệu</p>
-    
+        <p><img src="FINSTARTicons/tick.svg" alt=""> Xuất Excel (.xlsx)</p>
+        <p><img src="FINSTARTicons/tick.svg" alt=""> Xuất CSV</p>
+        <p><img src="FINSTARTicons/tick.svg" alt=""> Chọn khoảng thời gian</p>
+        <p><img src="FINSTARTicons/tick.svg" alt=""> Lưu trữ và đối chiếu dữ liệu</p>
     </div>
     <div class="khung-xuat-du-lieu">
         <h3>
+            <img src="FINSTARTicons/xuatdulieu.svg" alt="">
             Xuất dữ liệu thu chi
         </h3>
         <p>
@@ -300,7 +329,7 @@
                 <div class="loi-ich">
         
                     <h3>
-                        Hiểu rõ dòng tiền cá nhân
+                        <img src="FINSTARTicons/vitien.svg" alt="">Hiểu rõ dòng tiền cá nhân
                     </h3>
         
                     <p>
@@ -312,7 +341,7 @@
                 <div class="loi-ich">
         
                     <h3>
-                        Duy trì thói quen ghi chép
+                        <img src="FINSTARTicons/thoiquenghichep.svg" alt="">Duy trì thói quen ghi chép
                     </h3>
         
                     <p>
@@ -323,7 +352,7 @@
                 <div class="loi-ich">
         
                     <h3>
-                        Kiểm soát chi tiêu hiệu quả
+                        <img src="FINSTARTicons/phattrien.svg" alt="">Kiểm soát chi tiêu hiệu quả
                     </h3>
         
                     <p>
@@ -335,7 +364,7 @@
                 <div class="loi-ich">
         
                     <h3>
-                        Hình thành tư duy tài chính
+                        <img src="FINSTARTicons/heoloen.svg" alt="">Hình thành tư duy tài chính
                     </h3>
         
                     <p>
@@ -347,6 +376,18 @@
         
     </section>
 </main>
+
+
+
+
+
+
+
+
+
+
+
+
 
       <!-- Footer -->
       <footer>
