@@ -2,69 +2,65 @@
 /* ========== CÀI ĐẶT CHUNG ========== */
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Khi bấm liên kết đến một phần trong trang, trang sẽ cuộn mượt */
 }
 
 main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-    font-family: 'Inter', Arial, sans-serif;
-    color: #202124;
+    max-width: 1200px; /* Giới hạn chiều rộng tối đa của phần nội dung là 1200px */
+    margin: 0 auto; /* Trên dưới 0, trái phải auto để căn giữa khối main */
+    padding: 0 40px; /* Khoảng cách bên trong: trên dưới 0, trái phải 40px */
+    font-family: 'Inter', Arial, sans-serif; /* Ưu tiên font Inter, nếu không có thì dùng Arial hoặc sans-serif */
+    color: #202124; /* Đặt màu chữ mặc định là đen xám */
 }
 
 main section {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 100px; /* Khi cuộn đến section, chừa khoảng trống 100px phía trên */
 }
 
 main h1, main h2, main h3 {
-    line-height: 1.3;
-    letter-spacing: -0.6px;
+    line-height: 1.3; /* Chiều cao mỗi dòng bằng 1.3 lần cỡ chữ */
+    letter-spacing: -0.6px; /* Giảm khoảng cách giữa các ký tự đi 0.6px */
 }
 
-/* Tiêu đề các phần */
+/* ========== TIÊU ĐỀ CÁC PHẦN ========== */
+
 main h2 {
-    font-size: 25px;
-    font-weight: 750;
-    letter-spacing: -0.7px;
-    line-height: 1.3;
-    color: #202124;
+    font-size: 25px; /* Kích thước chữ tiêu đề h2 là 25px */
+    font-weight: 750; /* Độ đậm chữ là 750, khá đậm */
+    letter-spacing: -0.7px; /* Thu hẹp khoảng cách giữa các ký tự 0.7px */
+    line-height: 1.3; /* Chiều cao dòng bằng 1.3 lần kích thước chữ */
+    color: #202124; /* Màu chữ đen xám */
+    margin-bottom: 14px; /* Tạo khoảng cách 14px bên dưới tiêu đề */
 }
 
 main p {
-    font-size: 14px;
-    line-height: 1.65;
-    color: #626875;
+    font-size: 14px; /* Kích thước chữ trong đoạn văn là 14px */
+    line-height: 1.65; /* Giãn dòng bằng 1.65 lần kích thước chữ */
+    color: #626875; /* Màu chữ xám, nhạt hơn tiêu đề */
 }
 
 /* ========== GIỚI THIỆU ========== */
 
 .gioi-thieu {
     text-align: center;
-    padding: 65px 20px 20px;
-    background: radial-gradient(
-        ellipse at top,
-        #d7f8ec,
-        #f7f8fa 60%
-    );
+    padding: 35px 20px 5px;
+    background: radial-gradient(ellipse at top, #d7f8ec, #f7f8fa 60%);
 }
 
 .gioi-thieu > p:first-child {
     display: inline-block;
+    padding: 7px 16px;
+    margin-bottom: 18px;
     background: #dcefe8;
+    border-radius: 30px;
     color: #007b55;
     font-size: 12px;
     font-weight: 600;
-    padding: 7px 16px;
-    border-radius: 30px;
-    margin-bottom: 18px;
 }
 
 .gioi-thieu > p:first-child::before {
     content: "● ";
 }
-
-/* Tiêu đề chính */
 
 .gioi-thieu h1 {
     font-family: 'Be Vietnam Pro', sans-serif;
@@ -73,10 +69,8 @@ main p {
     line-height: 1.35;
     letter-spacing: -0.7px;
     color: #202124;
-    margin-bottom: 22px;
+    margin-bottom: 12px;
 }
-
-/* Chữ màu xanh */
 
 .gioi-thieu h1 span {
     color: #007b55;
@@ -90,14 +84,14 @@ main p {
     margin: auto;
 }
 
-/* ========== NÚT ĐIỀU HƯỚNG ========== */
+/* ========== MENU TÍNH NĂNG ========== */
 
 .nút-tính-năng {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 10px;
-    margin: 18px 0 15px;}
+    margin: 18px 0 15px;
+}
 
 .nút-tính-năng a {
     display: inline-block;
@@ -121,58 +115,69 @@ main p {
     color: white;
 }
 
-/* ========== GHI CHÉP THU CHI ========== */
+/* ========== BỐ CỤC BA PHẦN CHÍNH ========== */
 
-.ghi-chep-thu-chi {
+.ghi-chep-thu-chi,
+.quan-ly-giao-dich,
+.xuat-du-lieu {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 32px;
     align-items: center;
-    padding: 20px 0 75px;
 }
 
-/* Nội dung bên trái */
+.ghi-chep-thu-chi {
+    padding: 10px 0 45px;
+}
 
-.nhan-ghi-chep {
-    grid-column: 1;
-    grid-row: 1;
+.quan-ly-giao-dich,
+.xuat-du-lieu {
+    padding: 15px 0 45px;
+}
+
+.noi-dung-quan-ly {
+    min-width: 0;
+}
+
+.noi-dung-quan-ly h2 {
+    font-size: 25px;
+}
+
+/* Nhãn xanh trước tiêu đề */
+
+.nhan-ghi-chep,
+.nhan-quan-ly,
+.xuat-du-lieu > p:first-child {
     display: flex;
     align-items: center;
     gap: 9px;
+    margin-bottom: 14px;
     color: #007b55;
     font-size: 12px;
     font-weight: 600;
-    margin-bottom: 14px;
-    align-self: end;
 }
 
-.nhan-ghi-chep img {
+.nhan-ghi-chep img,
+.nhan-quan-ly img,
+.xuat-du-lieu > p:first-child img {
     width: 24px;
     height: 24px;
     object-fit: contain;
 }
 
-.ghi-chep-thu-chi > h2 {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.ghi-chep-thu-chi > p:nth-of-type(2) {
-    grid-column: 1;
-    grid-row: 3;
+.mo-ta-quan-ly {
     margin-bottom: 20px;
 }
 
-.chuc-nang-ghi-chep {
-    grid-column: 1;
-    grid-row: 4;
+/* Các ô liệt kê tính năng */
+
+.chuc-nang-ghi-chep,
+.chuc-nang-quan-ly,
+.chuc-nang-xuat-du-lieu {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
-    align-self: start;
 }
-
-/* ========== CÁC Ô CHỨC NĂNG ========== */
 
 .chuc-nang-ghi-chep p,
 .chuc-nang-quan-ly p,
@@ -199,7 +204,41 @@ main p {
     flex-shrink: 0;
 }
 
-/* ========== BẢNG TỔNG THU CHI ========== */
+/* ========== GHI CHÉP THU CHI ========== */
+
+.nhan-ghi-chep {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+}
+
+.ghi-chep-thu-chi > h2 {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.ghi-chep-thu-chi > p:nth-of-type(2) {
+    grid-column: 1;
+    grid-row: 3;
+    margin-bottom: 20px;
+}
+
+.chuc-nang-ghi-chep {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: start;
+}
+
+/* Giữ vị trí phần chữ đã chỉnh trong CSS cũ */
+
+.nhan-ghi-chep,
+.ghi-chep-thu-chi > h2,
+.ghi-chep-thu-chi > p:nth-of-type(2),
+.chuc-nang-ghi-chep {
+    transform: translateY(80px) !important;
+}
+
+/* Bảng tổng thu chi */
 
 .ghi-chep-thu-chi > div:nth-of-type(2) {
     grid-column: 2;
@@ -248,7 +287,7 @@ main p {
     color: #202124;
 }
 
-/* ========== KHUNG GIAO DỊCH ========== */
+/* Danh sách giao dịch */
 
 .khung-giao-dich {
     grid-column: 2;
@@ -259,15 +298,19 @@ main p {
     box-shadow: 0 10px 18px #0000001a;
 }
 
-.mot-giao-dich {
+.mot-giao-dich,
+.giao-dich-lich-su {
     display: flex;
     align-items: center;
-    gap: 12px;
-    min-height: 54px;
     background: #f0f2f4;
-    padding: 10px 12px;
     border-radius: 10px;
     margin-bottom: 9px;
+}
+
+.mot-giao-dich {
+    gap: 12px;
+    min-height: 54px;
+    padding: 10px 12px;
 }
 
 .icon-giao-dich {
@@ -316,25 +359,40 @@ main p {
     font-size: 10px;
 }
 
-.mot-giao-dich strong {
-    color: #dc2626;
+.mot-giao-dich strong,
+.giao-dich-lich-su strong {
     font-size: 12px;
     white-space: nowrap;
 }
 
-.mot-giao-dich:first-child strong {
+.mot-giao-dich strong {
+    color: #dc2626;
+}
+
+.mot-giao-dich:first-child strong,
+.so-tien-thu {
     color: #007b55;
 }
 
-.khung-giao-dich button {
+.so-tien-chi {
+    color: #dc2626;
+}
+
+/* Nút thêm giao dịch và tải dữ liệu */
+
+.khung-giao-dich button,
+.khung-xuat-du-lieu button {
     width: 100%;
-    padding: 12px;
-    background: #000;
-    color: white;
     border: none;
     border-radius: 9px;
+    color: white;
     font: 600 12px 'Inter', sans-serif;
     cursor: pointer;
+}
+
+.khung-giao-dich button {
+    padding: 12px;
+    background: #000;
 }
 
 .khung-giao-dich button:hover {
@@ -343,70 +401,28 @@ main p {
 
 /* ========== QUẢN LÝ GIAO DỊCH ========== */
 
-.quan-ly-giao-dich {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 32px;
-    align-items: center;
-    padding: 30px 0 80px;
-}
-
-/* Nội dung bên trái */
-
-.noi-dung-quan-ly {
-    min-width: 0;
-}
-
-.nhan-quan-ly {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    color: #007b55;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 14px;
-}
-
-.nhan-quan-ly img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-}
-
-.noi-dung-quan-ly h2 {
-    font-size: 25px;
-    font-weight: 700;
-    margin-bottom: 14px;
-}
-
-.mo-ta-quan-ly {
-    color: #626875;
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-.chuc-nang-quan-ly {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-}
-
-/* Khung lịch sử bên phải */
-
-.khung-lich-su {
-    min-width: 0;
+.khung-lich-su,
+.khung-xuat-du-lieu {
     background: white;
     padding: 24px;
     border-radius: 16px;
     box-shadow: 0 10px 18px #0000001a;
 }
 
-.tieu-de-lich-su {
+.khung-lich-su {
+    min-width: 0;
+}
+
+.tieu-de-lich-su,
+.khung-xuat-du-lieu h3 {
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #edf0f2;
+}
+
+.tieu-de-lich-su {
     gap: 10px;
     padding-bottom: 14px;
-    border-bottom: 1px solid #edf0f2;
 }
 
 .tieu-de-lich-su strong {
@@ -435,8 +451,6 @@ main p {
     margin: 14px 0 9px;
 }
 
-/* Nhóm giao dịch */
-
 .minh-hoa-1,
 .minh-hoa-2 {
     margin: 0;
@@ -447,79 +461,25 @@ main p {
     box-shadow: none;
 }
 
-/* Mỗi giao dịch nằm trong một ô xám */
-
 .giao-dich-lich-su {
-    display: flex;
-    align-items: center;
     gap: 11px;
     min-height: 52px;
     padding: 9px 11px;
-    margin-bottom: 9px;
-    background: #f0f2f4;
-    border-radius: 10px;
-}
-
-.giao-dich-lich-su .icon-giao-dich {
-    width: 34px;
-    height: 34px;
-}
-
-.giao-dich-lich-su .icon-giao-dich img {
-    width: 18px;
-    height: 18px;
 }
 
 .giao-dich-lich-su .thong-tin-giao-dich p:first-child {
-    font-size: 12px;
     font-weight: 600;
 }
 
-.giao-dich-lich-su .thong-tin-giao-dich p:last-child {
-    font-size: 10px;
-    color: #626875;
-}
-
 .giao-dich-lich-su strong {
-    font-size: 12px;
     font-weight: 700;
-    white-space: nowrap;
-}
-
-.so-tien-thu {
-    color: #007b55;
-}
-
-.so-tien-chi {
-    color: #dc2626;
 }
 
 /* ========== XUẤT DỮ LIỆU ========== */
 
-.xuat-du-lieu {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 32px;
-    align-items: center;
-    padding: 20px 0 85px;
-}
-
 .xuat-du-lieu > p:first-child {
     grid-column: 1;
     grid-row: 1;
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    color: #007b55;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 14px;
-}
-
-.xuat-du-lieu > p:first-child img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
 }
 
 .xuat-du-lieu > h2 {
@@ -536,31 +496,19 @@ main p {
 .chuc-nang-xuat-du-lieu {
     grid-column: 1;
     grid-row: 4;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
 }
-
-/* Khung xuất dữ liệu */
 
 .khung-xuat-du-lieu {
     grid-column: 2;
     grid-row: 1 / 5;
-    background: white;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 10px 18px #0000001a;
 }
 
 .khung-xuat-du-lieu h3 {
-    display: flex;
-    align-items: center;
     gap: 10px;
     font-size: 16px;
     font-weight: 700;
     padding-bottom: 15px;
     margin-bottom: 16px;
-    border-bottom: 1px solid #edf0f2;
 }
 
 .khung-xuat-du-lieu h3 img {
@@ -595,24 +543,16 @@ main p {
     font-size: 11px;
 }
 
-/* Nút tải */
-
 .khung-xuat-du-lieu button {
-    width: 100%;
     padding: 13px;
     background: #007b55;
-    color: white;
-    border: none;
-    border-radius: 9px;
-    font: 600 12px 'Inter', sans-serif;
-    cursor: pointer;
 }
 
 .khung-xuat-du-lieu button:hover {
     background: #005c3e;
 }
 
-/* ========== TẠI SAO NÊN SỬ DỤNG ========== */
+/* ========== LỢI ÍCH FINSTART ========== */
 
 .ly-do-su-dung {
     background: #f0f1f3;
@@ -644,8 +584,6 @@ main p {
     transition: 0.2s;
 }
 
-/* Chỉ dùng SVG, không dùng dấu tích cũ */
-
 .loi-ich::before {
     content: none;
     display: none;
@@ -672,7 +610,6 @@ main p {
 .loi-ich p {
     font-size: 12px;
     line-height: 1.6;
-    color: #626875;
 }
 
 .loi-ich:hover {
@@ -746,49 +683,4 @@ main p {
     .ly-do-su-dung {
         padding: 40px 20px;
     }
-    
-}
-/* Đồng bộ độ đậm tiêu đề theo Figma */
-.noi-dung-quan-ly h2,
-.ly-do-su-dung h2 {
-    font-weight: 750;
-}
-
-/* Tiêu đề nhỏ trong các khung */
-.loi-ich h3,
-.khung-xuat-du-lieu h3 {
-    font-weight: 700;
-}
-
-.nhan-ghi-chep,
-.ghi-chep-thu-chi > h2,
-.ghi-chep-thu-chi > p:nth-of-type(2),
-.chuc-nang-ghi-chep {
-    transform: translateY(80px) !important;
-}
-
-/* Thu gọn khoảng trắng giữa các phần */
-
-.gioi-thieu {
-    padding-top: 35px;
-    padding-bottom: 5px;
-}
-
-.gioi-thieu h1 {
-    margin-bottom: 12px;
-}
-
-.ghi-chep-thu-chi {
-    padding-top: 10px;
-    padding-bottom: 45px;
-}
-
-.quan-ly-giao-dich {
-    padding-top: 15px;
-    padding-bottom: 45px;
-}
-
-.xuat-du-lieu {
-    padding-top: 15px;
-    padding-bottom: 45px;
 }
