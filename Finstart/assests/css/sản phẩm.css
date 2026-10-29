@@ -1,0 +1,181 @@
+
+main {
+    font-family: 'Inter', sans-serif;
+    color: #121826;
+    line-height: 1.6;
+}
+
+#phan-mo-dau {
+    padding: 60px 5%;
+    background: linear-gradient(to bottom, #f4fcf9, #ffffff);
+}
+
+#phan-mo-dau h1 {
+    font-size: 42px;
+    color: #121826;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+#phan-mo-dau p {
+    font-size: 18px;
+    color: #6c757d;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+/* Khối feedback của Nguyễn Mai Phương */
+.loi-khuyen {
+    background: #ffffff;
+    padding: 24px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Đổ bóng cho khối nổi lên */
+    border-left: 4px solid #07a75c; /* Viền xanh bên trái */
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left; /* Ép chữ trong khối này căn trái cho dễ đọc */
+}
+
+.loi-khuyen p {
+    font-size: 16px;
+    font-style: italic; /* In nghiêng lời khuyên */
+    font-weight: 600;
+    color: #121826;
+    margin-bottom: 10px;
+}
+
+.loi-khuyen strong {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/*  2. HƯỚNG DẪN SỬ DỤNG */
+#huong-dan-su-dung {
+    padding: 60px 5%;
+    background-color: #ffffff;
+}
+
+#huong-dan-su-dung h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+}
+
+/* Dàn 3 bước thành hàng ngang */
+.cac-buoc {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.buoc-1, .buoc-2, .buoc-3 {
+    flex: 1; /* Chia đều không gian cho 3 bước */
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: left;
+}
+
+.cac-buoc h3 {
+    color: #07a75c;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* 3. BẢNG GIÁ  */
+#bang-gia {
+    padding: 80px 5%;
+    background-color: #f8f9fa;
+}
+
+#bang-gia h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+}
+
+/* Dàn 3 gói cước thành hàng ngang */
+.danh-sach-goi-cuoc {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Căn giữa để lát nữa gói Pro phóng to lên trông sẽ đẹp */
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Định dạng chung cho lớp vỏ của 3 gói */
+.goi-co-ban, .goi-pro, .goi-chuyen-sau {
+    flex: 1;
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    text-align: left;
+}
+
+.danh-sach-goi-cuoc h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Định dạng dòng hiển thị số tiền */
+.goi-co-ban > p, .goi-pro > p:nth-of-type(2), .goi-chuyen-sau > p {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #121826;
+}
+
+.quyen-loi p {
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 12px;
+}
+
+/* --------- TÔ ĐẬM RIÊNG GÓI PRO --------- */
+.goi-pro {
+    background: #121826; /* Nền xanh đen */
+    color: #ffffff;
+    transform: scale(1.05); /* Lệnh này giúp khối Pro to hơn 5% so với 2 khối kia */
+    border: none;
+    box-shadow: 0 20px 40px rgba(7, 167, 92, 0.15);
+}
+
+.goi-pro h3, .goi-pro > p:nth-of-type(2) {
+    color: #ffffff;
+}
+
+.goi-pro .quyen-loi p {
+    color: #9ca3af; /* Chữ quyền lợi xám sáng trên nền đen */
+}
+
+/* Định dạng chữ "PHỔ BIẾN NHẤT" */
+.goi-pro > p:first-child {
+    background: #07a75c;
+    color: #ffffff;
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Nút Nâng cấp ngay của gói Pro */
+.goi-pro button {
+    background: #07a75c;
+    border: none;
+    padding: 12px 0;
+    border-radius: 30px;
+    margin-top: 20px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.goi-pro button a {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 15px;
+}
