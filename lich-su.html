@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử giao dịch | FinStart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=".vscode/lich-su.css">
+</head>
+
+<body>
+    <!-- ICON DÙNG CHUNG -->
+    <svg class="thu-vien-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <symbol id="nguoi" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4" fill="currentColor"></circle>
+            <path d="M4 21v-2a8 8 0 0 1 16 0v2Z" fill="currentColor"></path>
+        </symbol>
+
+        <symbol id="tim" viewBox="0 0 24 24">
+            <g fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                <path d="m16 16 4 4"></path>
+            </g>
+        </symbol>
+
+        <symbol id="chuong" viewBox="0 0 24 24">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"
+                fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round"></path>
+        </symbol>
+
+        <symbol id="sua" viewBox="0 0 24 24">
+            <path d="m15 5 4 4M4 20l4-1L20 7l-4-4L4 15Z"
+                fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round"></path>
+        </symbol>
+
+        <symbol id="xoa" viewBox="0 0 24 24">
+            <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"
+                fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round"></path>
+        </symbol>
+
+        <symbol id="thoat" viewBox="0 0 24 24">
+            <path d="M10 4H4v16h6M9 12h12m-4-4 4 4-4 4"
+                fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round"></path>
+        </symbol>
+    </svg>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a class="logo" href="về dự án.html">
+            <img
+                src="https://cdn.prod.website-files.com/5ff2db09bcc6434534e4382b/62c2ae2c934c9c08d1b50967_FinStart_Logo_long.png"
+                alt="FinStart"
+            >
+        </a>
+
+        <div class="header-phai">
+            <label class="tim-kiem tim-header">
+                <svg class="icon" aria-hidden="true"><use href="#tim"></use></svg>
+                <input type="search" placeholder="Tìm khoản chi, hũ tiết kiệm..." aria-label="Tìm kiếm toàn trang">
+            </label>
+
+            <div class="tien-ich">
+                <span class="trang-thai">● Học kỳ II • Đang hoạt động</span>
+
+                <button class="nut-chuong" type="button" aria-label="Thông báo">
+                    <svg class="icon" aria-hidden="true"><use href="#chuong"></use></svg>
+                    <span></span>
+                </button>
+
+                <a class="avatar avatar-nho" href="tài khoản.html" aria-label="Tài khoản cá nhân">
+                    <svg aria-hidden="true"><use href="#nguoi"></use></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="bo-cuc">
+        <!-- THANH BÊN -->
+        <aside class="thanh-ben">
+            <a class="ho-so" href="tài khoản.html">
+                <span class="avatar">
+                    <svg aria-hidden="true"><use href="#nguoi"></use></svg>
+                </span>
+                <div>
+                    <strong>Nguyễn Văn A</strong>
+                    <small>SV ĐHQG • K65</small>
+                </div>
+                <img class="icon xac-minh" src="FINSTARTicons/tick.svg" alt="Đã xác minh">
+            </a>
+
+            <nav class="menu" aria-label="Menu chính">
+                <a href="tổng quan.html">
+                    <img class="icon" src="FINSTARTicons/home.svg" alt="">
+                    Tổng quan
+                </a>
+                <a href="tài khoản.html">
+                    <img class="icon" src="FINSTARTicons/vitien.svg" alt="">
+                    Tài khoản
+                </a>
+                <a href="ghi chép thu chi.html">
+                    <img class="icon" src="FINSTARTicons/ghichep.svg" alt="">
+                    Ghi chép thu chi
+                </a>
+                <a class="dang-chon" href="lịch sử giao dịch.html" aria-current="page">
+                    <img class="icon" src="FINSTARTicons/thoiquenghichep.svg" alt="">
+                    Lịch sử giao dịch
+                </a>
+                <a href="sản phẩm.html">
+                    <img class="icon" src="FINSTARTicons/heoloen.svg" alt="">
+                    Sản phẩm tài chính
+                </a>
+            </nav>
+
+            <nav class="menu menu-cuoi" aria-label="Cài đặt tài khoản">
+                <a href="cài đặt.html">
+                    <img class="icon" src="FINSTARTicons/setting.svg" alt="">
+                    Cài đặt
+                </a>
+                <a href="đăng nhập.html">
+                    <svg class="icon" aria-hidden="true"><use href="#thoat"></use></svg>
+                    Đăng xuất
+                </a>
+            </nav>
+        </aside>
+
+        <!-- NỘI DUNG -->
+        <main>
+            <section class="banner">
+                <span class="icon-banner">
+                    <img class="icon" src="FINSTARTicons/thoiquenghichep.svg" alt="">
+                </span>
+                <div>
+                    <h2>LỊCH SỬ THU CHI SINH VIÊN • AN TOÀN & BẢO MẬT</h2>
+                    <p>Tra cứu và theo dõi các khoản thu chi đã ghi chép.</p>
+                </div>
+            </section>
+
+            <nav class="duong-dan" aria-label="Đường dẫn">
+                <a href="tổng quan.html">Tài chính cá nhân</a>
+                <span>/</span>
+                <span>Lịch sử giao dịch</span>
+            </nav>
+
+            <section class="tieu-de">
+                <div>
+                    <h1>Lịch sử giao dịch</h1>
+                    <p>Tra cứu, theo dõi và quản lý các khoản thu chi sinh viên.</p>
+                </div>
+                <a class="nut nut-xanh" href="ghi chép thu chi.html">
+                    <span aria-hidden="true">＋</span>
+                    Thêm ghi chép
+                </a>
+            </section>
+
+            <!-- BỘ LỌC -->
+            <section class="khung bo-loc" aria-label="Bộ lọc giao dịch">
+                <div class="hang-loc">
+                    <label class="tim-kiem">
+                        <svg class="icon" aria-hidden="true"><use href="#tim"></use></svg>
+                        <input type="search" placeholder="Tìm nội dung, số tiền, tài khoản..." aria-label="Tìm giao dịch">
+                    </label>
+
+                    <select aria-label="Tháng">
+                        <option>Tháng 09/2026</option>
+                        <option>Tháng 08/2026</option>
+                        <option>Tháng 07/2026</option>
+                    </select>
+
+                    <select aria-label="Loại giao dịch">
+                        <option>Tất cả giao dịch</option>
+                        <option>Khoản thu</option>
+                        <option>Khoản chi</option>
+                    </select>
+
+                    <select aria-label="Hạng mục">
+                        <option>Tất cả hạng mục</option>
+                        <option>Ăn uống</option>
+                        <option>Học tập</option>
+                        <option>Đi lại</option>
+                        <option>Thu nhập</option>
+                    </select>
+
+                    <a class="nut nut-vien" href="xuất dữ liệu.html">
+                        <img class="icon" src="FINSTARTicons/xuatdulieu.svg" alt="">
+                        Xuất dữ liệu
+                    </a>
+                </div>
+
+                <div class="tong-hop">
+                    <div class="cac-tong">
+                        <p>Tổng thu: <strong class="thu">+3.000.000 đ</strong></p>
+                        <p>Tổng chi: <strong class="chi">-270.000 đ</strong></p>
+                        <p>Chênh lệch: <strong class="thu">+2.730.000 đ</strong></p>
+                    </div>
+                    <small>Đơn vị: VND (Việt Nam Đồng)</small>
+                </div>
+            </section>
+
+            <!-- BẢNG GIAO DỊCH -->
+            <section class="khung" aria-label="Lịch sử giao dịch">
+                <div class="cuon-bang">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Hạng mục</th>
+                                <th scope="col" class="so-tien">Số tiền</th>
+                                <th scope="col">Tài khoản</th>
+                                <th scope="col">Diễn giải</th>
+                                <th scope="col" class="cot-thao-tac">Thao tác</th>
+                            </tr>
+                        </thead>
+
+                        <!-- NGÀY 08/09 -->
+                        <tbody>
+                            <tr class="dong-ngay">
+                                <th colspan="5" scope="rowgroup">
+                                    <div class="nhom-ngay">
+                                        <button class="nut-ngay" type="button" aria-expanded="true">
+                                            <time datetime="2026-09-08">08/09/2026</time>
+                                        </button>
+                                        <p>Thu: <span class="thu">0 đ</span> <span class="ngan">|</span> Chi: <span class="chi">-200.000 đ</span></p>
+                                    </div>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <td>Ăn uống</td>
+                                <td class="so-tien chi">-35.000 đ</td>
+                                <td>Ví tiền mặt</td>
+                                <td>Ăn sáng</td>
+                                <td class="cot-thao-tac">
+                                    <a class="nut-icon" href="ghi chép thu chi.html" aria-label="Mở ghi chép ăn sáng">
+                                        <svg class="icon"><use href="#sua"></use></svg>
+                                    </a>
+                                    <button class="nut-icon xoa" type="button" aria-label="Xóa ghi chép ăn sáng">
+                                        <svg class="icon"><use href="#xoa"></use></svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Học tập</td>
+                                <td class="so-tien chi">-120.000 đ</td>
+                                <td>Vietcombank Thẻ SV</td>
+                                <td>Mua giáo trình</td>
+                                <td class="cot-thao-tac">
+                                    <a class="nut-icon" href="ghi chép thu chi.html" aria-label="Mở ghi chép mua giáo trình">
+                                        <svg class="icon"><use href="#sua"></use></svg>
+                                    </a>
+                                    <button class="nut-icon xoa" type="button" aria-label="Xóa ghi chép mua giáo trình">
+                                        <svg class="icon"><use href="#xoa"></use></svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Ăn uống & Cafe</td>
+                                <td class="so-tien chi">-45.000 đ</td>
+                                <td>Ví MoMo</td>
+                                <td>Cafe làm bài nhóm</td>
+                                <td class="cot-thao-tac">
+                                    <a class="nut-icon" href="ghi chép thu chi.html" aria-label="Mở ghi chép cafe">
+                                        <svg class="icon"><use href="#sua"></use></svg>
+                                    </a>
+                                    <button class="nut-icon xoa" type="button" aria-label="Xóa ghi chép cafe">
+                                        <svg class="icon"><use href="#xoa"></use></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <!-- NGÀY 07/09 -->
+                        <tbody>
+                            <tr class="dong-ngay">
+                                <th colspan="5" scope="rowgroup">
+                                    <div class="nhom-ngay">
+                                        <button class="nut-ngay" type="button" aria-expanded="true">
+                                            <time datetime="2026-09-07">07/09/2026</time>
+                                        </button>
+                                        <p>Thu: <span class="thu">+3.000.000 đ</span> <span class="ngan">|</span> Chi: <span class="chi">-70.000 đ</span></p>
+                                    </div>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <td>Thu nhập trợ cấp</td>
+                                <td class="so-tien thu">+3.000.000 đ</td>
+                                <td>Vietcombank Thẻ SV</td>
+                                <td>Gia đình gửi tiền</td>
+                                <td class="cot-thao-tac">
+                                    <a class="nut-icon" href="ghi chép thu chi.html" aria-label="Mở ghi chép trợ cấp">
+                                        <svg class="icon"><use href="#sua"></use></svg>
+                                    </a>
+                                    <button class="nut-icon xoa" type="button" aria-label="Xóa ghi chép trợ cấp">
+                                        <svg class="icon"><use href="#xoa"></use></svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Đi lại</td>
+                                <td class="so-tien chi">-70.000 đ</td>
+                                <td>Ví tiền mặt</td>
+                                <td>Đổ xăng</td>
+                                <td class="cot-thao-tac">
+                                    <a class="nut-icon" href="ghi chép thu chi.html" aria-label="Mở ghi chép đổ xăng">
+                                        <svg class="icon"><use href="#sua"></use></svg>
+                                    </a>
+                                    <button class="nut-icon xoa" type="button" aria-label="Xóa ghi chép đổ xăng">
+                                        <svg class="icon"><use href="#xoa"></use></svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- CUỐI BẢNG -->
+                <div class="cuoi-bang">
+                    <div class="so-luong">
+                        <p>Tổng số: <strong>5 giao dịch</strong></p>
+                        <label>
+                            Số dòng/trang:
+                            <select aria-label="Số dòng mỗi trang">
+                                <option>10</option>
+                                <option>20</option>
+                                <option>50</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <nav class="phan-trang" aria-label="Phân trang">
+                        <span>Trang 1 / 1</span>
+                        <button type="button" disabled>Trước</button>
+                        <button class="trang-chon" type="button" aria-current="page">1</button>
+                        <button type="button" disabled>Sau</button>
+                    </nav>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- THU GỌN / MỞ NHÓM GIAO DỊCH -->
+    <script>
+        document.querySelectorAll(".nut-ngay").forEach(function (nut) {
+            nut.addEventListener("click", function () {
+                const nhom = nut.closest("tbody");
+                const daThuGon = nhom.classList.toggle("thu-gon");
+
+                nut.setAttribute("aria-expanded", String(!daThuGon));
+            });
+        });
+    </script>
+</body>
+</html>
