@@ -65,7 +65,7 @@
         products:    ROOT + 'pages/san-pham.html',
         blog:        ROOT + 'pages/blog.html',
         login:       ROOT + 'pages/dang-nhap.html',
-        register:    ROOT + 'pages/dang-ky.html',
+        register:    ROOT + 'pages/dang-nhap.html?tab=register',
         forgot:      ROOT + 'pages/quen-mat-khau.html',
         privacy:     ROOT + 'pages/chinh-sach-bao-mat.html',
         terms:       ROOT + 'pages/dieu-khoan-dich-vu.html',

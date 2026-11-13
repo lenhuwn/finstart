@@ -12,19 +12,35 @@
     <link rel="stylesheet" href="../assets/css/public.css">
     <link rel="stylesheet" href="../assets/css/pages/auth.css">
 </head>
+<!-- Trang dùng chung cho ĐĂNG NHẬP và ĐĂNG KÝ (2 tab – theo thiết kế Stitch).
+     dang-ky.html tự chuyển về đây với tab Đăng ký. -->
 <body data-layout="auth" data-root="../" data-page="login">
 
+    <!-- ========== BỘ ICON (dùng lại bằng <use href="#...">) ========== -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></g></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></g></symbol>
+        <symbol id="i-school" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></g></symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+        <symbol id="i-eye-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l18 18M10.6 5.1A10.7 10.7 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6A17 17 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></g></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-dash" viewBox="0 0 24 24"><g fill="currentColor"><rect x="3" y="3" width="8" height="10" rx="1.5"/><rect x="13" y="3" width="8" height="6" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="15" width="8" height="6" rx="1.5"/></g></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="M12 9v4l2 2"/></g></symbol>
+    </svg>
+
     <div class="auth-page">
-        <!-- ========== PANEL THƯƠNG HIỆU ========== -->
+        <!-- ========== PANEL THƯƠNG HIỆU (đồng bộ layout nhóm) ========== -->
         <aside class="auth-aside">
             <a class="logo" href="../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fff" fill-opacity=".15"/><path d="M8 22.5l5.5-6 4 3.5L23 11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="11" r="2.2" fill="#C9F9E7"/></svg><span>Fin<b>Start</b></span></a>
             <div>
-                <h2>Chào mừng bạn quay lại!</h2>
-                <p>Tiếp tục hành trình làm chủ tài chính ngay từ giảng đường.</p>
+                <h2 id="asideTitle">Chào mừng bạn quay lại!</h2>
+                <p id="asideText">Tiếp tục hành trình làm chủ tài chính ngay từ giảng đường.</p>
                 <ul class="auth-points">
                     <li><span>✍️</span> Ghi chép thu chi chỉ trong 5 giây</li>
                     <li><span>📊</span> Theo dõi tỷ lệ 50/30/20 tự động</li>
                     <li><span>📁</span> Xuất dữ liệu Excel / CSV khi cần</li>
+                    <li><span>🔒</span> Mật khẩu được mã hóa SHA-256</li>
                 </ul>
             </div>
             <div class="auth-quote">
@@ -33,50 +49,121 @@
             </div>
         </aside>
 
-        <!-- ========== FORM ĐĂNG NHẬP ========== -->
+        <!-- ========== CỔNG ĐĂNG NHẬP / ĐĂNG KÝ ========== -->
         <main class="auth-main">
             <div class="auth-top">
                 <a class="back" href="../index.html">← Về trang chủ</a>
-                <span>Chưa có tài khoản? <a href="dang-ky.html">Đăng ký</a></span>
+                <a href="ho-tro.html">Cần hỗ trợ?</a>
             </div>
 
             <div class="auth-form-wrap">
-                <h1>Đăng nhập</h1>
-                <p>Đăng nhập để vào bảng điều khiển tài chính của bạn.</p>
+                <h1 id="authTitle">Đăng nhập FinStart</h1>
+                <p id="authLead">Truy cập bảng điều khiển tài chính cá nhân của bạn.</p>
+
+                <!-- 1. Tab chuyển Đăng nhập / Đăng ký -->
+                <div class="auth-tabs" role="tablist" aria-label="Đăng nhập hoặc đăng ký">
+                    <button type="button" role="tab" id="tab-login" aria-controls="pane-login" aria-selected="true" class="active" data-tab="login">Đăng nhập</button>
+                    <button type="button" role="tab" id="tab-register" aria-controls="pane-register" aria-selected="false" data-tab="register">Đăng ký tài khoản mới</button>
+                </div>
+
+                <!-- 2. Đăng nhập bằng mạng xã hội -->
+                <div class="social-grid">
+                    <button type="button" class="social-btn" data-provider="Google">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h5.9a5 5 0 0 1-2.2 3.3v2.8h3.6c2.1-1.9 3.3-4.8 3.3-8.1z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.8c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.9A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7H2.1a11 11 0 0 0 0 10z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.2-3.2A11 11 0 0 0 2.1 7l3.7 2.9C6.7 7.3 9.1 5.4 12 5.4z"/></svg>
+                        Tiếp tục với Google
+                    </button>
+                    <button type="button" class="social-btn" data-provider="Facebook">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1877F2"/><path fill="#fff" d="M13.4 23v-8.2h2.7l.4-3.2h-3.1V9.6c0-.9.3-1.6 1.6-1.6h1.7V5.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4v3.2h2.7V23z"/></svg>
+                        Tiếp tục với Facebook
+                    </button>
+                    <button type="button" class="social-btn wide" data-provider="Apple ID">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9a4.8 4.8 0 0 0-3.8-2c-1.6-.2-3.1.9-3.9.9s-2-.9-3.4-.9a5 5 0 0 0-4.2 2.6c-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6s1.8-.8 3.3-.8 2 .8 3.3.8 2.2-1.3 3-2.5a10 10 0 0 0 1.4-2.8 4.3 4.3 0 0 1-2.4-4.2zM13.9 5c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
+                        Tiếp tục với Apple ID
+                    </button>
+                </div>
+
+                <div class="divider">Hoặc tiếp tục với email cá nhân</div>
 
                 <div class="form-alert" id="formAlert" role="alert"></div>
 
-                <form id="loginForm" novalidate>
+                <!-- 3A. FORM ĐĂNG NHẬP -->
+                <form id="loginForm" class="auth-pane" role="tabpanel" aria-labelledby="tab-login" novalidate>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input class="input" type="email" id="email" name="email" placeholder="email@sinhvien.edu.vn" autocomplete="email" required>
+                        <label for="email">Email sinh viên / Cá nhân</label>
+                        <div class="icon-field">
+                            <svg><use href="#i-mail"/></svg>
+                            <input class="input" type="email" id="email" name="email" placeholder="Ví dụ: nguyenvanan@hcmut.edu.vn hoặc an.nguyen@gmail.com" autocomplete="email" required>
+                        </div>
                         <span class="field-error" data-for="email"></span>
                     </div>
                     <div class="form-group">
-                        <label for="password">Mật khẩu</label>
-                        <div class="password-field">
-                            <input class="input" type="password" id="password" name="password" placeholder="Nhập mật khẩu" autocomplete="current-password" required>
-                            <button type="button" class="icon-btn toggle-pass" aria-label="Hiện mật khẩu">👁</button>
+                        <div class="label-row"><label for="password">Mật khẩu</label><a href="quen-mat-khau.html">Quên mật khẩu?</a></div>
+                        <div class="icon-field">
+                            <svg><use href="#i-lock"/></svg>
+                            <input class="input" type="password" id="password" name="password" placeholder="••••••••••••" autocomplete="current-password" required>
+                            <button type="button" class="icon-btn toggle-pass" aria-label="Hiện mật khẩu"><svg><use href="#i-eye"/></svg></button>
                         </div>
                         <span class="field-error" data-for="password"></span>
                     </div>
                     <div class="form-meta">
                         <label class="checkbox"><input type="checkbox" name="remember" checked> Ghi nhớ đăng nhập</label>
-                        <a href="quen-mat-khau.html">Quên mật khẩu?</a>
+                        <span class="dest-badge"><svg><use href="#i-dash"/></svg>Đích đến: <b class="dest-name">Dashboard Tổng quan</b></span>
                     </div>
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Đăng nhập</button>
+                    <button class="btn btn-dark btn-lg btn-block" type="submit">Đăng nhập vào <span class="dest-name">Dashboard Tổng quan</span> <svg><use href="#i-arrow"/></svg></button>
+
+                    <button class="btn btn-ghost btn-sm btn-block mt-8" type="button" id="demoBtn">Dùng thử ngay với tài khoản demo (demo@finstart.vn)</button>
                 </form>
 
-                <div class="divider">hoặc</div>
+                <!-- 3B. FORM ĐĂNG KÝ -->
+                <form id="registerForm" class="auth-pane" role="tabpanel" aria-labelledby="tab-register" novalidate hidden>
+                    <div class="form-row" style="margin-top:0">
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <div class="icon-field"><svg><use href="#i-user"/></svg><input class="input" id="name" name="name" placeholder="Nguyễn Văn An" autocomplete="name"></div>
+                            <span class="field-error" data-for="name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="school">Trường / Khóa</label>
+                            <div class="icon-field"><svg><use href="#i-school"/></svg><input class="input" id="school" name="school" placeholder="HCMUT • K23"></div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-16">
+                        <label for="regEmail">Email sinh viên / Cá nhân</label>
+                        <div class="icon-field"><svg><use href="#i-mail"/></svg><input class="input" type="email" id="regEmail" name="email" placeholder="Ví dụ: nguyenvanan@hcmut.edu.vn" autocomplete="email"></div>
+                        <span class="field-error" data-for="email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Mật khẩu</label>
+                        <div class="icon-field">
+                            <svg><use href="#i-lock"/></svg>
+                            <input class="input" type="password" id="regPassword" name="password" placeholder="Ít nhất 6 ký tự" autocomplete="new-password">
+                            <button type="button" class="icon-btn toggle-pass" aria-label="Hiện mật khẩu"><svg><use href="#i-eye"/></svg></button>
+                        </div>
+                        <div class="strength" id="strength" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                        <span class="field-error" data-for="password"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm">Nhập lại mật khẩu</label>
+                        <div class="icon-field"><svg><use href="#i-lock"/></svg><input class="input" type="password" id="confirm" name="confirm" placeholder="Nhập lại mật khẩu" autocomplete="new-password"></div>
+                        <span class="field-error" data-for="confirm"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox"><input type="checkbox" name="sample" checked> Tạo sẵn dữ liệu mẫu để trải nghiệm</label>
+                        <label class="checkbox"><input type="checkbox" name="agree"> Tôi đồng ý với <a class="text-green" href="dieu-khoan-dich-vu.html" target="_blank">Điều khoản dịch vụ</a></label>
+                        <span class="field-error" data-for="agree"></span>
+                    </div>
+                    <p class="plan-note" id="planNote" hidden></p>
+                    <button class="btn btn-dark btn-lg btn-block mt-16" type="submit">Tạo tài khoản &amp; vào Dashboard <svg><use href="#i-arrow"/></svg></button>
+                </form>
 
-                <div class="demo-box">
-                    <strong>Tài khoản dùng thử:</strong> demo@finstart.vn / finstart123<br>
-                    Đã có sẵn dữ liệu mẫu để bạn khám phá mọi tính năng.
-                    <button class="btn btn-outline btn-sm btn-block" type="button" id="demoBtn">Đăng nhập bằng tài khoản demo</button>
+                <!-- 4. Lưu ý an toàn -->
+                <div class="safety-note">
+                    <svg><use href="#i-shield"/></svg>
+                    <p><strong>Lưu ý an toàn:</strong> Sau khi đăng nhập/đăng ký thành công, hệ thống sẽ tự động điều hướng bạn vào ngay trang <b>Tổng quan – Dashboard Quản lý Tài chính Sinh viên</b> để bắt đầu quản lý dòng tiền và hũ tích lũy. Mọi phiên chưa xác thực sẽ tự động điều hướng về cổng này để bảo vệ dữ liệu.</p>
                 </div>
             </div>
 
-            <p class="auth-foot">Bằng việc đăng nhập, bạn đồng ý với <a href="dieu-khoan-dich-vu.html">Điều khoản dịch vụ</a> và <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a>.</p>
+            <p class="auth-foot">Bằng việc tiếp tục, bạn đồng ý với <a href="dieu-khoan-dich-vu.html">Điều khoản dịch vụ</a> và <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a>.</p>
         </main>
     </div>
 
