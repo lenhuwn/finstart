@@ -1,0 +1,64 @@
+/* =====================================================================
+   TRANG: SẢN PHẨM (pages/san-pham.html)
+   ===================================================================== */
+
+/* ---------- Lời chứng thực ---------- */
+.testimonial {
+    max-width: 640px; margin: 36px auto 0;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+.testimonial p { font-size: 16px; font-style: italic; color: var(--text); }
+.testimonial footer { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-size: 14px; color: var(--muted); }
+.testimonial strong { color: var(--ink); }
+
+/* ---------- Các bước ---------- */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.step-card { padding: 28px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); }
+.step-no { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 14px; border-radius: 14px; background: var(--primary); color: #fff; font-weight: 800; font-size: 18px; }
+.step-card h3 { margin-bottom: 6px; }
+
+.goal-calc { display: grid; grid-template-columns: 1fr 1.4fr; gap: 28px; align-items: center; margin-top: 28px; background: var(--bg); }
+.goal-form { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 14px; align-items: end; }
+.goal-form .form-group + .form-group { margin-top: 0; }
+.goal-result { padding: 12px 16px; border-radius: 12px; background: var(--primary); color: #fff; }
+.goal-result span, .goal-result small { display: block; font-size: 12px; color: rgba(255, 255, 255, .8); }
+.goal-result strong { font-family: var(--font-head); font-size: 22px; }
+
+/* ---------- Bảng giá ---------- */
+.pricing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+.plan {
+    position: relative;
+    display: flex; flex-direction: column;
+    padding: 32px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+.plan .price { margin: 12px 0 20px; font-family: var(--font-head); font-size: 34px; font-weight: 800; color: var(--ink); }
+.plan .price small { font-size: 15px; font-weight: 500; color: var(--muted); }
+.plan-list { display: flex; flex-direction: column; gap: 12px; flex: 1; margin-bottom: 28px; }
+.plan-list li { display: flex; gap: 10px; font-size: 14px; color: var(--text); }
+.plan-list li::before { content: '✓'; display: grid; place-items: center; width: 20px; height: 20px; flex-shrink: 0; border-radius: 50%; background: var(--primary-50); color: var(--primary); font-size: 12px; font-weight: 800; }
+
+.plan-featured { background: var(--ink); border-color: var(--ink); transform: scale(1.03); box-shadow: var(--shadow-lg); }
+.plan-featured h3, .plan-featured .price { color: #fff; }
+.plan-featured .price small { color: #a3ada8; }
+.plan-featured .plan-list li { color: #e5e9e7; }
+.plan-featured .plan-list li::before { background: var(--primary); color: #fff; }
+.plan-badge { position: absolute; top: -13px; left: 28px; padding: 4px 12px; border-radius: var(--radius-pill); background: var(--primary-light); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.plan.is-current { outline: 3px solid var(--primary-light); }
+
+@media (max-width: 960px) {
+    .steps, .pricing { grid-template-columns: 1fr; }
+    .plan-featured { transform: none; }
+    .goal-calc { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+    .goal-form { grid-template-columns: 1fr; }
+}

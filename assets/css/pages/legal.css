@@ -1,0 +1,44 @@
+/* =====================================================================
+   TRANG: CHÍNH SÁCH BẢO MẬT / ĐIỀU KHOẢN / QUY CHUẨN MÃ HÓA / HỖ TRỢ
+   ===================================================================== */
+.legal-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; align-items: start; padding: 48px 0 80px; }
+.legal-nav { position: sticky; top: calc(var(--header-h) + 20px); display: flex; flex-direction: column; gap: 4px; }
+.legal-nav h4 { margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--subtle); }
+.legal-nav a { padding: 8px 12px; border-radius: 10px; font-size: 14px; color: var(--muted); }
+.legal-nav a:hover { background: var(--surface-2); color: var(--ink); }
+.legal-nav a.active { background: var(--primary-50); color: var(--primary); font-weight: 600; }
+
+.legal-body { padding: 36px 40px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.legal-body .updated { font-size: 13px; color: var(--subtle); margin-bottom: 24px; }
+.legal-body h2 { font-size: 22px; margin: 32px 0 12px; scroll-margin-top: calc(var(--header-h) + 20px); }
+.legal-body h2:first-of-type { margin-top: 0; }
+.legal-body p, .legal-body li { color: var(--text); font-size: 15px; line-height: 1.75; }
+.legal-body p { margin-bottom: 12px; }
+.legal-body ul { list-style: disc; margin: 0 0 14px 22px; }
+.legal-body li { margin-bottom: 6px; }
+.legal-body .note { padding: 16px 18px; margin: 18px 0; border-radius: 12px; background: var(--primary-50); color: var(--primary); font-size: 14px; }
+
+/* ---------- Hỗ trợ ---------- */
+.support-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: -32px; position: relative; }
+.support-card { padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.support-card .emoji { font-size: 28px; }
+.support-card h3 { margin: 10px 0 4px; }
+.support-card a { color: var(--primary); font-weight: 600; }
+
+.support-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px; padding: 56px 0 80px; align-items: start; }
+.faq details { padding: 18px 20px; margin-bottom: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.faq details[open] { border-color: var(--primary); }
+.faq summary { cursor: pointer; font-weight: 600; color: var(--ink); list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; font-size: 20px; line-height: 1; color: var(--primary); }
+.faq details[open] summary::after { content: '−'; }
+.faq details p { margin-top: 10px; font-size: 14px; }
+.faq-search { margin-bottom: 18px; }
+
+@media (max-width: 900px) {
+    .legal-layout, .support-layout { grid-template-columns: 1fr; }
+    .legal-nav { position: static; flex-direction: row; flex-wrap: wrap; }
+    .legal-nav h4 { width: 100%; }
+    .legal-body { padding: 24px 20px; }
+    .support-cards { grid-template-columns: 1fr; margin-top: -20px; }
+}

@@ -1,0 +1,83 @@
+/* =====================================================================
+   TRANG: TỔNG QUAN (pages/app/tong-quan.html)
+   ===================================================================== */
+.greeting { font-weight: 600; color: var(--primary); margin-bottom: 4px; }
+.page-head h1 { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.page-actions .select { width: auto; min-height: 42px; border-radius: var(--radius-pill); }
+
+/* ---------- Lưới widget ---------- */
+.widgets { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+.widgets-wide { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+
+/* ---------- Phân bổ 50/30/20 ---------- */
+.total-spent { margin: 16px 0; padding: 16px; border-radius: 12px; background: var(--surface-2); }
+.total-spent span { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--subtle); }
+.total-spent strong { font-family: var(--font-head); font-size: 26px; color: var(--ink); }
+.alloc-list { display: flex; flex-direction: column; gap: 16px; }
+.alloc-item .alloc-title { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 6px; font-size: 14px; }
+.alloc-item .alloc-title span { font-weight: 600; }
+.alloc-item .alloc-title small { color: var(--muted); }
+.alloc-item .progress { position: relative; height: 10px; overflow: visible; }
+.alloc-item .progress > span { max-width: 100%; }
+.alloc-item .target { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); border-radius: 2px; }
+.alert-box { margin-top: 20px; padding: 14px 16px; border-radius: 12px; font-size: 14px; }
+.alert-box strong { display: block; margin-bottom: 2px; }
+.alert-box.success { background: var(--primary-50); color: var(--primary); }
+.alert-box.warning { background: var(--warning-50); color: var(--warning); }
+.alert-box p { color: inherit; opacity: .9; }
+
+/* ---------- Biểu đồ cột thu/chi ---------- */
+.legend { display: flex; gap: 14px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.sw-in { background: #07a75c; }
+.sw-out { background: #ba1a1a; }
+
+.bar-chart { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; height: 240px; padding-top: 12px; border-bottom: 1px solid var(--border);
+    background-image: linear-gradient(var(--surface-2) 1px, transparent 1px); background-size: 100% 25%; }
+.bar-group { position: relative; display: flex; align-items: flex-end; justify-content: center; gap: 2px; height: 100%; cursor: default; border-radius: 8px; }
+.bar-group:hover, .bar-group:focus-visible { background: rgba(0, 108, 73, .05); }
+.bar { width: min(22px, 40%); border-radius: 4px 4px 0 0; min-height: 2px; transition: height .4s ease; }
+.bar.in { background: #07a75c; }
+.bar.out { background: #ba1a1a; }
+.bar-label { position: absolute; bottom: -26px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--muted); }
+.bar-chart + .chart-tip { margin-top: 0; }
+.chart-tip { position: fixed; z-index: 1500; pointer-events: none; padding: 10px 12px; border-radius: 10px; background: var(--ink); color: #fff; font-size: 13px; box-shadow: var(--shadow-lg); }
+.chart-tip b { display: block; margin-bottom: 2px; }
+.card .bar-chart { margin-bottom: 30px; }
+
+/* ---------- Hạng mục ---------- */
+.cat-list { display: flex; flex-direction: column; gap: 14px; }
+.cat-list li { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; column-gap: 12px; row-gap: 4px; }
+.cat-list .emoji { grid-row: span 2; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--surface-2); font-size: 18px; }
+.cat-list .name { font-size: 14px; font-weight: 600; }
+.cat-list .amt { font-size: 14px; font-weight: 600; text-align: right; }
+.cat-list .progress { grid-column: 2 / 4; height: 6px; }
+.cat-list .progress span { background: var(--ink); }
+
+/* ---------- Giao dịch gần đây ---------- */
+.recent-list li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--border); }
+.recent-list li:first-child { border-top: 0; padding-top: 0; }
+.recent-list .emoji { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--surface-2); font-size: 18px; flex-shrink: 0; }
+.recent-list .info { flex: 1; min-width: 0; }
+.recent-list .info strong { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.recent-list .info small { font-size: 12px; color: var(--subtle); }
+.recent-list b { white-space: nowrap; font-size: 14px; }
+
+/* ---------- Mục tiêu tiết kiệm ---------- */
+.goal-card { display: flex; flex-direction: column; text-align: center; }
+.goal-name { font-weight: 700; color: var(--ink); }
+.goal-ring { --p: 0; position: relative; width: 150px; height: 150px; margin: 18px auto; border-radius: 50%;
+    background: conic-gradient(var(--primary) calc(var(--p) * 1%), var(--surface-2) 0); display: grid; place-items: center; }
+.goal-ring::before { content: ''; position: absolute; inset: 14px; border-radius: 50%; background: var(--surface); }
+.goal-ring span { position: relative; font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--ink); }
+.goal-desc { font-size: 14px; margin-bottom: 16px; flex: 1; }
+
+@media (max-width: 1100px) {
+    .widgets, .widgets-wide { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+    .page-actions { width: 100%; }
+    .page-actions > * { flex: 1 1 auto; }
+    .bar-chart { height: 200px; gap: 4px; }
+}

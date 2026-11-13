@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghi chép thu chi | FinStart</title>
+    <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/public.css">
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <link rel="stylesheet" href="../../assets/css/pages/ghi-chep.css">
+</head>
+<body data-layout="app" data-root="../../" data-page="record">
+
+    <div class="app-shell">
+        <aside id="sidebar"></aside>
+
+        <div class="app-main">
+            <header id="topbar"></header>
+
+            <main class="app-content">
+                <!-- ========== 1. BANNER ========== -->
+                <section class="app-banner">
+                    <span class="banner-icon"><span class="mask-icon" style="-webkit-mask-image:url('../../assets/icons/ghichep.svg');mask-image:url('../../assets/icons/ghichep.svg')"></span></span>
+                    <div>
+                        <h2>HỆ THỐNG MỞ FINSTART <span class="badge" style="background:rgba(255,255,255,.16);color:#fff">Bảo mật chuẩn AES-256</span></h2>
+                        <p>Ghi lại mọi khoản thu chi chỉ trong vài giây – dữ liệu tự động cập nhật vào Tổng quan và Lịch sử giao dịch.</p>
+                    </div>
+                    <span class="sync-pill"><i class="dot"></i>Real-time Sync</span>
+                </section>
+
+                <!-- ========== 2. TIÊU ĐỀ ========== -->
+                <section class="page-head">
+                    <div>
+                        <nav class="breadcrumb" aria-label="Đường dẫn"><a href="tong-quan.html">Tài chính cá nhân</a><span>›</span><strong>Ghi chép thu chi</strong></nav>
+                        <h1>Ghi chép thu chi</h1>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn btn-outline" id="bulkBtn" type="button">☰ Ghi chép hàng loạt</button>
+                        <button class="btn btn-primary" id="addBtn" type="button">＋ Thêm ghi chép</button>
+                    </div>
+                </section>
+
+                <!-- ========== 3. THẺ THỐNG KÊ ========== -->
+                <section class="stats">
+                    <article class="card stat-card"><div class="stat-label">Tổng thu (Tháng này)</div><div class="stat-value text-green" id="sumIn">0 đ</div><p class="stat-desc" id="cntIn"></p></article>
+                    <article class="card stat-card is-out"><div class="stat-label">Tổng chi (Tháng này)</div><div class="stat-value text-red" id="sumOut">0 đ</div><p class="stat-desc" id="cntOut"></p></article>
+                    <article class="card stat-card"><div class="stat-label">Số dư hiện tại</div><div class="stat-value" id="sumBal">0 đ</div><p class="stat-desc">Tổng số dư tất cả tài khoản</p></article>
+                </section>
+
+                <!-- ========== 4. BẢNG GIAO DỊCH ========== -->
+                <section class="card table-card">
+                    <div class="toolbar">
+                        <label class="search-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+                            <input class="input" id="search" type="search" placeholder="Tìm kiếm khoản thu, chi..." aria-label="Tìm giao dịch">
+                        </label>
+                        <div class="date-range">
+                            <input class="input" type="date" id="fromDate" aria-label="Từ ngày">
+                            <span>→</span>
+                            <input class="input" type="date" id="toDate" aria-label="Đến ngày">
+                        </div>
+                        <button class="btn btn-outline" id="clearBtn" type="button">Xóa lọc</button>
+                        <button class="btn btn-outline" id="exportBtn" type="button">⤓ Xuất báo cáo</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead><tr><th>Thời gian</th><th>Hạng mục</th><th>Tài khoản</th><th>Diễn giải</th><th class="num">Số tiền</th><th class="actions">Thao tác</th></tr></thead>
+                            <tbody id="rows"></tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="empty" hidden><strong>Chưa có ghi chép phù hợp</strong>Nhấn "Thêm ghi chép" để bắt đầu.</div>
+                    <footer class="table-footer">
+                        <span id="pageInfo"></span>
+                        <div class="pagination" id="pager"></div>
+                    </footer>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- ========== POPUP: GHI CHÉP HÀNG LOẠT ========== -->
+    <div class="modal-backdrop" id="bulkModal" hidden>
+        <form class="modal modal-lg" id="bulkForm" novalidate>
+            <button type="button" class="icon-btn modal-close" data-close aria-label="Đóng">✕</button>
+            <h2>Ghi chép hàng loạt</h2>
+            <p>Nhập nhiều giao dịch cùng lúc. Dòng để trống số tiền sẽ được bỏ qua.</p>
+            <div class="bulk-head"><span>Loại</span><span>Số tiền</span><span>Hạng mục</span><span>Tài khoản</span><span>Ngày</span><span>Ghi chú</span><span></span></div>
+            <div id="bulkRows"></div>
+            <button type="button" class="btn btn-ghost btn-sm mt-8" id="bulkAddRow">＋ Thêm dòng</button>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-outline" data-close>Hủy</button>
+                <button type="submit" class="btn btn-primary">Lưu tất cả</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="../../assets/js/store.js"></script>
+    <script src="../../assets/js/layout.js"></script>
+    <script src="../../assets/js/tx-form.js"></script>
+    <script src="../../assets/js/pages/ghi-chep.js"></script>
+</body>
+</html>

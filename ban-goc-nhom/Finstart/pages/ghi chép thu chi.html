@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghi chép thu chi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assests/css/main.css">
+    <link rel="stylesheet" href="..\assests\css\ghi chép thu chi.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <a class="sidebar-logo" href="về dự án.html"><img src="https://cdn.prod.website-files.com/5ff2db09bcc6434534e4382b/62c2ae2c934c9c08d1b50967_FinStart_Logo_long.png" alt="FinStart" 
+                    width="100"></a>
+            </a>
+
+            <div class="profile-card">
+                <span class="avatar avatar-lg">A<i class="online-dot"></i></span>
+                <div>
+                    <strong>Nguyễn Văn A <i class="verified" role="img" aria-label="Đã xác thực"></i></strong>
+                    <span>SV ĐHQG • K65</span>
+                </div>
+            </div>
+
+            <button class="btn-primary btn-block" type="button">+ Thêm ghi chép mới</button>
+
+            <nav class="sidebar-nav">
+                <a href="tong-quan.html">
+                    <i class="icon i-tong-quan" aria-hidden="true"></i>
+                    Tổng quan
+                </a>
+                <a href="tai-khoan.html">
+                    <i class="icon i-tai-khoan" aria-hidden="true"></i>
+                    Tài khoản
+                </a>
+                <a class="active" href="ghi-chep-thu-chi.html" aria-current="page">
+                    <i class="icon i-ghi-chep" aria-hidden="true"></i>
+                    Ghi chép thu chi
+                </a>
+                <a href="lich-su-giao-dich.html">
+                    <i class="icon i-lich-su" aria-hidden="true"></i>
+                    Lịch sử giao dịch
+                </a>
+                <a href="san-pham-tai-chinh.html">
+                    <i class="icon i-san-pham" aria-hidden="true"></i>
+                    Sản phẩm tài chính
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="cai-dat.html">
+                    <i class="icon i-cai-dat" aria-hidden="true"></i>
+                    Cài đặt
+                </a>
+                <a class="logout" href="đăng nhập.html">
+                    <i class="icon i-dang-xuat" aria-hidden="true"></i>
+                    Đăng xuất
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <div class="content">
+
+            <!-- Thanh trên cùng -->
+            <header class="topbar">
+                <label class="search-global">
+                    <i class="icon i-tim-kiem" aria-hidden="true"></i>
+                    <input type="text" placeholder="Tìm khoản chi, mẹo tiết kiệm...">
+                </label>
+
+                <div class="topbar-right">
+                    <span class="status-pill"><i></i>Học kỳ II • Đang hoạt động</span>
+                    <button class="icon-btn bell" type="button" aria-label="Thông báo">
+                        <i class="icon i-chuong" aria-hidden="true"></i>
+                        <i class="bell-dot"></i>
+                    </button>
+                    <div class="user-chip">
+                        <span class="avatar">A</span>
+                        <strong>Nguyễn Văn A</strong>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page">
+
+                <!-- Banner -->
+                <section class="banner-sync">
+                    <span class="banner-icon">
+                        <i class="icon i-khien" aria-hidden="true"></i>
+                    </span>
+                    <div class="banner-text">
+                        <div class="banner-tags">
+                            <span class="tag tag-dark">HỆ THỐNG MỞ FINSTART</span>
+                            <span class="tag tag-light">Bảo mật chuẩn AES-256</span>
+                        </div>
+                        <p>Hệ sinh thái kết nối tự động với hơn 30 ngân hàng và ví điện tử sinh viên...</p>
+                    </div>
+                    <span class="sync-pill"><i></i>Real-time Sync</span>
+                </section>
+
+                <!-- Tiêu đề trang -->
+                <section class="page-head">
+                    <div>
+                        <p class="breadcrumb">
+                            <a href="tổng quan.html">Tài chính cá nhân</a>
+                            <span aria-hidden="true">&gt;</span>
+                            <strong>Ghi chép thu chi</strong>
+                        </p>
+                        <h1>Ghi chép thu chi</h1>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn-primary" type="button">+ Thêm ghi chép</button>
+                        <button class="icon-btn square" type="button" aria-label="Làm mới">
+                            <i class="icon i-lam-moi" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Thẻ thống kê -->
+                <section class="stats">
+                    <article class="stat-card">
+                        <p>Tổng thu (Tháng này)</p>
+                        <strong class="money-in">4.500.000 đ</strong>
+                    </article>
+                    <article class="stat-card">
+                        <p>Tổng chi (Tháng này)</p>
+                        <strong class="money-out">2.180.000 đ</strong>
+                    </article>
+                    <article class="stat-card">
+                        <p>Số dư hiện tại</p>
+                        <strong>2.320.000 đ</strong>
+                    </article>
+                </section>
+
+                <!-- Bảng giao dịch -->
+                <section class="table-card">
+                    <div class="table-toolbar">
+                        <label class="search-table">
+                            <i class="icon i-tim-kiem" aria-hidden="true"></i>
+                            <input id="timKiem" type="text" placeholder="Tìm kiếm khoản thu, chi...">
+                        </label>
+                        <div class="toolbar-actions">
+                            <button class="btn-outline" type="button">
+                                <i class="icon i-loc" aria-hidden="true"></i>
+                                Lọc theo ngày
+                            </button>
+                            <button class="btn-outline" type="button">
+                                <i class="icon i-xuat" aria-hidden="true"></i>
+                                Xuất báo cáo
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-scroll">
+                        <table class="bang-giao-dich">
+                            <thead>
+                                <tr>
+                                    <th>THỜI GIAN</th>
+                                    <th>HẠNG MỤC</th>
+                                    <th>TÀI KHOẢN</th>
+                                    <th>DIỄN GIẢI</th>
+                                    <th class="num">SỐ TIỀN</th>
+                                    <th class="act">THAO TÁC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="time">08/09/2026 09:15</td>
+                                    <td><span class="chip chip-an">🍜 Ăn sáng</span></td>
+                                    <td>Ví tiền mặt</td>
+                                    <td>Phở bò sinh viên</td>
+                                    <td class="num so-tien-chi">-35.000 đ</td>
+                                    <td class="act"><button class="dots" type="button" aria-label="Thao tác">•••</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="time">07/09/2026 18:30</td>
+                                    <td><span class="chip chip-hocbong">🎓 Học bổng kỳ 2</span></td>
+                                    <td>Vietcombank Thẻ sinh viên</td>
+                                    <td>Chuyển khoản học bổng xuất sắc</td>
+                                    <td class="num so-tien-thu">+3.000.000 đ</td>
+                                    <td class="act"><button class="dots" type="button" aria-label="Thao tác">•••</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="time">07/09/2026 14:20</td>
+                                    <td><span class="chip chip-cafe">☕ Cafe</span></td>
+                                    <td>Ví MoMo</td>
+                                    <td>Học nhóm tại The Coffee House</td>
+                                    <td class="num so-tien-chi">-45.000 đ</td>
+                                    <td class="act"><button class="dots" type="button" aria-label="Thao tác">•••</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="time">06/09/2026 11:00</td>
+                                    <td><span class="chip chip-sach">📚 Sách vở</span></td>
+                                    <td>Vietcombank Thẻ sinh viên</td>
+                                    <td>Giáo trình Tài chính doanh nghiệp</td>
+                                    <td class="num so-tien-chi">-120.000 đ</td>
+                                    <td class="act"><button class="dots" type="button" aria-label="Thao tác">•••</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

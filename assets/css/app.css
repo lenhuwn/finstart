@@ -1,0 +1,161 @@
+/* =====================================================================
+   FINSTART – APP.CSS
+   Bố cục khu vực sau đăng nhập (Bảng điều khiển): Sidebar + Topbar.
+   Sidebar / Topbar được sinh tự động bởi assets/js/layout.js
+   Mục lục:
+     1. Khung ứng dụng
+     2. Sidebar
+     3. Topbar
+     4. Đầu trang (breadcrumb, tiêu đề, banner)
+     5. Thẻ thống kê
+     6. Thanh công cụ bảng
+     7. Responsive
+   ===================================================================== */
+
+/* ========== 1. KHUNG ========== */
+.app-shell { display: grid; grid-template-columns: 264px minmax(0, 1fr); min-height: 100vh; }
+.app-main { display: flex; flex-direction: column; min-width: 0; }
+.app-content { padding: 24px 32px 48px; display: flex; flex-direction: column; gap: 24px; }
+
+/* ========== 2. SIDEBAR ========== */
+.sidebar {
+    position: sticky; top: 0;
+    height: 100vh;
+    display: flex; flex-direction: column; gap: 20px;
+    padding: 22px 16px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    z-index: 1100;
+}
+.sidebar .logo { padding: 0 8px; }
+
+.profile-card {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px;
+    border-radius: var(--radius);
+    background: var(--surface-2);
+}
+.profile-card strong { display: block; font-size: 14px; color: var(--ink); line-height: 1.3; }
+.profile-card small { color: var(--muted); font-size: 12px; }
+.profile-card .verified { width: 18px; height: 18px; margin-left: auto; }
+
+.sidebar-nav { display: flex; flex-direction: column; gap: 4px; }
+.sidebar-nav a {
+    display: flex; align-items: center; gap: 12px;
+    padding: 11px 14px;
+    border-radius: 12px;
+    font-size: 14px; font-weight: 500;
+    color: var(--muted);
+    transition: background-color .2s, color .2s;
+}
+.sidebar-nav a:hover { background: var(--surface-2); color: var(--ink); }
+.sidebar-nav a.active { background: var(--primary); color: #fff; font-weight: 600; box-shadow: 0 6px 16px rgba(0, 108, 73, .25); }
+.sidebar-nav svg { width: 20px; height: 20px; flex-shrink: 0; }
+.sidebar-label { padding: 0 14px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--subtle); }
+
+.sidebar-bottom { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); }
+.sidebar-bottom a.logout:hover { background: var(--danger-50); color: var(--danger); }
+
+/* ========== 3. TOPBAR ========== */
+.topbar {
+    position: sticky; top: 0; z-index: 900;
+    display: flex; align-items: center; gap: 16px;
+    height: var(--header-h);
+    padding: 0 32px;
+    background: rgba(255, 255, 255, .92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+.topbar .search-box { width: min(100%, 380px); }
+.topbar .search-box .input { min-height: 40px; background: var(--surface-2); border-color: transparent; border-radius: var(--radius-pill); }
+.topbar-right { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+.status-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: var(--radius-pill); background: var(--primary-50); color: var(--primary); font-size: 12px; font-weight: 600; white-space: nowrap; }
+.bell { position: relative; }
+.bell .bell-dot { position: absolute; top: 8px; right: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--danger); border: 2px solid #fff; }
+.sidebar-toggle { display: none; }
+
+.notify-panel {
+    position: absolute; top: calc(var(--header-h) - 6px); right: 24px;
+    width: min(360px, calc(100vw - 32px));
+    padding: 8px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+}
+.notify-panel h4 { padding: 10px 12px 6px; font-size: 14px; }
+.notify-item { display: flex; gap: 10px; padding: 10px 12px; border-radius: 10px; font-size: 13px; }
+.notify-item:hover { background: var(--surface-2); }
+.notify-item p { color: var(--text); }
+.notify-item small { color: var(--subtle); }
+
+/* ========== 4. ĐẦU TRANG ========== */
+.app-banner {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 22px;
+    border-radius: var(--radius);
+    background: linear-gradient(120deg, #0b3d2c, var(--primary));
+    color: #fff;
+}
+.app-banner .banner-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(255, 255, 255, .14); flex-shrink: 0; }
+.app-banner .banner-icon .mask-icon { background-color: #fff; }
+.app-banner h2 { color: #fff; font-size: 15px; letter-spacing: .02em; }
+.app-banner p { color: rgba(255, 255, 255, .8); font-size: 13px; }
+.app-banner .sync-pill { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: var(--radius-pill); background: rgba(255, 255, 255, .14); font-size: 12px; font-weight: 600; white-space: nowrap; }
+.app-banner .sync-pill .dot { background: var(--mint); box-shadow: 0 0 0 4px rgba(201, 249, 231, .25); }
+
+.page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.page-head h1 { font-size: clamp(24px, 3vw, 30px); }
+.page-head p { font-size: 14px; }
+.breadcrumb { display: flex; gap: 8px; font-size: 13px; color: var(--subtle); margin-bottom: 6px; }
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb strong { color: var(--text); font-weight: 600; }
+.page-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ========== 5. THẺ THỐNG KÊ ========== */
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.stat-card { position: relative; overflow: hidden; }
+.stat-card .stat-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.stat-card .stat-value { margin: 10px 0 6px; font-family: var(--font-head); font-size: clamp(22px, 2.4vw, 28px); font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+.stat-card .stat-value small { font-size: 14px; font-weight: 600; color: var(--subtle); }
+.stat-card .stat-desc { font-size: 13px; }
+.stat-card::after { content: ''; position: absolute; right: -30px; top: -30px; width: 110px; height: 110px; border-radius: 50%; background: var(--primary-50); opacity: .6; }
+.stat-card.is-out::after { background: var(--danger-50); }
+
+/* ========== 6. THANH CÔNG CỤ BẢNG ========== */
+.toolbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 16px; border-bottom: 1px solid var(--border); }
+.toolbar .search-box { flex: 1 1 260px; }
+.toolbar .select { width: auto; min-width: 160px; }
+.table-card { padding: 0; overflow: hidden; }
+
+.cat-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius-pill); background: var(--surface-2); font-size: 13px; font-weight: 500; white-space: nowrap; }
+.cat-chip.thu { background: var(--primary-50); color: var(--primary); }
+
+/* ========== 7. RESPONSIVE ========== */
+@media (max-width: 1100px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+    .app-shell { grid-template-columns: 1fr; }
+    .sidebar {
+        position: fixed; left: 0; top: 0; bottom: 0;
+        width: 280px;
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+        box-shadow: var(--shadow-lg);
+    }
+    body.sidebar-open .sidebar { transform: none; }
+    body.sidebar-open::after { content: ''; position: fixed; inset: 0; background: rgba(18, 24, 38, .4); z-index: 1050; }
+    .sidebar-toggle { display: inline-grid; }
+    .topbar { padding: 0 16px; }
+    .app-content { padding: 20px 16px 40px; }
+    .status-pill { display: none; }
+}
+@media (max-width: 640px) {
+    .stats { grid-template-columns: 1fr; }
+    .topbar .search-box { display: none; }
+    .app-banner .sync-pill { display: none; }
+    .toolbar .select { flex: 1 1 140px; }
+}
+
+/* Ẩn trang app cho tới khi kiểm tra đăng nhập xong (tránh nháy nội dung) */
+body[data-layout="app"]:not(.ready) { visibility: hidden; }

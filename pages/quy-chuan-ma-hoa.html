@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quy chuẩn mã hóa tài chính | FinStart</title>
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/public.css">
+    <link rel="stylesheet" href="../assets/css/pages/legal.css">
+</head>
+<body data-layout="public" data-root="../" data-page="encryption">
+
+    <header id="site-header"></header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <span class="pill-label">Chính sách &amp; bảo mật</span>
+                <h1>Quy chuẩn mã hóa tài chính</h1>
+                <p>Các nguyên tắc kỹ thuật FinStart áp dụng để bảo vệ tài khoản và dữ liệu tài chính của sinh viên.</p>
+            </div>
+        </section>
+
+        <div class="container legal-layout">
+            <!-- ========== MỤC LỤC CHÍNH SÁCH ========== -->
+            <nav class="legal-nav" aria-label="Các chính sách">
+                <h4>Tài liệu</h4>
+                <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a>
+                <a href="dieu-khoan-dich-vu.html">Điều khoản dịch vụ</a>
+                <a href="quy-chuan-ma-hoa.html" class="active" aria-current="page">Quy chuẩn mã hóa tài chính</a>
+                <a href="ho-tro.html">Hỗ trợ 24/7</a>
+            </nav>
+
+            <!-- ========== NỘI DUNG ========== -->
+            <article class="legal-body">
+                <p class="updated">Cập nhật lần cuối: 01/11/2026</p>
+                <h2 id="mat-khau">1. Mã hóa mật khẩu</h2>
+                <p>Mật khẩu <strong>không bao giờ được lưu ở dạng gốc</strong>. FinStart dùng hàm băm một chiều <strong>SHA-256</strong> kết hợp chuỗi ngẫu nhiên (salt) riêng cho từng tài khoản thông qua Web Crypto API của trình duyệt.</p>
+                <h2 id="truyen-tai">2. Truyền tải dữ liệu</h2>
+                <p>Website được phục vụ qua HTTPS (GitHub Pages), đảm bảo dữ liệu giữa trình duyệt và máy chủ được mã hóa TLS.</p>
+                <h2 id="luu-tru">3. Lưu trữ</h2>
+                <ul>
+                    <li>Dữ liệu tách biệt theo từng người dùng.</li>
+                    <li>Phiên đăng nhập lưu trong sessionStorage (nếu không chọn "Ghi nhớ") và tự hết khi đóng trình duyệt.</li>
+                    <li>Định hướng phiên bản có máy chủ: mã hóa dữ liệu khi lưu trữ theo chuẩn AES-256.</li>
+                </ul>
+                <h2 id="khuyen-nghi">4. Khuyến nghị cho người dùng</h2>
+                <ul>
+                    <li>Đặt mật khẩu tối thiểu 10 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.</li>
+                    <li>Không dùng chung mật khẩu với tài khoản ngân hàng.</li>
+                    <li>Đăng xuất khi dùng máy tính công cộng.</li>
+                    <li>Tải bản sao lưu dữ liệu định kỳ.</li>
+                </ul>
+                <div class="note">FinStart không bao giờ yêu cầu bạn cung cấp mã OTP hoặc mật khẩu ngân hàng qua điện thoại, email hay tin nhắn.</div>
+            </article>
+        </div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="../assets/js/store.js"></script>
+    <script src="../assets/js/layout.js"></script>
+</body>
+</html>

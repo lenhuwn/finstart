@@ -1,0 +1,29 @@
+/* =====================================================================
+   TRANG: TÀI KHOẢN (pages/app/tai-khoan.html)
+   ===================================================================== */
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+.tab { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 600; color: var(--muted); background: var(--surface); border: 1px solid var(--border); }
+.tab:hover { color: var(--ink); }
+.tab.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+.tab .count { min-width: 22px; padding: 0 6px; border-radius: var(--radius-pill); background: var(--surface-2); color: var(--muted); font-size: 12px; text-align: center; }
+.tab.active .count { background: rgba(255, 255, 255, .18); color: #fff; }
+
+.total-card { padding: 18px 24px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-align: right; }
+.total-card span { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--subtle); }
+.total-card strong { font-family: var(--font-head); font-size: 28px; color: var(--primary); }
+.total-card small { font-size: 16px; }
+
+.acc-name { display: flex; align-items: center; gap: 12px; }
+.acc-name .acc-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--primary-50); font-size: 18px; flex-shrink: 0; }
+.acc-name strong { display: block; color: var(--ink); }
+.acc-name small, .balance small { display: block; font-size: 12px; color: var(--subtle); font-weight: 400; }
+.balance strong { font-size: 15px; color: var(--ink); }
+.balance.negative strong { color: var(--danger); }
+.row-actions { display: inline-flex; gap: 6px; }
+.row-actions .btn { min-height: 32px; padding: 0 12px; font-size: 13px; }
+tr.is-muted td { opacity: .6; }
+
+@media (max-width: 640px) {
+    .total-card { width: 100%; text-align: left; }
+    .toolbar .btn { flex: 1 1 auto; }
+}

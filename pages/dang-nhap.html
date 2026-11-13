@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập | FinStart</title>
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/public.css">
+    <link rel="stylesheet" href="../assets/css/pages/auth.css">
+</head>
+<body data-layout="auth" data-root="../" data-page="login">
+
+    <div class="auth-page">
+        <!-- ========== PANEL THƯƠNG HIỆU ========== -->
+        <aside class="auth-aside">
+            <a class="logo" href="../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fff" fill-opacity=".15"/><path d="M8 22.5l5.5-6 4 3.5L23 11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="11" r="2.2" fill="#C9F9E7"/></svg><span>Fin<b>Start</b></span></a>
+            <div>
+                <h2>Chào mừng bạn quay lại!</h2>
+                <p>Tiếp tục hành trình làm chủ tài chính ngay từ giảng đường.</p>
+                <ul class="auth-points">
+                    <li><span>✍️</span> Ghi chép thu chi chỉ trong 5 giây</li>
+                    <li><span>📊</span> Theo dõi tỷ lệ 50/30/20 tự động</li>
+                    <li><span>📁</span> Xuất dữ liệu Excel / CSV khi cần</li>
+                </ul>
+            </div>
+            <div class="auth-quote">
+                <p>"Từ đứa sinh viên luôn nợ nần tiền phòng, mình đã để dành được 15 triệu để mua laptop mới nhờ giảm bớt các khoản ăn vặt."</p>
+                <small>– Nguyễn Mai Phương, Sinh viên năm 3</small>
+            </div>
+        </aside>
+
+        <!-- ========== FORM ĐĂNG NHẬP ========== -->
+        <main class="auth-main">
+            <div class="auth-top">
+                <a class="back" href="../index.html">← Về trang chủ</a>
+                <span>Chưa có tài khoản? <a href="dang-ky.html">Đăng ký</a></span>
+            </div>
+
+            <div class="auth-form-wrap">
+                <h1>Đăng nhập</h1>
+                <p>Đăng nhập để vào bảng điều khiển tài chính của bạn.</p>
+
+                <div class="form-alert" id="formAlert" role="alert"></div>
+
+                <form id="loginForm" novalidate>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="input" type="email" id="email" name="email" placeholder="email@sinhvien.edu.vn" autocomplete="email" required>
+                        <span class="field-error" data-for="email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mật khẩu</label>
+                        <div class="password-field">
+                            <input class="input" type="password" id="password" name="password" placeholder="Nhập mật khẩu" autocomplete="current-password" required>
+                            <button type="button" class="icon-btn toggle-pass" aria-label="Hiện mật khẩu">👁</button>
+                        </div>
+                        <span class="field-error" data-for="password"></span>
+                    </div>
+                    <div class="form-meta">
+                        <label class="checkbox"><input type="checkbox" name="remember" checked> Ghi nhớ đăng nhập</label>
+                        <a href="quen-mat-khau.html">Quên mật khẩu?</a>
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Đăng nhập</button>
+                </form>
+
+                <div class="divider">hoặc</div>
+
+                <div class="demo-box">
+                    <strong>Tài khoản dùng thử:</strong> demo@finstart.vn / finstart123<br>
+                    Đã có sẵn dữ liệu mẫu để bạn khám phá mọi tính năng.
+                    <button class="btn btn-outline btn-sm btn-block" type="button" id="demoBtn">Đăng nhập bằng tài khoản demo</button>
+                </div>
+            </div>
+
+            <p class="auth-foot">Bằng việc đăng nhập, bạn đồng ý với <a href="dieu-khoan-dich-vu.html">Điều khoản dịch vụ</a> và <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a>.</p>
+        </main>
+    </div>
+
+    <script src="../assets/js/store.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/auth.js"></script>
+</body>
+</html>

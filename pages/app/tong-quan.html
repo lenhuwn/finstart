@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng quan | FinStart</title>
+    <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/public.css">
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <link rel="stylesheet" href="../../assets/css/pages/tong-quan.css">
+</head>
+<body data-layout="app" data-root="../../" data-page="dashboard">
+
+    <div class="app-shell">
+        <!-- ========== SIDEBAR (sinh bởi layout.js) ========== -->
+        <aside id="sidebar"></aside>
+
+        <div class="app-main">
+            <!-- ========== TOPBAR (sinh bởi layout.js) ========== -->
+            <header id="topbar"></header>
+
+            <main class="app-content">
+                <!-- ========== 1. TIÊU ĐỀ ========== -->
+                <section class="page-head">
+                    <div>
+                        <p class="greeting" id="greeting">Chào bạn, bạn đã sẵn sàng tiết kiệm chưa?</p>
+                        <h1>Bảng điều khiển tài chính cá nhân <span class="badge badge-green" id="periodBadge">Kỳ tháng này</span></h1>
+                        <p>Tối ưu chi tiêu giảng đường &amp; xây dựng quỹ tích lũy thông minh thế hệ mới.</p>
+                    </div>
+                    <div class="page-actions">
+                        <select class="select" id="monthSelect" aria-label="Chọn tháng"></select>
+                        <button class="btn btn-outline" id="syncBtn" type="button">Đồng bộ dữ liệu</button>
+                        <button class="btn btn-dark" id="statementBtn" type="button">Sao kê nhanh</button>
+                    </div>
+                </section>
+
+                <!-- ========== 2. BA THẺ TÓM TẮT ========== -->
+                <section class="stats">
+                    <article class="card stat-card">
+                        <div class="stat-label">Tổng thu nhập <span class="badge" id="incomeTrend"></span></div>
+                        <div class="stat-value" id="incomeValue">0 <small>VNĐ</small></div>
+                        <p class="stat-desc" id="incomeDesc"></p>
+                    </article>
+                    <article class="card stat-card is-out">
+                        <div class="stat-label">Tổng chi tiêu <span class="badge" id="expenseTrend"></span></div>
+                        <div class="stat-value text-red" id="expenseValue">0 <small>VNĐ</small></div>
+                        <p class="stat-desc" id="expenseDesc"></p>
+                        <div class="progress mt-8"><span id="budgetBar" style="width:0"></span></div>
+                    </article>
+                    <article class="card stat-card">
+                        <div class="stat-label">Số dư khả dụng <span class="badge" id="balanceTag"></span></div>
+                        <div class="stat-value" id="balanceValue">0 <small>VNĐ</small></div>
+                        <p class="stat-desc">Tổng tất cả tài khoản – sẵn sàng phân bổ tiết kiệm hoặc quỹ dự phòng.</p>
+                    </article>
+                </section>
+
+                <!-- ========== 3. GHI CHÉP NHANH + PHÂN BỔ 50/30/20 ========== -->
+                <section class="widgets">
+                    <div class="card">
+                        <div class="card-header"><h3>Ghi chép mới</h3><span class="badge">Thao tác nhanh</span></div>
+                        <form id="quickForm" novalidate>
+                            <div class="segmented" id="quickType" role="radiogroup" aria-label="Loại giao dịch">
+                                <button type="button" data-value="chi" class="active">Khoản chi</button>
+                                <button type="button" data-value="thu">Khoản thu</button>
+                            </div>
+                            <div class="form-group mt-16">
+                                <label for="qAmount">Số tiền giao dịch</label>
+                                <input class="input" id="qAmount" name="amount" inputmode="decimal" placeholder="50.000 (hoặc 50k)">
+                            </div>
+                            <div class="form-group">
+                                <label for="qCategory">Danh mục giao dịch</label>
+                                <select class="select" id="qCategory" name="category"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="qNote">Nội dung ghi chú</label>
+                                <input class="input" id="qNote" name="note" placeholder="Nhập chi tiết giao dịch..." maxlength="120">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="qDate">Ngày thực hiện</label>
+                                    <input class="input" type="date" id="qDate" name="date">
+                                </div>
+                                <div class="form-group">
+                                    <label for="qAccount">Phương thức ví</label>
+                                    <select class="select" id="qAccount" name="accountId"></select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-dark btn-block mt-16">+ Thêm giao dịch</button>
+                        </form>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header"><h3>Phân bổ dòng tiền</h3><span class="badge" id="allocMonth">Tháng này</span></div>
+                        <p class="text-muted">Mô hình phân bổ tài chính sinh viên 50 – 30 – 20 (so với thu nhập tháng)</p>
+                        <div class="total-spent">
+                            <span>Tổng đã chi</span>
+                            <strong id="allocSpent">0 ₫</strong>
+                        </div>
+                        <div class="alloc-list" id="allocList"></div>
+                        <div class="alert-box" id="allocAlert"></div>
+                    </div>
+                </section>
+
+                <!-- ========== 4. BIỂU ĐỒ + DANH MỤC ========== -->
+                <section class="widgets widgets-wide">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Thu – chi 6 tháng gần nhất</h3>
+                            <div class="legend"><span><i class="sw sw-in"></i>Thu</span><span><i class="sw sw-out"></i>Chi</span></div>
+                        </div>
+                        <div class="bar-chart" id="barChart" role="img" aria-label="Biểu đồ thu chi 6 tháng"></div>
+                        <div class="chart-tip" id="chartTip" hidden></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h3>Chi tiêu theo hạng mục</h3><a class="text-green" href="lich-su.html">Chi tiết →</a></div>
+                        <ul class="cat-list" id="catList"></ul>
+                    </div>
+                </section>
+
+                <!-- ========== 5. GIAO DỊCH GẦN ĐÂY + MỤC TIÊU ========== -->
+                <section class="widgets widgets-wide">
+                    <div class="card">
+                        <div class="card-header"><h3>Giao dịch gần đây</h3><a class="text-green" href="lich-su.html">Xem tất cả →</a></div>
+                        <ul class="recent-list" id="recentList"></ul>
+                    </div>
+                    <div class="card goal-card">
+                        <div class="card-header"><h3>Mục tiêu tiết kiệm</h3><a class="text-green" href="cai-dat.html#muc-tieu">Sửa</a></div>
+                        <p class="goal-name" id="goalName"></p>
+                        <div class="goal-ring" id="goalRing"><span id="goalPct">0%</span></div>
+                        <p class="goal-desc" id="goalDesc"></p>
+                        <a class="btn btn-light btn-block" href="tai-khoan.html">Nạp thêm vào quỹ</a>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../../assets/js/store.js"></script>
+    <script src="../../assets/js/layout.js"></script>
+    <script src="../../assets/js/tx-form.js"></script>
+    <script src="../../assets/js/pages/tong-quan.js"></script>
+</body>
+</html>

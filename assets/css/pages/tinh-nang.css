@@ -1,0 +1,77 @@
+/* =====================================================================
+   TRANG: TÍNH NĂNG (pages/tinh-nang.html)
+   ===================================================================== */
+
+/* ---------- Menu tính năng ---------- */
+.feature-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.feature-tabs a {
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    font-size: 14px; font-weight: 600; color: var(--muted);
+    transition: all .2s;
+}
+.feature-tabs a:hover { border-color: var(--primary); color: var(--primary); }
+.feature-tabs a.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
+
+/* ---------- Hàng tính năng (chữ + minh họa) ---------- */
+.feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.feature-row.reverse .feature-copy { order: 2; }
+.feature-copy h2 { margin: 14px 0 10px; }
+.feature-copy > p { font-size: 16px; }
+
+/* ---------- Thẻ minh họa ---------- */
+.mock-card {
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+.section-alt .mock-card { background: var(--bg); }
+
+.mock-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.mock-summary div { padding: 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
+.mock-summary span { display: block; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--subtle); }
+.mock-summary strong { font-size: 15px; white-space: nowrap; }
+
+.mock-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.mock-list li { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
+.mock-list div { flex: 1; min-width: 0; }
+.mock-list strong { display: block; font-size: 14px; }
+.mock-list small { font-size: 12px; color: var(--subtle); }
+.mock-list b { font-size: 14px; white-space: nowrap; }
+.tx-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0; }
+.tx-icon.in { background: var(--primary-50); }
+.tx-icon.out { background: var(--danger-50); }
+.tx-icon img { width: 20px; height: 20px; }
+
+.mock-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.mock-head strong { margin-right: auto; font-size: 16px; }
+.mock-day { margin: 6px 0 8px; font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--subtle); }
+
+.export-card h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.export-card h3 img { width: 26px; height: 26px; }
+.export-field { display: flex; flex-direction: column; padding: 14px; margin-bottom: 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
+.export-field span { font-size: 12px; color: var(--subtle); }
+
+/* ---------- Lợi ích ---------- */
+.benefit-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.benefit-card { padding: 26px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); transition: transform .2s, box-shadow .2s; }
+.benefit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.benefit-card img { width: 44px; height: 44px; padding: 10px; margin-bottom: 14px; border-radius: 12px; background: var(--primary-50); }
+.benefit-card h3 { font-size: 16px; margin-bottom: 6px; }
+.benefit-card p { font-size: 14px; }
+
+@media (max-width: 960px) {
+    .feature-row { grid-template-columns: 1fr; gap: 32px; }
+    .feature-row.reverse .feature-copy { order: 0; }
+    .benefit-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+    .mock-summary { grid-template-columns: 1fr; }
+    .benefit-grid { grid-template-columns: 1fr; }
+}

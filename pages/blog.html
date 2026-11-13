@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Cẩm nang | FinStart</title>
+    <meta name="description" content="Cẩm nang tài chính sinh viên: mẹo tiết kiệm, việc làm part-time, học bổng và chuyện giảng đường.">
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/public.css">
+    <link rel="stylesheet" href="../assets/css/pages/blog.css">
+</head>
+<body data-layout="public" data-root="../" data-page="blog">
+
+    <header id="site-header"></header>
+
+    <main>
+        <!-- ========== 1. GIỚI THIỆU ========== -->
+        <section class="page-hero blog-hero">
+            <div class="container">
+                <span class="eyebrow">Thư viện trí thức sinh viên</span>
+                <h1>Cẩm nang tài chính sinh viên:<br><span>Học cách để tiền phục vụ bạn</span></h1>
+                <p>Giải pháp chi tiêu thông minh, săn học bổng, đầu tư thực chiến và kỹ năng tự chủ tài chính dành riêng cho thế hệ sinh viên Việt Nam.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- ========== 2. BỘ LỌC ========== -->
+            <section class="blog-filter" aria-label="Lọc bài viết">
+                <div class="categories" role="tablist">
+                    <button type="button" class="active" data-cat="all">Tất cả</button>
+                    <button type="button" data-cat="meo-tiet-kiem">Mẹo tiết kiệm</button>
+                    <button type="button" data-cat="viec-lam">Việc làm &amp; Part-time</button>
+                    <button type="button" data-cat="hoc-bong">Học bổng</button>
+                    <button type="button" data-cat="giang-duong">Chuyện giảng đường</button>
+                </div>
+                <label class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+                    <input class="input" id="postSearch" type="search" placeholder="Tìm kiếm bài viết..." aria-label="Tìm kiếm bài viết">
+                </label>
+            </section>
+
+            <!-- ========== 3. BÀI NỔI BẬT ========== -->
+            <section id="featured" class="featured-post" aria-label="Bài viết nổi bật"></section>
+
+            <!-- ========== 4. DANH SÁCH + ĐỌC NHIỀU ========== -->
+            <div class="blog-content">
+                <section class="latest-posts">
+                    <div class="posts-header">
+                        <h2>Bài viết mới cập nhật</h2>
+                        <span class="badge" id="postCount"></span>
+                    </div>
+                    <div class="post-grid" id="postGrid"></div>
+                    <div class="empty-state" id="postEmpty" hidden><strong>Không tìm thấy bài viết</strong>Thử từ khóa khác hoặc chọn danh mục "Tất cả".</div>
+                </section>
+
+                <aside class="blog-aside">
+                    <section class="card most-read">
+                        <h3>Đọc nhiều nhất tuần</h3>
+                        <ol id="mostRead"></ol>
+                    </section>
+                    <section class="card newsletter">
+                        <h3>Nhận bản tin mỗi tuần</h3>
+                        <p>Mẹo tiết kiệm &amp; cơ hội học bổng gửi thẳng vào email của bạn.</p>
+                        <form id="newsletterForm" novalidate>
+                            <input class="input" type="email" name="email" placeholder="email@sinhvien.edu.vn" aria-label="Email" required>
+                            <button class="btn btn-primary btn-block mt-8" type="submit">Đăng ký nhận tin</button>
+                        </form>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="../assets/js/store.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/posts.js"></script>
+    <script src="../assets/js/pages/blog.js"></script>
+</body>
+</html>

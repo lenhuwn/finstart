@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hỗ trợ 24/7 | FinStart</title>
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/public.css">
+    <link rel="stylesheet" href="../assets/css/pages/legal.css">
+</head>
+<body data-layout="public" data-root="../" data-page="support">
+
+    <header id="site-header"></header>
+
+    <main>
+        <!-- ========== 1. GIỚI THIỆU ========== -->
+        <section class="page-hero">
+            <div class="container">
+                <span class="pill-label">Hỗ trợ 24/7</span>
+                <h1>Chúng tôi có thể <span>giúp gì</span> cho bạn?</h1>
+                <p>Tra cứu câu hỏi thường gặp hoặc gửi yêu cầu – đội ngũ FinStart phản hồi trong vòng 24 giờ.</p>
+            </div>
+        </section>
+
+        <!-- ========== 2. KÊNH LIÊN HỆ ========== -->
+        <div class="container">
+            <div class="support-cards">
+                <article class="support-card"><span class="emoji">📞</span><h3>Hotline</h3><p>Miễn phí, 24/7</p><a href="tel:19006868">1900 6868</a></article>
+                <article class="support-card"><span class="emoji">✉️</span><h3>Email</h3><p>Phản hồi trong 24 giờ</p><a href="mailto:hotro@finstart.vn">hotro@finstart.vn</a></article>
+                <article class="support-card"><span class="emoji">📍</span><h3>Văn phòng</h3><p>Thứ 2 – Thứ 6, 8:00 – 17:30</p><span>Tòa nhà FinTech Hub, TP. Hồ Chí Minh</span></article>
+            </div>
+        </div>
+
+        <!-- ========== 3. FAQ + FORM LIÊN HỆ ========== -->
+        <div class="container support-layout">
+            <section class="faq" aria-labelledby="faqTitle">
+                <h2 id="faqTitle" style="margin-bottom:16px">Câu hỏi thường gặp</h2>
+                <label class="search-box faq-search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+                    <input class="input" id="faqSearch" type="search" placeholder="Tìm câu hỏi..." aria-label="Tìm câu hỏi">
+                </label>
+                <details open><summary>FinStart có miễn phí không?</summary><p>Có. Gói Sinh viên Khởi đầu miễn phí trọn đời với ghi chép thu chi không giới hạn. Gói PRO và Chuyên sâu bổ sung tính năng AI nâng cao.</p></details>
+                <details><summary>Dữ liệu của tôi được lưu ở đâu?</summary><p>Trong phiên bản hiện tại, dữ liệu lưu trên trình duyệt của bạn (localStorage). Hãy vào Cài đặt → Tải bản sao lưu để giữ dữ liệu khi đổi máy.</p></details>
+                <details><summary>Làm sao để ghi nhiều giao dịch cùng lúc?</summary><p>Vào trang Ghi chép thu chi → nhấn "Ghi chép hàng loạt", nhập nhiều dòng rồi nhấn "Lưu tất cả".</p></details>
+                <details><summary>Tôi muốn xuất dữ liệu ra Excel?</summary><p>Vào Lịch sử giao dịch, chọn tháng / bộ lọc cần thiết rồi nhấn "Excel" hoặc "CSV".</p></details>
+                <details><summary>Quy tắc 50/30/20 là gì?</summary><p>50% thu nhập cho nhu cầu thiết yếu (trọ, ăn, học, đi lại), 30% cho bản thân và giải trí, 20% cho tiết kiệm. Trang Tổng quan tự tính tỷ lệ này cho bạn.</p></details>
+                <details><summary>Tôi quên mật khẩu thì làm sao?</summary><p>Tại trang Đăng nhập, chọn "Quên mật khẩu?", nhập email và họ tên đã đăng ký để đặt mật khẩu mới.</p></details>
+                <details><summary>Chuyển tiền giữa các ví có tính vào chi tiêu không?</summary><p>Không. Chuyển khoản nội bộ (ví dụ rút ATM, nạp MoMo, trích quỹ tiết kiệm) chỉ thay đổi số dư từng ví, không làm thay đổi tổng thu / tổng chi.</p></details>
+                <p class="empty-state" id="faqEmpty" hidden><strong>Không tìm thấy câu hỏi</strong>Hãy gửi yêu cầu cho chúng tôi ở form bên cạnh.</p>
+            </section>
+
+            <section class="card" aria-labelledby="contactTitle">
+                <h3 id="contactTitle">Gửi yêu cầu hỗ trợ</h3>
+                <p class="mt-8" style="margin-bottom:16px">Mô tả vấn đề của bạn, chúng tôi sẽ liên hệ lại sớm nhất.</p>
+                <form id="contactForm" novalidate>
+                    <div class="form-group"><label for="cName">Họ và tên</label><input class="input" id="cName" name="fullName" required></div>
+                    <div class="form-group"><label for="cEmail">Email</label><input class="input" type="email" id="cEmail" name="email" required></div>
+                    <div class="form-group"><label for="cTopic">Chủ đề</label>
+                        <select class="select" id="cTopic" name="topic"><option>Tài khoản &amp; đăng nhập</option><option>Ghi chép thu chi</option><option>Xuất dữ liệu</option><option>Gói cước</option><option>Góp ý khác</option></select></div>
+                    <div class="form-group"><label for="cMsg">Nội dung</label><textarea class="textarea" id="cMsg" name="message" rows="4" required></textarea></div>
+                    <button class="btn btn-primary btn-block mt-16" type="submit">Gửi yêu cầu</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="../assets/js/store.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script>
+        (function () {
+            const FS = window.FS;
+            const me = FS.auth.current();
+            const form = document.getElementById('contactForm');
+            if (me) { form.fullName.value = me.name; form.email.value = me.email; }
+
+            // Gửi yêu cầu hỗ trợ (lưu lại trên trình duyệt – bản demo)
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                if (!form.fullName.value.trim() || !/^\S+@\S+\.\S+$/.test(form.email.value) || form.message.value.trim().length < 10) {
+                    FS.toast('Vui lòng nhập đủ họ tên, email hợp lệ và nội dung (ít nhất 10 ký tự).', 'error');
+                    return;
+                }
+                try {
+                    const list = JSON.parse(localStorage.getItem('fs_tickets') || '[]');
+                    list.push({ name: form.fullName.value, email: form.email.value, topic: form.topic.value, message: form.message.value, at: new Date().toISOString() });
+                    localStorage.setItem('fs_tickets', JSON.stringify(list));
+                } catch (err) { /* bỏ qua */ }
+                form.message.value = '';
+                FS.toast('Đã gửi yêu cầu! Mã hỗ trợ #' + Math.floor(1000 + Math.random() * 9000), 'success');
+            });
+
+            // Tìm kiếm câu hỏi thường gặp
+            const items = document.querySelectorAll('.faq details');
+            document.getElementById('faqSearch').addEventListener('input', e => {
+                const q = e.target.value.trim().toLowerCase();
+                let shown = 0;
+                items.forEach(d => {
+                    const ok = !q || d.textContent.toLowerCase().includes(q);
+                    d.hidden = !ok;
+                    if (ok) shown++;
+                    if (q && ok) d.open = true;
+                });
+                document.getElementById('faqEmpty').hidden = shown > 0;
+            });
+        })();
+    </script>
+</body>
+</html>

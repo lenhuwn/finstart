@@ -1,0 +1,578 @@
+/* 1. THIẾT LẬP CHUNG */
+:root {
+    --xanh: #00976b;
+    --dam: #007f5b;
+    --chu: #20344c;
+    --phu: #8290a3;
+    --vien: #e7edf3;
+    --nen: #f7f9fb;
+    --menu: 220px;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: var(--nen);
+    color: var(--chu);
+    font: 12px/1.6 "Inter", Arial, sans-serif;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+button, input, select {
+    min-width: 0;
+    font: inherit;
+}
+button, select {
+    cursor: pointer;
+}
+button {
+    border: 0;
+}
+:focus-visible {
+    outline: 2px solid var(--xanh);
+    outline-offset: 3px;
+}
+.icon {
+    display: block;
+    flex-shrink: 0;
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+}
+img.icon {
+    filter: grayscale(1);
+    opacity: .75;
+}
+.thu-vien-icon {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+.thu {
+    color: #009c79;
+}
+.chi {
+    color: #ed414c;
+}
+
+/* 2. CÁC THÀNH PHẦN DÙNG CHUNG */
+.header, .header-phai, .tien-ich, .tim-kiem,
+.ho-so, .menu a, .banner, .duong-dan, .tieu-de,
+.hang-loc, .tong-hop, .cac-tong, .nhom-ngay,
+.cuoi-bang, .so-luong, .so-luong label, .phan-trang {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-phai, .tieu-de, .tong-hop, .nhom-ngay, .cuoi-bang {
+    justify-content: space-between;
+}
+.hang-loc, .tong-hop, .cac-tong, .cuoi-bang, .so-luong {
+    flex-wrap: wrap;
+}
+.tim-kiem, select, .nut-vien {
+    border: 1px solid #dce5ef;
+    border-radius: 7px;
+    background: white;
+}
+.avatar, .icon-banner, .nut-icon {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+/* 3. HEADER */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: 60px;
+    gap: 0;
+    background: white;
+    border-bottom: 1px solid var(--vien);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: var(--menu);
+    height: 100%;
+    padding: 0 22px;
+    border-right: 1px solid var(--vien);
+}
+.logo img {
+    display: block;
+    width: 110px;
+    height: auto;
+}
+.header-phai {
+    flex: 1;
+    min-width: 0;
+    padding: 0 26px;
+    gap: 20px;
+}
+.tim-kiem {
+    min-width: 0;
+    min-height: 35px;
+    padding: 8px 11px;
+    color: #8b9bb0;
+}
+.tim-header {
+    width: 330px;
+    background: #f8fafb;
+}
+.tim-kiem input {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--chu);
+    font-size: 10px;
+}
+.tim-kiem input::placeholder {
+    color: #97a3b4;
+}
+.tien-ich {
+    flex-shrink: 0;
+    gap: 18px;
+}
+.trang-thai {
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: #e5f5ed;
+    color: var(--dam);
+    font-size: 9px;
+    white-space: nowrap;
+}
+.nut-chuong {
+    position: relative;
+    padding: 5px;
+    background: transparent;
+    color: var(--phu);
+}
+.nut-chuong span {
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ed414c;
+}
+.avatar {
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #151827;
+    color: #655471;
+}
+.avatar svg {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+}
+.avatar-nho {
+    width: 29px;
+    height: 29px;
+}
+.avatar-nho svg {
+    width: 21px;
+    height: 21px;
+}
+
+/* 4. THANH BÊN */
+.bo-cuc {
+    display: grid;
+    grid-template-columns: var(--menu) minmax(0, 1fr);
+    min-height: calc(100vh - 60px);
+}
+.thanh-ben {
+    position: sticky;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    height: calc(100vh - 60px);
+    padding: 14px 12px;
+    overflow-y: auto;
+    background: white;
+    border-right: 1px solid var(--vien);
+}
+.ho-so {
+    margin-bottom: 18px;
+    padding: 11px 9px;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+.ho-so strong, .ho-so small {
+    display: block;
+}
+.ho-so strong {
+    font-size: 11px;
+}
+.ho-so small {
+    color: var(--phu);
+    font-size: 9px;
+}
+.ho-so .xac-minh {
+    width: 14px;
+    margin-left: auto;
+    filter: none;
+    opacity: 1;
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.menu a {
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+}
+.menu a:hover {
+    background: #edf9f3;
+    color: var(--dam);
+}
+.menu .dang-chon, .nut-xanh, .phan-trang .trang-chon {
+    background: var(--xanh);
+    color: white;
+    font-weight: 600;
+}
+.dang-chon img.icon {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+.menu-cuoi {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--vien);
+}
+
+/* 5. NỘI DUNG VÀ TIÊU ĐỀ */
+main {
+    min-width: 0;
+    padding: 26px;
+}
+.banner {
+    margin-bottom: 20px;
+    padding: 14px;
+    border: 1px solid #d7f7e9;
+    border-radius: 10px;
+    background: #edfdf5;
+}
+.icon-banner {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: #d7f6e9;
+}
+.banner h2 {
+    color: #006c60;
+    font-size: 10px;
+    font-weight: 600;
+}
+.banner p, .tieu-de p {
+    color: var(--phu);
+    font-size: 10px;
+}
+.duong-dan {
+    gap: 6px;
+    margin-bottom: 5px;
+    font-size: 9px;
+}
+.duong-dan a {
+    color: var(--phu);
+}
+.tieu-de {
+    gap: 20px;
+    margin-bottom: 18px;
+}
+h1 {
+    font-size: 23px;
+    letter-spacing: -.6px;
+}
+.nut {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 35px;
+    padding: 8px 13px;
+    border-radius: 7px;
+    font-size: 10px;
+    white-space: nowrap;
+}
+.nut-xanh:hover {
+    background: var(--dam);
+}
+.nut-xanh span {
+    font-size: 17px;
+    line-height: 1;
+}
+.nut-vien:hover {
+    background: #f0faf5;
+}
+
+/* 6. BỘ LỌC */
+.khung {
+    overflow: hidden;
+    border: 1px solid var(--vien);
+    border-radius: 10px;
+    background: white;
+}
+.bo-loc {
+    margin-bottom: 18px;
+    padding: 14px;
+}
+.hang-loc .tim-kiem {
+    flex: 1 1 220px;
+}
+select {
+    min-height: 35px;
+    padding: 7px 9px;
+    color: #53677e;
+    font-size: 10px;
+}
+.tong-hop {
+    margin-top: 13px;
+    padding-top: 11px;
+    border-top: 1px solid #f3f5f8;
+    color: var(--phu);
+    font-size: 9px;
+}
+.cac-tong p + p {
+    padding-left: 10px;
+    border-left: 1px solid var(--vien);
+}
+.tong-hop small {
+    font-size: 9px;
+}
+
+/* 7. BẢNG VÀ THU GỌN */
+.cuon-bang {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    text-align: left;
+}
+th, td {
+    padding: 13px;
+    border-bottom: 1px solid #eff3f7;
+}
+thead, .cuoi-bang {
+    background: #f8fafc;
+}
+thead th {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+td {
+    font-size: 12px;
+}
+td:nth-child(3),
+td:nth-child(4) {
+    font-size: 11px;
+    font-weight: 400;
+}
+thead th, tbody td:first-child, td.so-tien,
+.cac-tong strong, .nhom-ngay .thu, .nhom-ngay .chi {
+    font-weight: 700;
+}
+.so-tien {
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+td.so-tien {
+    font-size: 11px;
+}
+.cot-thao-tac {
+    width: 88px;
+    text-align: center;
+    white-space: nowrap;
+}
+.dong-ngay th {
+    padding: 8px 13px;
+    background: #f8fbfa;
+    font-weight: 400;
+}
+.nut-ngay {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 4px 0;
+    background: transparent;
+    color: var(--dam);
+}
+.nut-ngay time {
+    font-size: 13px;
+    font-weight: 700;
+}
+.nut-ngay::before {
+    content: "";
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid currentColor;
+    transition: transform .2s;
+}
+.nut-ngay[aria-expanded="false"]::before {
+    transform: rotate(-90deg);
+}
+.nut-ngay:hover {
+    color: #005d42;
+}
+tbody.thu-gon > tr:not(.dong-ngay) {
+    display: none;
+}
+.nhom-ngay p {
+    color: var(--phu);
+    font-size: 9px;
+}
+.ngan {
+    margin: 0 8px;
+    color: #d3dce7;
+}
+tbody tr:not(.dong-ngay):hover {
+    background: #fbfdfc;
+}
+.nut-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 5px;
+    background: transparent;
+    color: #8b9aae;
+    vertical-align: middle;
+}
+.nut-icon .icon {
+    width: 15px;
+    height: 15px;
+}
+.nut-icon:hover {
+    background: #eaf8f1;
+    color: var(--dam);
+}
+.xoa:hover {
+    background: #fff0f1;
+    color: #e74753;
+}
+
+/* 8. CUỐI BẢNG */
+.cuoi-bang {
+    padding: 12px 13px;
+    color: #7b899d;
+    font-size: 10px;
+}
+.so-luong strong {
+    color: var(--chu);
+}
+.so-luong label {
+    gap: 7px;
+    padding-left: 12px;
+    border-left: 1px solid #dce4ed;
+}
+.so-luong select {
+    min-height: 26px;
+    padding: 3px 6px;
+}
+.phan-trang {
+    gap: 5px;
+}
+.phan-trang button {
+    min-width: 26px;
+    height: 26px;
+    padding: 0 7px;
+    border: 1px solid var(--vien);
+    border-radius: 5px;
+    background: white;
+    color: #7b899d;
+    font-size: 10px;
+}
+.phan-trang button:disabled {
+    color: #b9c3d1;
+    cursor: default;
+}
+
+/* 9. RESPONSIVE */
+@media (max-width: 1100px) {
+    :root {
+        --menu: 200px;
+    }
+    main {
+        padding: 20px;
+    }
+    .header-phai {
+        padding: 0 20px;
+    }
+    .tim-header {
+        width: 260px;
+    }
+}
+@media (max-width: 800px) {
+    .header, .thanh-ben {
+        position: static;
+    }
+    .logo {
+        width: 120px;
+        padding: 0 14px;
+        border-right: 0;
+    }
+    .logo img {
+        width: 90px;
+    }
+    .header-phai {
+        padding: 0 12px 0 0;
+        gap: 10px;
+    }
+    .tim-header {
+        flex: 1;
+        width: auto;
+    }
+    .tien-ich {
+        gap: 7px;
+    }
+    .trang-thai, .ho-so {
+        display: none;
+    }
+    .bo-cuc {
+        display: block;
+    }
+    .thanh-ben {
+        height: auto;
+        padding: 10px;
+    }
+    .menu {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+    .menu a {
+        flex-shrink: 0;
+    }
+    .menu-cuoi {
+        margin-top: 8px;
+        padding-top: 8px;
+    }
+    main {
+        padding: 20px 14px;
+    }
+    .tieu-de {
+        flex-wrap: wrap;
+    }
+    .hang-loc select {
+        flex: 1 1 125px;
+    }
+    .hang-loc .tim-kiem {
+        flex-basis: 100%;
+    }
+    .phan-trang {
+        margin-left: auto;
+    }
+}

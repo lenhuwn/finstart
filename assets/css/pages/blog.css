@@ -1,0 +1,92 @@
+/* =====================================================================
+   TRANG: BLOG (pages/blog.html) + BÀI VIẾT (pages/bai-viet-*.html)
+   ===================================================================== */
+
+/* ---------- Bộ lọc ---------- */
+.blog-filter { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: -28px 0 32px; padding: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); position: relative; }
+.categories { display: flex; gap: 8px; flex-wrap: wrap; }
+.categories button { padding: 8px 16px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 600; color: var(--muted); transition: all .2s; }
+.categories button:hover { background: var(--surface-2); color: var(--ink); }
+.categories button.active { background: var(--primary); color: #fff; }
+.blog-filter .search-box { flex: 0 1 300px; }
+
+/* ---------- Bài nổi bật ---------- */
+.featured-post { display: grid; grid-template-columns: 1.2fr 1fr; gap: 0; margin-bottom: 40px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.featured-img { display: block; min-height: 300px; }
+.featured-img img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; }
+.featured-body { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 14px; padding: 36px; }
+.featured-body h2 a:hover { color: var(--primary); }
+
+/* ---------- Danh sách ---------- */
+.blog-content { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 32px; padding-bottom: 72px; }
+.posts-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.posts-header h2 { font-size: 24px; }
+.post-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.post-card { display: flex; flex-direction: column; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); transition: transform .2s, box-shadow .2s; }
+.post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.post-thumb { aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-2); }
+.post-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+.post-card:hover .post-thumb img { transform: scale(1.04); }
+.post-body { display: flex; flex-direction: column; gap: 8px; padding: 20px; flex: 1; }
+.post-cat { align-self: flex-start; padding: 3px 10px; border-radius: var(--radius-pill); background: var(--primary-50); color: var(--primary); font-size: 12px; font-weight: 700; }
+.post-body h3 a:hover { color: var(--primary); }
+.post-body p { font-size: 14px; flex: 1; }
+.post-body small { font-size: 12px; color: var(--subtle); }
+
+/* ---------- Cột phải ---------- */
+.blog-aside { display: flex; flex-direction: column; gap: 20px; }
+.most-read ol { counter-reset: rank; display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
+.most-read li { counter-increment: rank; display: grid; grid-template-columns: 32px 1fr; column-gap: 12px; }
+.most-read li::before { content: counter(rank, decimal-leading-zero); grid-row: span 2; font-family: var(--font-head); font-size: 22px; font-weight: 800; color: var(--primary); line-height: 1.1; }
+.most-read a { font-weight: 600; font-size: 14px; line-height: 1.4; }
+.most-read a:hover { color: var(--primary); }
+.most-read small { font-size: 12px; color: var(--subtle); }
+.newsletter { background: var(--ink); border-color: var(--ink); }
+.newsletter h3 { color: #fff; }
+.newsletter p { color: #a3ada8; font-size: 14px; margin: 6px 0 14px; }
+
+/* =====================================================================
+   TRANG BÀI VIẾT
+   ===================================================================== */
+.article-hero { padding: 48px 0 32px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.article-hero .container { max-width: 820px; }
+.article-back { display: inline-flex; gap: 6px; margin-bottom: 18px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.article-back:hover { color: var(--primary); }
+.article-hero h1 { font-size: clamp(28px, 4vw, 40px); margin: 14px 0; }
+.article-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+.article-cover { max-width: 980px; margin: 32px auto 0; padding: 0 16px; }
+.article-cover img { width: 100%; max-height: 480px; object-fit: cover; border-radius: var(--radius-lg); }
+
+.article-body { max-width: 760px; margin: 0 auto; padding: 40px 16px 24px; font-size: 17px; line-height: 1.8; }
+.article-body p { color: var(--text); margin-bottom: 18px; }
+.article-body h2 { font-size: 24px; margin: 36px 0 14px; }
+.article-body h3 { margin: 26px 0 10px; }
+.article-body ul, .article-body ol { margin: 0 0 18px 22px; }
+.article-body ul { list-style: disc; }
+.article-body ol { list-style: decimal; }
+.article-body li { margin-bottom: 8px; }
+.article-body blockquote { margin: 24px 0; padding: 18px 22px; border-left: 4px solid var(--primary); background: var(--primary-50); border-radius: 0 12px 12px 0; font-style: italic; }
+.article-body blockquote p { margin: 0; }
+.article-body .tip { padding: 18px 22px; margin: 24px 0; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); }
+.article-body table { margin: 20px 0; font-size: 15px; border: 1px solid var(--border); }
+.article-body th, .article-body td { padding: 10px 14px; border: 1px solid var(--border); text-align: left; }
+.article-body th { background: var(--surface-2); }
+.article-source { font-size: 14px; color: var(--subtle); border-top: 1px solid var(--border); padding-top: 16px; }
+.article-source a { color: var(--primary); text-decoration: underline; }
+
+.related { max-width: 1080px; margin: 0 auto; padding: 24px 16px 72px; }
+.related h2 { font-size: 22px; margin-bottom: 18px; }
+.related .post-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+@media (max-width: 1024px) {
+    .blog-content { grid-template-columns: 1fr; }
+    .featured-post { grid-template-columns: 1fr; }
+    .featured-img img { min-height: 220px; max-height: 300px; }
+}
+@media (max-width: 720px) {
+    .post-grid, .related .post-grid { grid-template-columns: 1fr; }
+    .blog-filter { margin-top: -20px; }
+    .blog-filter .search-box { flex: 1 1 100%; }
+    .featured-body { padding: 24px; }
+    .article-body { font-size: 16px; }
+}

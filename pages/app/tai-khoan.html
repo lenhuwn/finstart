@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài khoản | FinStart</title>
+    <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/public.css">
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <link rel="stylesheet" href="../../assets/css/pages/tai-khoan.css">
+</head>
+<body data-layout="app" data-root="../../" data-page="accounts">
+
+    <div class="app-shell">
+        <aside id="sidebar"></aside>
+
+        <div class="app-main">
+            <header id="topbar"></header>
+
+            <main class="app-content">
+                <!-- ========== 1. BANNER ========== -->
+                <section class="app-banner">
+                    <span class="banner-icon"><span class="mask-icon" style="-webkit-mask-image:url('../../assets/icons/vitien.svg');mask-image:url('../../assets/icons/vitien.svg')"></span></span>
+                    <div>
+                        <h2>TỔNG QUAN TÀI CHÍNH &amp; HŨ TIẾT KIỆM SINH VIÊN • AN TOÀN &amp; BẢO MẬT</h2>
+                        <p>Kiểm soát dòng tiền thông minh, tách bạch tiền mặt, thẻ ngân hàng và ví điện tử giúp sinh viên luôn chủ động tài chính.</p>
+                    </div>
+                    <span class="sync-pill"><i class="dot"></i>Đang đồng bộ</span>
+                </section>
+
+                <!-- ========== 2. TIÊU ĐỀ + TAB + TỔNG TÀI SẢN ========== -->
+                <section class="page-head">
+                    <div>
+                        <nav class="breadcrumb" aria-label="Đường dẫn"><a href="tong-quan.html">Tài chính cá nhân</a><span>/</span><strong>Tài khoản thanh toán &amp; ví</strong></nav>
+                        <h1>Danh sách tài khoản</h1>
+                        <div class="tabs" role="tablist" aria-label="Nhóm tài khoản">
+                            <button class="tab active" data-tab="all" role="tab">Tài khoản của tôi <span class="count" id="countAll">0</span></button>
+                            <button class="tab" data-tab="saving" role="tab">Sổ tiết kiệm &amp; Hũ mục tiêu <span class="count" id="countSaving">0</span></button>
+                            <button class="tab" data-tab="locked" role="tab">Tạm khóa <span class="count" id="countLocked">0</span></button>
+                        </div>
+                    </div>
+                    <div class="total-card"><span>Tổng tài sản khả dụng</span><strong id="totalAssets">0 <small>đ</small></strong></div>
+                </section>
+
+                <!-- ========== 3. BỘ LỌC + BẢNG ========== -->
+                <section class="card table-card">
+                    <div class="toolbar">
+                        <label class="search-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+                            <input class="input" id="accSearch" type="search" placeholder="Tìm kiếm theo tên tài khoản hoặc ghi chú..." aria-label="Tìm tài khoản">
+                        </label>
+                        <select class="select" id="typeFilter" aria-label="Loại tài khoản"><option value="all">Loại: Tất cả</option></select>
+                        <select class="select" id="reportFilter" aria-label="Báo cáo">
+                            <option value="all">Báo cáo: Tất cả</option>
+                            <option value="yes">Tính vào báo cáo</option>
+                            <option value="no">Không tính vào báo cáo</option>
+                        </select>
+                        <button class="btn btn-outline" id="resetBtn" type="button">Làm mới</button>
+                        <button class="btn btn-outline" id="transferBtn" type="button">⇄ Chuyển tiền</button>
+                        <button class="btn btn-primary" id="addBtn" type="button">＋ Thêm tài khoản</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead><tr><th>Tên tài khoản</th><th class="num">Số dư hiện tại</th><th>Trạng thái</th><th>Loại tài khoản</th><th class="actions">Hành động</th></tr></thead>
+                            <tbody id="accRows"></tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="accEmpty" hidden><strong>Không có tài khoản phù hợp</strong>Thử đổi bộ lọc hoặc thêm tài khoản mới.</div>
+                    <footer class="table-footer">
+                        <strong id="accCount">Tổng số: 0 tài khoản</strong>
+                        <span>Số dư = số dư ban đầu + khoản thu − khoản chi ± chuyển khoản</span>
+                    </footer>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- ========== POPUP: THÊM / SỬA TÀI KHOẢN ========== -->
+    <div class="modal-backdrop" id="accModal" hidden>
+        <form class="modal" id="accForm" novalidate>
+            <button type="button" class="icon-btn modal-close" data-close aria-label="Đóng">✕</button>
+            <h2 id="accTitle">Thêm tài khoản</h2>
+            <p>Tiền mặt, thẻ ngân hàng, ví điện tử hoặc sổ tiết kiệm.</p>
+            <input type="hidden" name="accId">
+            <div class="form-group">
+                <label for="accName">Tên tài khoản</label>
+                <input class="input" id="accName" name="accName" placeholder="Ví dụ: Techcombank Thẻ sinh viên" maxlength="60" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="accType">Loại tài khoản</label>
+                    <select class="select" id="accType" name="accType"></select>
+                </div>
+                <div class="form-group">
+                    <label for="accStatus">Trạng thái</label>
+                    <select class="select" id="accStatus" name="accStatus">
+                        <option>Đang hoạt động</option><option>Đang tích lũy</option><option>Tạm khóa</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group mt-16">
+                <label for="accInitial">Số dư ban đầu (đ)</label>
+                <input class="input" id="accInitial" name="accInitial" inputmode="decimal" placeholder="0">
+                <span class="hint" id="initialHint">Số tiền đang có trong tài khoản trước khi bắt đầu ghi chép.</span>
+            </div>
+            <div class="form-group">
+                <label for="accNote">Ghi chú</label>
+                <input class="input" id="accNote" name="accNote" placeholder="Ví dụ: Hạn mức gợi ý 2.000.000 đ" maxlength="80">
+            </div>
+            <div class="form-group">
+                <label class="checkbox"><input type="checkbox" name="accReport" checked> Tính vào tổng tài sản &amp; báo cáo</label>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-outline" data-close>Hủy</button>
+                <button type="submit" class="btn btn-primary">Lưu tài khoản</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ========== POPUP: CHUYỂN TIỀN ========== -->
+    <div class="modal-backdrop" id="transferModal" hidden>
+        <form class="modal" id="transferForm" novalidate>
+            <button type="button" class="icon-btn modal-close" data-close aria-label="Đóng">✕</button>
+            <h2>Chuyển tiền giữa các ví</h2>
+            <p>Ví dụ: rút tiền ATM, nạp MoMo, trích tiền vào quỹ tiết kiệm. Không tính là thu/chi.</p>
+            <div class="form-row" style="margin-top:0">
+                <div class="form-group"><label for="tfFrom">Từ tài khoản</label><select class="select" id="tfFrom" name="from"></select></div>
+                <div class="form-group"><label for="tfTo">Đến tài khoản</label><select class="select" id="tfTo" name="to"></select></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label for="tfAmount">Số tiền</label><input class="input" id="tfAmount" name="amount" inputmode="decimal" placeholder="500.000"></div>
+                <div class="form-group"><label for="tfDate">Ngày</label><input class="input" type="date" id="tfDate" name="date"></div>
+            </div>
+            <div class="form-group mt-16"><label for="tfNote">Ghi chú</label><input class="input" id="tfNote" name="note" placeholder="Trích quỹ dự phòng" maxlength="80"></div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-outline" data-close>Hủy</button>
+                <button type="submit" class="btn btn-primary">Xác nhận chuyển</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="../../assets/js/store.js"></script>
+    <script src="../../assets/js/layout.js"></script>
+    <script src="../../assets/js/tx-form.js"></script>
+    <script src="../../assets/js/pages/tai-khoan.js"></script>
+</body>
+</html>

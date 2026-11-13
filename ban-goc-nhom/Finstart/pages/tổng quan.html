@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng quan - Bảng điều khiển tài chính</title>
+    <!-- Link file CSS riêng cho trang Dashboard -->
+    <link rel="stylesheet" href="..\assests\css\tổng quan.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- ================= CỘT TRÁI: SIDEBAR ================= -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>FinStart</h2>
+                <p>GenZ Finance</p>
+            </div>
+            
+            <div class="user-profile-mini">
+                <div class="avatar">N</div>
+                <div class="info">
+                    <strong>Nguyễn Văn A</strong>
+                    <span>Sinh viên</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="tổng quan.html" class="active">Tổng quan</a>
+                <a href="tài khoản.html">Tài khoản</a>
+                <a href="ghi chép thu chi.html">Ghi chép thu chi</a>
+                <a href="lịch sử.html">Lịch sử giao dịch</a>
+                <a href="sản phẩm.html">Sản phẩm tài chính</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="cai-dat.html">Cài đặt</a>
+                <a href="đăng nhập.html" class="logout">Đăng xuất</a>
+            </div>
+        </aside>
+
+        <!-- ================= CỘT PHẢI: NỘI DUNG CHÍNH ================= -->
+        <main class="main-content">
+            
+            <!-- Thanh Topbar -->
+            <header class="topbar">
+                <p>Chào buổi sáng, bạn đã sẵn sàng tiết kiệm chưa?</p>
+                <div class="topbar-actions">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button>Hôm nay</button>
+                    <div class="icon-btn">🔔</div>
+                    <div class="icon-btn">👤</div>
+                </div>
+            </header>
+
+            <!-- Tiêu đề trang -->
+            <div class="page-header">
+                <div class="title-area">
+                    <h1>Bảng điều khiển tài chính cá nhân</h1>
+                    <span class="badge">Kỳ Tháng 10</span>
+                    <p>Tối ưu chi tiêu giảng đường & xây dựng quỹ tích lũy thông minh thế hệ mới.</p>
+                </div>
+                <div class="action-area">
+                    <button class="btn-outline">Đồng bộ ngân hàng</button>
+                    <button class="btn-primary">Sao kê nhanh</button>
+                </div>
+            </div>
+
+            <!-- Khối 3 thẻ tóm tắt (Thu nhập, Chi tiêu, Số dư) -->
+            <section class="summary-cards">
+                <!-- Thẻ Thu nhập -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Tổng thu nhập</h3>
+                        <span class="tag green">+15% tháng trước</span>
+                    </div>
+                    <div class="card-value">12.500.000 <span>VNĐ</span></div>
+                    <p class="card-desc">Nguồn: Lương part-time (8.5tr), Trợ cấp (4.0tr)</p>
+                </div>
+
+                <!-- Thẻ Chi tiêu -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Tổng chi tiêu</h3>
+                        <span class="tag red">-8% kiểm soát tốt</span>
+                    </div>
+                    <div class="card-value red">7.850.000 <span>VNĐ</span></div>
+                    <p class="card-desc">Đã dùng 62.8% định mức ngân sách tháng 10</p>
+                    <div class="progress-bar"><div class="progress" style="width: 62.8%; background: #dc2626;"></div></div>
+                </div>
+
+                <!-- Thẻ Số dư -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Số dư khả dụng</h3>
+                        <span class="tag green">An Toàn</span>
+                    </div>
+                    <div class="card-value">4.650.000 <span>VNĐ</span></div>
+                    <p class="card-desc">Sẵn sàng phân bổ tiết kiệm hoặc quỹ dự phòng</p>
+                </div>
+            </section>
+
+            <!-- Khối Ghi chép và Phân bổ dòng tiền -->
+            <section class="main-widgets">
+                
+                <!-- Widget Trái: Form ghi chép -->
+                <div class="widget ghi-chep-widget">
+                    <div class="widget-header">
+                        <h3>Ghi chép mới</h3>
+                        <span class="badge">Thao tác nhanh</span>
+                    </div>
+                    <form class="ghi-chep-form">
+                        <div class="form-group">
+                            <label>Số tiền giao dịch</label>
+                            <input type="text" placeholder="50.000">
+                        </div>
+                        <div class="form-group">
+                            <label>Danh mục giao dịch</label>
+                            <select>
+                                <option>Chi cố định (Tiền trọ, Học phí...)</option>
+                                <option>Ăn uống</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nội dung ghi chú</label>
+                            <textarea placeholder="Nhập chi tiết giao dịch..." rows="2"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ngày thực hiện</label>
+                                <input type="date">
+                            </div>
+                            <div class="form-group">
+                                <label>Phương thức ví</label>
+                                <select><option>Vietcombank</option></select>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-dark full-width">+ Thêm giao dịch</button>
+                    </form>
+                </div>
+
+                <!-- Widget Phải: Phân bổ (Đơn giản hóa biểu đồ tròn thành thanh tiến trình) -->
+                <div class="widget phan-bo-widget">
+                    <div class="widget-header">
+                        <h3>Phân bổ dòng tiền</h3>
+                        <span class="badge">Tháng này</span>
+                    </div>
+                    <p class="desc">Mô hình phân bổ tài chính sinh viên 50 - 30 - 20</p>
+                    
+                    <div class="total-spent">
+                        <h4>TỔNG ĐÃ CHI</h4>
+                        <div class="amount">7.850.000 ₫</div>
+                    </div>
+
+                    <div class="budget-items">
+                        <div class="budget-item">
+                            <div class="budget-title"><span>Thiết yếu (Trọ, Ăn)</span> <strong>50%</strong></div>
+                            <div class="progress-bar"><div class="progress" style="width: 80%; background: #0f172a;"></div></div>
+                        </div>
+                        <div class="budget-item">
+                            <div class="budget-title"><span>Tích lũy & Mục tiêu</span> <strong>30%</strong></div>
+                            <div class="progress-bar"><div class="progress" style="width: 40%; background: #07a75c;"></div></div>
+                        </div>
+                        <div class="budget-item">
+                            <div class="budget-title"><span>Giải trí & Bản thân</span> <strong>20%</strong></div>
+                            <div class="progress-bar"><div class="progress" style="width: 90%; background: #8b5cf6;"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert-box success">
+                        <strong>Bạn đang duy trì tỷ lệ 50-30-20 rất chuẩn xác!</strong>
+                        <p>Giữ vững phong độ này thêm 3 tháng để hoàn thành Quỹ Dự phòng.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký | FinStart</title>
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/public.css">
+    <link rel="stylesheet" href="../assets/css/pages/auth.css">
+</head>
+<body data-layout="auth" data-root="../" data-page="register">
+
+    <div class="auth-page">
+        <!-- ========== PANEL THƯƠNG HIỆU ========== -->
+        <aside class="auth-aside">
+            <a class="logo" href="../index.html"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fff" fill-opacity=".15"/><path d="M8 22.5l5.5-6 4 3.5L23 11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="11" r="2.2" fill="#C9F9E7"/></svg><span>Fin<b>Start</b></span></a>
+            <div>
+                <h2>Bắt đầu hành trình tự chủ tài chính</h2>
+                <p>Tạo tài khoản miễn phí trong chưa đầy 1 phút.</p>
+                <ul class="auth-points">
+                    <li><span>🎓</span> Thiết kế riêng cho sinh viên Việt Nam</li>
+                    <li><span>🔒</span> Mật khẩu được mã hóa SHA-256</li>
+                    <li><span>💸</span> Gói Khởi đầu miễn phí trọn đời</li>
+                </ul>
+            </div>
+            <div class="auth-quote">
+                <p>"Quản lý tài chính không phải là kiếm thật nhiều tiền, mà là biết tiền của mình đi đâu."</p>
+                <small>– Đội ngũ FinStart</small>
+            </div>
+        </aside>
+
+        <!-- ========== FORM ĐĂNG KÝ ========== -->
+        <main class="auth-main">
+            <div class="auth-top">
+                <a class="back" href="../index.html">← Về trang chủ</a>
+                <span>Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a></span>
+            </div>
+
+            <div class="auth-form-wrap">
+                <h1>Tạo tài khoản</h1>
+                <p id="planNote">Miễn phí – không cần thẻ ngân hàng.</p>
+
+                <div class="form-alert" id="formAlert" role="alert"></div>
+
+                <form id="registerForm" novalidate>
+                    <div class="form-group">
+                        <label for="name">Họ và tên</label>
+                        <input class="input" id="name" name="name" placeholder="Nguyễn Văn A" autocomplete="name" required>
+                        <span class="field-error" data-for="name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="school">Trường / Khóa (không bắt buộc)</label>
+                        <input class="input" id="school" name="school" placeholder="SV ĐHQG • K65">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="input" type="email" id="email" name="email" placeholder="email@sinhvien.edu.vn" autocomplete="email" required>
+                        <span class="field-error" data-for="email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mật khẩu</label>
+                        <div class="password-field">
+                            <input class="input" type="password" id="password" name="password" placeholder="Ít nhất 6 ký tự" autocomplete="new-password" required>
+                            <button type="button" class="icon-btn toggle-pass" aria-label="Hiện mật khẩu">👁</button>
+                        </div>
+                        <div class="strength" id="strength" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                        <span class="field-error" data-for="password"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm">Nhập lại mật khẩu</label>
+                        <input class="input" type="password" id="confirm" name="confirm" placeholder="Nhập lại mật khẩu" autocomplete="new-password" required>
+                        <span class="field-error" data-for="confirm"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox"><input type="checkbox" name="sample" checked> Tạo sẵn dữ liệu mẫu để trải nghiệm</label>
+                        <label class="checkbox"><input type="checkbox" name="agree"> Tôi đồng ý với&nbsp;<a class="text-green" href="dieu-khoan-dich-vu.html" target="_blank">Điều khoản dịch vụ</a></label>
+                        <span class="field-error" data-for="agree"></span>
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block mt-16" type="submit">Tạo tài khoản</button>
+                </form>
+            </div>
+
+            <p class="auth-foot">Dữ liệu được lưu trên trình duyệt của bạn. Xem <a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a>.</p>
+        </main>
+    </div>
+
+    <script src="../assets/js/store.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/auth.js"></script>
+</body>
+</html>

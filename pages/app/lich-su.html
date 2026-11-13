@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử giao dịch | FinStart</title>
+    <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/public.css">
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <link rel="stylesheet" href="../../assets/css/pages/ghi-chep.css">
+</head>
+<body data-layout="app" data-root="../../" data-page="history">
+
+    <div class="app-shell">
+        <aside id="sidebar"></aside>
+
+        <div class="app-main">
+            <header id="topbar"></header>
+
+            <main class="app-content">
+                <!-- ========== 1. BANNER ========== -->
+                <section class="app-banner">
+                    <span class="banner-icon"><span class="mask-icon" style="-webkit-mask-image:url('../../assets/icons/thoiquenghichep.svg');mask-image:url('../../assets/icons/thoiquenghichep.svg')"></span></span>
+                    <div>
+                        <h2>LỊCH SỬ THU CHI SINH VIÊN • AN TOÀN &amp; BẢO MẬT</h2>
+                        <p>Tra cứu và theo dõi các khoản thu chi đã ghi chép.</p>
+                    </div>
+                </section>
+
+                <!-- ========== 2. TIÊU ĐỀ ========== -->
+                <section class="page-head">
+                    <div>
+                        <nav class="breadcrumb" aria-label="Đường dẫn"><a href="tong-quan.html">Tài chính cá nhân</a><span>/</span><strong>Lịch sử giao dịch</strong></nav>
+                        <h1>Lịch sử giao dịch</h1>
+                        <p>Tra cứu, theo dõi và quản lý các khoản thu chi sinh viên.</p>
+                    </div>
+                    <div class="page-actions">
+                        <button class="btn btn-primary" type="button" id="addBtn">＋ Thêm ghi chép</button>
+                    </div>
+                </section>
+
+                <!-- ========== 3. BỘ LỌC + BẢNG ========== -->
+                <section class="card table-card">
+                    <div class="toolbar">
+                        <label class="search-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+                            <input class="input" id="search" type="search" placeholder="Tìm nội dung, số tiền, tài khoản..." aria-label="Tìm giao dịch">
+                        </label>
+                        <select class="select" id="monthFilter" aria-label="Tháng"></select>
+                        <select class="select" id="typeFilter" aria-label="Loại giao dịch">
+                            <option value="all">Tất cả giao dịch</option>
+                            <option value="thu">Khoản thu</option>
+                            <option value="chi">Khoản chi</option>
+                            <option value="chuyen">Chuyển khoản</option>
+                        </select>
+                        <select class="select" id="catFilter" aria-label="Hạng mục"><option value="all">Tất cả hạng mục</option></select>
+                        <select class="select" id="accFilter" aria-label="Tài khoản"><option value="all">Tất cả tài khoản</option></select>
+                        <button class="btn btn-outline" id="csvBtn" type="button">⤓ CSV</button>
+                        <button class="btn btn-outline" id="xlsBtn" type="button">⤓ Excel</button>
+                    </div>
+
+                    <div class="summary-bar">
+                        <div class="sums">
+                            <span>Tổng thu: <strong class="money-in" id="tIn">0 đ</strong></span>
+                            <span>Tổng chi: <strong class="money-out" id="tOut">0 đ</strong></span>
+                            <span>Chênh lệch: <strong id="tNet">0 đ</strong></span>
+                        </div>
+                        <small>Đơn vị: VND (Việt Nam Đồng)</small>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="table" id="historyTable">
+                            <thead><tr><th>Hạng mục</th><th class="num">Số tiền</th><th>Tài khoản</th><th>Diễn giải</th><th>Giờ</th><th class="actions">Thao tác</th></tr></thead>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="empty" hidden><strong>Không có giao dịch phù hợp</strong>Thử chọn tháng khác hoặc xóa bộ lọc.</div>
+
+                    <footer class="table-footer">
+                        <div class="flex">
+                            <strong id="count">Tổng số: 0 giao dịch</strong>
+                            <label class="text-muted" style="font-weight:500">Số dòng/trang:
+                                <select class="select" id="perPage" style="width:auto;min-height:34px;padding:4px 8px;display:inline-block">
+                                    <option>10</option><option selected>20</option><option>50</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="pagination" id="pager"></div>
+                    </footer>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../../assets/js/store.js"></script>
+    <script src="../../assets/js/layout.js"></script>
+    <script src="../../assets/js/tx-form.js"></script>
+    <script src="../../assets/js/pages/lich-su.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm | FinStart</title>
+    <meta name="description" content="Trợ lý tài chính cá nhân cho sinh viên – bảng giá gói Khởi đầu, PRO và Chuyên sâu.">
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/public.css">
+    <link rel="stylesheet" href="../assets/css/pages/san-pham.css">
+</head>
+<body data-layout="public" data-root="../" data-page="products">
+
+    <header id="site-header"></header>
+
+    <main>
+        <!-- ========== 1. MỞ ĐẦU ========== -->
+        <section id="phan-mo-dau" class="page-hero">
+            <div class="container">
+                <span class="pill-label">Sản phẩm FinStart</span>
+                <h1>Trợ lý tài chính cá nhân <span>hoàn hảo</span> cho sinh viên</h1>
+                <p>Từ bài toán tiền trọ đầu tháng đến các mục tiêu tích lũy tự lập.
+                   FinStart mang công nghệ trợ lý số vào túi tiền của bạn với chi phí chỉ bằng 1 ly trà sữa mỗi tháng.</p>
+                <blockquote class="testimonial">
+                    <p>"Từ đứa sinh viên luôn nợ nần tiền phòng, mình đã để dành được 15 triệu để mua laptop mới nhờ giảm bớt các khoản ăn vặt."</p>
+                    <footer><span class="avatar">P</span><strong>Nguyễn Mai Phương</strong> – Sinh viên năm 3</footer>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- ========== 2. CÁCH HOẠT ĐỘNG ========== -->
+        <section id="huong-dan-su-dung" class="section section-alt">
+            <div class="container">
+                <div class="section-heading centered">
+                    <span class="eyebrow">3 bước đơn giản</span>
+                    <h2>Cách FinStart hoạt động</h2>
+                </div>
+                <div class="steps">
+                    <article class="step-card"><span class="step-no">1</span><h3>Khởi tạo mục tiêu</h3><p>Đặt cột mốc (Học phí, Laptop), FinStart tự động tính toán số tiền cần để dành mỗi ngày.</p></article>
+                    <article class="step-card"><span class="step-no">2</span><h3>Tự động trích lập</h3><p>Phân bổ thu nhập làm thêm theo quy tắc 50/30/20 vào hệ thống hũ chi tiêu.</p></article>
+                    <article class="step-card"><span class="step-no">3</span><h3>Nhận cảnh báo AI</h3><p>AI phát hiện các khoản tiêu ngẫu hứng (trà sữa, shopping) và cảnh báo tức thì.</p></article>
+                </div>
+
+                <!-- Công cụ tính mục tiêu tiết kiệm (minh họa bước 1) -->
+                <div class="goal-calc card">
+                    <div>
+                        <h3>Thử tính mục tiêu tiết kiệm</h3>
+                        <p>Nhập số tiền và thời hạn – FinStart cho bạn biết cần để dành bao nhiêu mỗi ngày.</p>
+                    </div>
+                    <form id="goalForm" class="goal-form">
+                        <div class="form-group"><label for="goalAmount">Mục tiêu (đ)</label><input class="input" id="goalAmount" value="15.000.000" inputmode="numeric"></div>
+                        <div class="form-group"><label for="goalMonths">Thời hạn (tháng)</label><input class="input" id="goalMonths" type="number" min="1" max="60" value="12"></div>
+                        <div class="goal-result" aria-live="polite"><span>Mỗi ngày cần để dành</span><strong id="goalPerDay">41.096 đ</strong><small id="goalPerMonth">≈ 1.250.000 đ / tháng</small></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 3. BẢNG GIÁ ========== -->
+        <section id="bang-gia" class="section">
+            <div class="container">
+                <div class="section-heading centered">
+                    <span class="eyebrow">Minh bạch – không phí ẩn</span>
+                    <h2>Bảng giá sinh viên</h2>
+                </div>
+                <div class="pricing">
+                    <article class="plan">
+                        <h3>Sinh viên Khởi đầu</h3>
+                        <p class="price">0 ₫</p>
+                        <ul class="plan-list">
+                            <li>Ghi chép thu chi không giới hạn</li>
+                            <li>Quản lý 3 ví chi tiêu cơ bản</li>
+                            <li>Quét bằng AI: 30 hóa đơn/tháng</li>
+                        </ul>
+                        <a class="btn btn-outline btn-block" href="dang-ky.html" data-plan="free">Dùng miễn phí</a>
+                    </article>
+
+                    <article class="plan plan-featured">
+                        <span class="plan-badge">Phổ biến nhất</span>
+                        <h3>FinStart PRO</h3>
+                        <p class="price">23.200 ₫ <small>/ tháng</small></p>
+                        <ul class="plan-list">
+                            <li>Quét hóa đơn AI không giới hạn</li>
+                            <li>Cảnh báo cắt giảm quỹ bằng AI</li>
+                            <li>Quản lý quỹ nhóm/CLB (Quỹ trọ)</li>
+                        </ul>
+                        <a class="btn btn-primary btn-block" href="dang-ky.html?plan=pro" data-plan="pro">Nâng cấp ngay</a>
+                    </article>
+
+                    <article class="plan">
+                        <h3>Gói Chuyên sâu</h3>
+                        <p class="price">79.200 ₫ <small>/ tháng</small></p>
+                        <ul class="plan-list">
+                            <li>Tất cả tính năng PRO</li>
+                            <li>Mentor AI tư vấn 1-1</li>
+                            <li>Lộ trình đầu tư vi mô an toàn</li>
+                        </ul>
+                        <a class="btn btn-dark btn-block" href="dang-ky.html?plan=expert" data-plan="expert">Chọn gói Chuyên sâu</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Popup xác nhận nâng cấp (khi đã đăng nhập) -->
+    <div class="modal-backdrop" id="planModal" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="planTitle">
+            <button type="button" class="icon-btn modal-close" data-close aria-label="Đóng">✕</button>
+            <h2 id="planTitle">Nâng cấp gói</h2>
+            <p id="planText"></p>
+            <div class="modal-actions">
+                <button class="btn btn-outline" data-close>Để sau</button>
+                <button class="btn btn-primary" id="planConfirm">Xác nhận nâng cấp</button>
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer"></footer>
+
+    <script src="../assets/js/store.js"></script>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/pages/san-pham.js"></script>
+</body>
+</html>
