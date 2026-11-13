@@ -6,7 +6,7 @@
    Mục lục:
      1. Hằng số (danh mục, loại tài khoản)
      2. Hàm tiện ích (đọc/ghi, mã hóa mật khẩu, định dạng tiền/ngày)
-     3. FS.auth  – Đăng ký, đăng nhập, đăng xuất, hồ sơ
+     3. FS.auth  – Đăng ký, đăng nhập, CHẾ ĐỘ KHÁCH, đăng xuất, hồ sơ
      4. FS.db    – Tài khoản & giao dịch của người dùng
      5. Dữ liệu mẫu + tài khoản demo
      6. Xuất dữ liệu (CSV / Excel)
@@ -45,28 +45,57 @@
     const KEY_USERS = 'fs_users';
     const KEY_SESSION = 'fs_session';
     const dataKey = uid => 'fs_data_' + uid;
+    const GUEST_ID = 'guest';
+
+    /* Lưu trữ có DỰ PHÒNG:
+       - Bình thường: localStorage (lâu dài) + sessionStorage (theo tab).
+       - Nếu trình duyệt / khung xem trước chặn bộ nhớ: dùng window.name –
+         vẫn giữ được dữ liệu khi chuyển trang trong cùng một tab. */
+    const tabMemory = (function () {
+        let obj = {};
+        try { if (window.name && window.name.indexOf('FS:') === 0) obj = JSON.parse(window.name.slice(3)); } catch (e) { obj = {}; }
+        const flush = () => { try { window.name = 'FS:' + JSON.stringify(obj); } catch (e) { /* bỏ qua */ } };
+        return {
+            getItem: k => (Object.prototype.hasOwnProperty.call(obj, k) ? obj[k] : null),
+            setItem: (k, v) => { obj[k] = String(v); flush(); },
+            removeItem: k => { delete obj[k]; flush(); }
+        };
+    })();
+    function usable(getStorage) {
+        try {
+            const st = getStorage();
+            st.setItem('__fs_test', '1');
+            st.removeItem('__fs_test');
+            return st;
+        } catch (e) { return null; }
+    }
+    const LOCAL = usable(() => window.localStorage) || usable(() => window.sessionStorage) || tabMemory;
+    const SESSION = usable(() => window.sessionStorage) || tabMemory;
+    FS.storageMode = LOCAL === tabMemory ? 'tab' : 'browser';
 
     function read(key, fallback, storage) {
         try {
-            const raw = (storage || localStorage).getItem(key);
+            const raw = (storage || LOCAL).getItem(key);
             return raw ? JSON.parse(raw) : fallback;
         } catch (e) { return fallback; }
     }
     function write(key, value, storage) {
-        try { (storage || localStorage).setItem(key, JSON.stringify(value)); return true; }
+        try { (storage || LOCAL).setItem(key, JSON.stringify(value)); return true; }
         catch (e) { return false; }
     }
-    function remove(key, storage) { try { (storage || localStorage).removeItem(key); } catch (e) { /* bỏ qua */ } }
+    function remove(key, storage) { try { (storage || LOCAL).removeItem(key); } catch (e) { /* bỏ qua */ } }
 
     FS.uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 
     // Mã hóa mật khẩu một chiều (SHA-256) trước khi lưu – không bao giờ lưu mật khẩu gốc.
     async function hashPassword(password, salt) {
         const text = salt + ':' + password;
-        if (window.crypto && crypto.subtle) {
-            const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-        }
+        try {
+            if (window.crypto && crypto.subtle) {
+                const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+                return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+            }
+        } catch (e) { /* dùng cách dự phòng bên dưới */ }
         // Dự phòng khi trình duyệt không hỗ trợ crypto.subtle
         let h = 5381;
         for (let i = 0; i < text.length; i++) h = ((h << 5) + h + text.charCodeAt(i)) >>> 0;
@@ -82,10 +111,16 @@
             return s;
         },
         short(n) {
+            n = Number(n) || 0;
             const a = Math.abs(n);
             if (a >= 1e9) return (n / 1e9).toFixed(1).replace('.0', '') + ' tỷ';
             if (a >= 1e6) return (n / 1e6).toFixed(1).replace('.0', '') + ' tr';
-            if (a >= 1e3) return Math.round(n / 1e3) + 'k';
+            if (a >= 1e3) {
+                const k = Math.round(n / 1e3);
+                // 999.999đ làm tròn thành 1000k → hiển thị "1 tr" cho đúng
+                if (Math.abs(k) >= 1000) return (n / 1e6).toFixed(1).replace('.0', '') + ' tr';
+                return k + 'k';
+            }
             return String(n);
         },
         date(iso) { if (!iso) return ''; const [y, m, d] = iso.split('-'); return `${d}/${m}/${y}`; },
@@ -146,20 +181,42 @@
 
         _startSession(userId, remember) {
             const s = { userId, at: Date.now() };
-            remove(KEY_SESSION); remove(KEY_SESSION, sessionStorage);
-            write(KEY_SESSION, s, remember ? localStorage : sessionStorage);
+            this.logout();
+            write(KEY_SESSION, s, remember ? LOCAL : SESSION);
         },
 
-        logout() { remove(KEY_SESSION); remove(KEY_SESSION, sessionStorage); },
+        /* ----- CHẾ ĐỘ KHÁCH: dùng thử mọi tính năng, KHÔNG lưu lâu dài -----
+           Dữ liệu mẫu nằm trong bộ nhớ của tab, đóng tab là mất. */
+        startGuest() {
+            this.logout();
+            write(dataKey(GUEST_ID), buildSampleData(), SESSION);
+            write(KEY_SESSION, { userId: GUEST_ID, guest: true, name: 'Khách', school: 'Chế độ dùng thử', plan: 'free', at: Date.now() }, SESSION);
+        },
+        isGuest() { const me = this.current(); return !!(me && me.guest); },
+
+        logout() {
+            const s = read(KEY_SESSION, null, SESSION);
+            if (s && s.guest) remove(dataKey(GUEST_ID), SESSION);
+            remove(KEY_SESSION, LOCAL); remove(KEY_SESSION, SESSION);
+        },
 
         current() {
-            const s = read(KEY_SESSION, null, sessionStorage) || read(KEY_SESSION, null);
+            const s = read(KEY_SESSION, null, SESSION) || read(KEY_SESSION, null, LOCAL);
             if (!s) return null;
+            if (s.guest) {
+                return { id: GUEST_ID, guest: true, name: s.name || 'Khách', school: s.school || 'Chế độ dùng thử',
+                         email: 'khach@finstart.vn', plan: s.plan || 'free', createdAt: new Date(s.at || Date.now()).toISOString() };
+            }
             return this.users().find(u => u.id === s.userId) || null;
         },
 
         updateProfile(changes) {
             const me = this.current(); if (!me) return null;
+            if (me.guest) {   // khách: chỉ đổi trong phiên hiện tại
+                const s = read(KEY_SESSION, null, SESSION) || {};
+                write(KEY_SESSION, Object.assign(s, { name: changes.name || s.name, school: changes.school != null ? changes.school : s.school, plan: changes.plan || s.plan }), SESSION);
+                return this.current();
+            }
             const users = this.users().map(u => (u.id === me.id ? Object.assign({}, u, changes) : u));
             write(KEY_USERS, users);
             return this.current();
@@ -167,6 +224,7 @@
 
         async changePassword(oldPass, newPass) {
             const me = this.current();
+            if (me.guest) throw new Error('Chế độ khách không có mật khẩu. Hãy tạo tài khoản để dùng tính năng này.');
             if ((await hashPassword(oldPass, me.salt)) !== me.passHash) throw new Error('Mật khẩu hiện tại không đúng.');
             const salt = FS.uid();
             this.updateProfile({ salt, passHash: await hashPassword(newPass, salt) });
@@ -187,6 +245,7 @@
 
         deleteAccount() {
             const me = this.current(); if (!me) return;
+            if (me.guest) { this.logout(); return; }
             write(KEY_USERS, this.users().filter(u => u.id !== me.id));
             remove(dataKey(me.id));
             this.logout();
@@ -206,13 +265,13 @@
         load() {
             const me = FS.auth.current();
             if (!me) return emptyData();
-            const d = read(dataKey(me.id), null) || emptyData();
+            const d = read(dataKey(me.id), null, me.guest ? SESSION : LOCAL) || emptyData();
             d.settings = Object.assign(emptyData().settings, d.settings || {});
             return d;
         },
         save(data) {
             const me = FS.auth.current(); if (!me) return;
-            write(dataKey(me.id), data);
+            write(dataKey(me.id), data, me.guest ? SESSION : LOCAL);
             document.dispatchEvent(new CustomEvent('fs:change'));
         },
         replace(data) { this.save(data); },
@@ -349,16 +408,24 @@
 
     FS.DEMO = { email: 'demo@finstart.vn', password: 'finstart123' };
 
-    // Tạo sẵn tài khoản demo (để giảng viên / người xem chấm thử nhanh)
-    FS.ensureDemo = async function () {
-        if (FS.auth.users().some(u => u.email === FS.DEMO.email)) return;
-        const salt = FS.uid();
-        const demo = {
-            id: 'demo', name: 'Nguyễn Văn A', email: FS.DEMO.email, school: 'SV ĐHQG • K65',
-            salt, passHash: await hashPassword(FS.DEMO.password, salt), plan: 'free', createdAt: new Date().toISOString()
-        };
-        write(KEY_USERS, FS.auth.users().concat(demo));
-        write(dataKey(demo.id), buildSampleData());
+    // Tạo sẵn tài khoản demo (để giảng viên / người xem chấm thử nhanh).
+    // Dùng chung một promise để tránh tạo trùng khi nhiều nơi gọi cùng lúc.
+    let demoPromise = null;
+    FS.ensureDemo = function () {
+        if (FS.auth.users().some(u => u.email === FS.DEMO.email)) return Promise.resolve();
+        if (demoPromise) return demoPromise;
+        demoPromise = (async () => {
+            const salt = FS.uid();
+            const demo = {
+                id: 'demo', name: 'Nguyễn Văn A', email: FS.DEMO.email, school: 'SV ĐHQG • K65',
+                salt, passHash: await hashPassword(FS.DEMO.password, salt), plan: 'free', createdAt: new Date().toISOString()
+            };
+            // Kiểm tra lại sau khi băm mật khẩu (tránh 2 lần gọi đồng thời tạo 2 tài khoản demo)
+            if (FS.auth.users().some(u => u.email === FS.DEMO.email)) return;
+            write(KEY_USERS, FS.auth.users().concat(demo));
+            write(dataKey(demo.id), buildSampleData());
+        })().finally(() => { demoPromise = null; });
+        return demoPromise;
     };
 
     /* ========== 6. XUẤT DỮ LIỆU ========== */

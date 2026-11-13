@@ -31,7 +31,7 @@
 }
 .objective-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--mint); }
 .objective-icon { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 8px; border-radius: 14px; background: var(--primary-50); color: var(--primary); }
-.objective-icon .mask-icon { width: 26px; height: 26px; }
+.objective-icon .mask-icon { width: 26px; height: 26px; filter: brightness(0) saturate(100%) invert(24%) sepia(93%) saturate(1352%) hue-rotate(141deg) brightness(93%) contrast(101%); }
 .card-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--subtle); }
 .objective-card p { flex: 1; font-size: 14px; }
 .objective-card a { font-size: 14px; font-weight: 600; color: var(--primary); }
@@ -47,7 +47,7 @@
     color: #fff;
 }
 .teacher-icon { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 16px; background: rgba(255, 255, 255, .14); }
-.teacher-icon .mask-icon { width: 34px; height: 34px; background-color: #fff; }
+.teacher-icon .mask-icon { width: 34px; height: 34px; filter: brightness(0) invert(1); }
 .teacher-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--mint); }
 .teacher-card h3 { color: #fff; font-size: 22px; }
 

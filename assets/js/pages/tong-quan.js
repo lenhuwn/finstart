@@ -18,7 +18,9 @@
 
     function prevMonth(ym, n) {
         const [y, m] = ym.split('-').map(Number);
-        const d = new Date(y, m - 1 - (n || 1), 1);
+        // n = 0 phải giữ nguyên tháng hiện tại (trước đây dùng (n || 1) nên bị lùi 1 tháng)
+        const step = n === undefined ? 1 : n;
+        const d = new Date(y, m - 1 - step, 1);
         return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
     }
 
@@ -53,8 +55,9 @@
         const total = FS.db.totalAssets();
         $('balanceValue').innerHTML = money(total).replace(' đ', '') + ' <small>VNĐ</small>';
         const tag = $('balanceTag');
-        tag.textContent = total >= (budget || 0) * 0.5 ? 'An toàn' : total > 0 ? 'Cần chú ý' : 'Âm quỹ';
-        tag.className = 'badge ' + (total >= (budget || 0) * 0.5 ? 'badge-green' : total > 0 ? 'badge-yellow' : 'badge-red');
+        const safe = total >= (budget || 0) * 0.5;
+        tag.textContent = safe ? 'An toàn' : total > 0 ? 'Cần chú ý' : total < 0 ? 'Âm quỹ' : 'Chưa có số dư';
+        tag.className = 'badge ' + (safe ? 'badge-green' : total > 0 ? 'badge-yellow' : 'badge-red');
     }
 
     function trend(el, cur, prev, lowerIsGood) {

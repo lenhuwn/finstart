@@ -110,7 +110,7 @@
         if (target && target.type === 'Sổ tiết kiệm') {   // "Nạp tiền" vào sổ tiết kiệm
             tf.to.value = fromId;
             tf.from.value = accs.find(a => a.id !== fromId).id;
-            tf.note.value = 'Trích quỹ tiết kiệm';
+            tf.note.value = 'Nạp vào quỹ tiết kiệm';
         } else {
             if (fromId) tf.from.value = fromId;
             tf.to.value = (accs.find(a => a.id !== tf.from.value) || {}).id;

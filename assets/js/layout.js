@@ -106,11 +106,14 @@
               '<a class="user-chip" href="' + P.settings + '" title="Tài khoản của tôi"><span class="avatar">' + initial(me.name) + '</span><span>' + FS.escape(me.name) + '</span></a>'
             : '<a class="link-login" href="' + P.login + '">Đăng nhập</a><a class="btn btn-dark" href="' + P.register + '">Đăng ký</a>';
 
+        const navItems = me
+            ? PUBLIC_NAV.concat([{ id: 'dashboard', label: 'Bảng điều khiển', href: P.dashboard }])
+            : PUBLIC_NAV;
         el.className = 'site-header';
         el.innerHTML =
             '<div class="container">' + FS.logo(P.home) +
             '<nav class="site-nav" aria-label="Menu chính">' +
-            PUBLIC_NAV.map(n => '<a href="' + n.href + '"' + (n.id === PAGE ? ' class="active" aria-current="page"' : '') + '>' + n.label + '</a>').join('') +
+            navItems.map(n => '<a href="' + n.href + '"' + (n.id === PAGE ? ' class="active" aria-current="page"' : '') + '>' + n.label + '</a>').join('') +
             '</nav>' +
             '<div class="header-actions">' + actions +
             '<button class="icon-btn menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false">' + FS.icon('menu') + '</button></div>' +
@@ -162,7 +165,7 @@
             '</nav>' +
             '<nav class="sidebar-nav sidebar-bottom" aria-label="Tài khoản">' +
             '<a href="' + P.settings + '"' + (PAGE === 'settings' ? ' class="active"' : '') + '>' + FS.icon('settings') + 'Cài đặt</a>' +
-            '<a href="#" class="logout" data-action="logout">' + FS.icon('logout') + 'Đăng xuất</a>' +
+            '<a href="#" class="logout" data-action="logout">' + FS.icon('logout') + (me.guest ? 'Thoát chế độ khách' : 'Đăng xuất') + '</a>' +
             '</nav>';
     }
 
@@ -197,7 +200,8 @@
 
     function semester() {
         const m = new Date().getMonth() + 1;
-        return m >= 8 ? 'Học kỳ I' : m >= 2 && m <= 6 ? 'Học kỳ II' : 'Học kỳ hè';
+        // Tháng 1 vẫn thuộc Học kỳ I (kỳ I: 8–1, kỳ II: 2–6, còn lại là hè)
+        return m >= 8 || m === 1 ? 'Học kỳ I' : m >= 2 && m <= 6 ? 'Học kỳ II' : 'Học kỳ hè';
     }
 
     /* ========== 5. UI DÙNG CHUNG ========== */
@@ -252,9 +256,21 @@
                 '<button class="btn btn-danger" data-r="1">' + (okLabel || 'Đồng ý') + '</button></div></div>';
             document.body.appendChild(wrap);
             wrap.querySelector('[data-r="1"]').focus();
+            // Nhấn Escape phải kết thúc promise (trước đây hộp thoại bị ẩn nhưng promise treo vĩnh viễn)
+            const onKey = e => {
+                if (e.key !== 'Escape') return;
+                document.removeEventListener('keydown', onKey, true);
+                wrap.remove();
+                resolve(false);
+            };
+            document.addEventListener('keydown', onKey, true);
             wrap.addEventListener('click', e => {
                 const b = e.target.closest('[data-r]');
-                if (b || e.target === wrap) { wrap.remove(); resolve(!!(b && b.dataset.r === '1')); }
+                if (b || e.target === wrap) {
+                    document.removeEventListener('keydown', onKey, true);
+                    wrap.remove();
+                    resolve(!!(b && b.dataset.r === '1'));
+                }
             });
         });
     };
@@ -273,6 +289,18 @@
         return list;
     };
 
+    // Thanh nhắc CHẾ ĐỘ KHÁCH (hiện dưới topbar ở mọi trang bảng điều khiển)
+    function renderGuestBar() {
+        const topbar = document.getElementById('topbar');
+        if (!topbar) return;
+        const bar = document.createElement('div');
+        bar.className = 'guest-bar';
+        bar.setAttribute('role', 'status');
+        bar.innerHTML = '<span>👀 Bạn đang ở <b>chế độ khách</b> – dùng thử mọi tính năng, dữ liệu sẽ <b>không được lưu</b> khi đóng tab.</span>' +
+            '<a class="btn btn-sm btn-dark" href="' + P.register + '" data-action="leave-guest">Tạo tài khoản để lưu</a>';
+        topbar.insertAdjacentElement('afterend', bar);
+    }
+
     /* ========== 6. KHỞI CHẠY ========== */
     function boot() {
         if (LAYOUT === 'app') {
@@ -283,14 +311,26 @@
             }
             renderSidebar(me);
             renderTopbar(me);
+            if (me.guest) renderGuestBar();
+            // Đóng sidebar trên mobile khi bấm ra ngoài hoặc nhấn Escape
+            document.addEventListener('click', e => {
+                if (!body.classList.contains('sidebar-open')) return;
+                if (e.target.closest('#sidebar, .sidebar-toggle')) return;
+                body.classList.remove('sidebar-open');
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') body.classList.remove('sidebar-open');
+            });
             body.addEventListener('click', e => {
                 const a = e.target.closest('[data-action]');
                 if (!a) return;
                 if (a.dataset.action === 'logout') {
                     e.preventDefault();
+                    const wasGuest = me.guest;
                     FS.auth.logout();
-                    location.href = P.login + '?bye=1';
+                    location.href = P.login + (wasGuest ? '' : '?bye=1');
                 }
+                if (a.dataset.action === 'leave-guest') FS.auth.logout();   // rời chế độ khách rồi sang trang Đăng ký
                 if (a.dataset.action === 'quick-add') {
                     if (FS.openTxModal) FS.openTxModal();
                     else location.href = P.record + '#them';

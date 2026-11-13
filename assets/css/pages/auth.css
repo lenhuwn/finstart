@@ -1,135 +1,54 @@
 /* =====================================================================
-   TRANG: ĐĂNG NHẬP / ĐĂNG KÝ / QUÊN MẬT KHẨU
-   Bố cục chia đôi: panel thương hiệu (trái) + form (phải)
+   TRANG: ĐĂNG NHẬP / ĐĂNG KÝ / QUÊN MẬT KHẨU – bản tối giản
+   Một khung ở giữa màn hình: logo → chế độ khách → tab → form
    ===================================================================== */
-.auth-page { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 100vh; }
-
-/* ---------- Panel trái ---------- */
-.auth-aside {
-    position: relative; overflow: hidden;
-    display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
-    padding: 40px 56px;
-    background: linear-gradient(150deg, #0b3d2c 0%, var(--primary) 70%, var(--primary-light) 130%);
-    color: #fff;
+.auth-shell {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+    padding: 32px 16px;
+    background: radial-gradient(circle at 15% 0, rgba(201, 249, 231, .9), transparent 40%),
+                radial-gradient(circle at 85% 100%, rgba(230, 244, 238, .9), transparent 40%),
+                var(--bg);
 }
-.auth-aside::before, .auth-aside::after { content: ''; position: absolute; border-radius: 50%; background: rgba(201, 249, 231, .08); }
-.auth-aside::before { width: 420px; height: 420px; right: -140px; top: -120px; }
-.auth-aside::after { width: 280px; height: 280px; left: -100px; bottom: -80px; }
-.auth-aside > * { position: relative; z-index: 1; }
-.auth-aside .logo { color: #fff; }
-.auth-aside .logo b { color: var(--mint); }
-.auth-aside h2 { color: #fff; font-size: clamp(26px, 3vw, 36px); margin-bottom: 14px; }
-.auth-aside p { color: rgba(255, 255, 255, .82); font-size: 16px; }
-.auth-points { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
-.auth-points li { display: flex; align-items: center; gap: 12px; font-weight: 500; }
-.auth-points li span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: rgba(255, 255, 255, .14); flex-shrink: 0; }
-.auth-quote { padding: 20px 22px; border-radius: var(--radius); background: rgba(255, 255, 255, .1); backdrop-filter: blur(4px); }
-.auth-quote p { font-style: italic; font-size: 15px; color: #fff; }
-.auth-quote small { display: block; margin-top: 8px; color: var(--mint); font-weight: 600; }
+.auth-card {
+    width: min(100%, 420px);
+    padding: 32px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+.auth-card .logo { margin-bottom: 22px; }
+.auth-card h1 { font-size: 26px; }
+.auth-lead { margin: 4px 0 22px; font-size: 14px; }
+.auth-back { font-size: 14px; font-weight: 600; color: var(--muted); }
+.auth-back:hover { color: var(--primary); }
 
-/* ---------- Form phải ---------- */
-.auth-main { display: flex; flex-direction: column; padding: 28px 40px; background: var(--surface); }
-.auth-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; color: var(--muted); }
-.auth-top a { font-weight: 600; color: var(--primary); }
-.auth-top .back { color: var(--muted); }
-.auth-top .back:hover { color: var(--ink); }
-.auth-form-wrap { width: min(100%, 420px); margin: auto; padding: 32px 0; }
-.auth-form-wrap h1 { font-size: 30px; margin-bottom: 6px; }
-.auth-form-wrap > p { margin-bottom: 26px; }
+/* ---------- Chế độ khách ---------- */
+.guest-hint { margin-top: 8px; font-size: 12.5px; text-align: center; }
+.guest-hint b { color: var(--ink); }
 
-.password-field { position: relative; }
-.password-field .input { padding-right: 46px; }
-.password-field .toggle-pass { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; }
+.divider { display: flex; align-items: center; gap: 12px; margin: 22px 0 16px; font-size: 12px; color: var(--subtle); }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-.form-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 16px 0 22px; font-size: 14px; }
-.form-meta a { color: var(--primary); font-weight: 600; }
+/* ---------- Tab ---------- */
+.auth-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 16px; border-radius: 12px; background: var(--surface-2); }
+.auth-tabs button { min-height: 38px; border-radius: 9px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.auth-tabs button.active { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-sm); }
 
-.strength { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 4px; }
-.strength i { height: 4px; border-radius: 4px; background: var(--surface-2); transition: background-color .2s; }
-.strength[data-level="1"] i:nth-child(-n+1) { background: var(--danger); }
-.strength[data-level="2"] i:nth-child(-n+2) { background: var(--warning); }
-.strength[data-level="3"] i:nth-child(-n+3) { background: var(--primary-light); }
-.strength[data-level="4"] i { background: var(--primary); }
+/* ---------- Form ---------- */
+.label-row { display: flex; justify-content: space-between; align-items: baseline; }
+.label-row a { font-size: 13px; font-weight: 600; color: var(--primary); }
+.demo-line { margin-top: 14px; font-size: 12.5px; text-align: center; }
+.demo-line a, .link-btn { color: var(--primary); font-weight: 600; text-decoration: underline; font-size: inherit; }
+.plan-note { margin-top: 12px; padding: 10px 12px; border-radius: 10px; background: var(--info-50); color: var(--info); font-size: 13px; }
 
-.form-alert { display: none; padding: 12px 14px; margin-bottom: 16px; border-radius: 12px; font-size: 14px; }
+.form-alert { display: none; padding: 10px 12px; margin-bottom: 14px; border-radius: 10px; font-size: 13.5px; }
 .form-alert.show { display: block; }
 .form-alert.error { background: var(--danger-50); color: var(--danger); }
 .form-alert.success { background: var(--primary-50); color: var(--primary); }
-
-.divider { display: flex; align-items: center; gap: 12px; margin: 22px 0; font-size: 13px; color: var(--subtle); }
-.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-.demo-box { padding: 14px 16px; border: 1px dashed var(--primary); border-radius: 12px; background: var(--primary-50); font-size: 13px; color: var(--text); }
-.demo-box strong { color: var(--primary); }
-.demo-box .btn { margin-top: 10px; }
-
-.auth-foot { text-align: center; font-size: 13px; color: var(--subtle); }
-.auth-foot a { color: var(--muted); text-decoration: underline; }
-
-@media (max-width: 900px) {
-    .auth-page { grid-template-columns: 1fr; }
-    .auth-aside { display: none; }
-    .auth-main { padding: 20px 16px; }
-}
-
-/* =====================================================================
-   CỔNG ĐĂNG NHẬP / ĐĂNG KÝ – theo thiết kế Stitch
-   ===================================================================== */
-.auth-form-wrap { width: min(100%, 460px); }
-
-/* ---------- Tab ---------- */
-.auth-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 18px; border-radius: 14px; background: var(--surface-2); }
-.auth-tabs button { min-height: 42px; border-radius: 11px; font-size: 14px; font-weight: 600; color: var(--muted); transition: background-color .2s, color .2s, box-shadow .2s; }
-.auth-tabs button:hover { color: var(--ink); }
-.auth-tabs button.active { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-sm); }
-
-/* ---------- Mạng xã hội ---------- */
-.social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.social-btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    min-height: 44px; padding: 0 14px;
-    border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
-    font-size: 14px; font-weight: 600; color: var(--ink);
-    transition: border-color .2s, background-color .2s;
-}
-.social-btn:hover { border-color: var(--ink); background: var(--surface-2); }
-.social-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-.social-btn.wide { grid-column: 1 / -1; }
-.divider { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-
-/* ---------- Ô nhập có icon ---------- */
-.icon-field { position: relative; }
-.icon-field > svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--subtle); pointer-events: none; }
-.icon-field .input { padding-left: 42px; background: var(--surface-2); border-color: transparent; }
-.icon-field .input:focus { background: var(--surface); }
-.icon-field .input.is-invalid { border-color: var(--danger); }
-.icon-field .input::placeholder { font-size: 13px; }
-.icon-field .toggle-pass { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; }
-.icon-field .toggle-pass svg { width: 18px; height: 18px; }
-.icon-field:has(.toggle-pass) .input { padding-right: 46px; }
-.label-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
-.label-row a { font-size: 13px; font-weight: 600; color: var(--primary); }
-.label-row a:hover { text-decoration: underline; }
-
-/* ---------- Đích đến + nút ---------- */
-.dest-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius-pill); background: var(--primary-50); color: var(--primary); font-size: 12px; font-weight: 500; white-space: nowrap; }
-.dest-badge svg { width: 14px; height: 14px; }
-.auth-pane .btn-dark { white-space: normal; text-align: center; }
-.auth-pane .btn-dark svg { width: 18px; height: 18px; transition: transform .2s; }
-.auth-pane .btn-dark:hover svg { transform: translateX(3px); }
-.plan-note { margin-top: 12px; padding: 10px 14px; border-radius: 10px; background: var(--info-50); color: var(--info); font-size: 13px; }
-
-/* ---------- Lưu ý an toàn ---------- */
-.safety-note { display: flex; gap: 12px; margin-top: 22px; padding: 14px 16px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
-.safety-note svg { width: 22px; height: 22px; color: var(--primary); flex-shrink: 0; margin-top: 2px; }
-.safety-note p { font-size: 12.5px; line-height: 1.6; }
-.safety-note strong { color: var(--ink); }
-.safety-note b { color: var(--primary); font-weight: 600; }
-
 .form-alert.info { background: var(--info-50); color: var(--info); }
 
 @media (max-width: 480px) {
-    .social-grid { grid-template-columns: 1fr; }
-    .form-meta { flex-wrap: wrap; }
-    .auth-pane .form-row { grid-template-columns: 1fr; }
+    .auth-card { padding: 26px 20px; }
 }

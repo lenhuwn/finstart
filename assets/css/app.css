@@ -97,7 +97,7 @@
     color: #fff;
 }
 .app-banner .banner-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(255, 255, 255, .14); flex-shrink: 0; }
-.app-banner .banner-icon .mask-icon { background-color: #fff; }
+.app-banner .banner-icon .mask-icon { filter: brightness(0) invert(1); }
 .app-banner h2 { color: #fff; font-size: 15px; letter-spacing: .02em; }
 .app-banner p { color: rgba(255, 255, 255, .8); font-size: 13px; }
 .app-banner .sync-pill { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: var(--radius-pill); background: rgba(255, 255, 255, .14); font-size: 12px; font-weight: 600; white-space: nowrap; }
@@ -159,3 +159,14 @@
 
 /* Ẩn trang app cho tới khi kiểm tra đăng nhập xong (tránh nháy nội dung) */
 body[data-layout="app"]:not(.ready) { visibility: hidden; }
+
+/* Thanh nhắc CHẾ ĐỘ KHÁCH */
+.guest-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    padding: 10px 32px;
+    background: var(--warning-50); color: #6b4300;
+    border-bottom: 1px solid #f1dfae;
+    font-size: 13.5px;
+}
+.guest-bar b { color: #4a2f00; }
+@media (max-width: 900px) { .guest-bar { padding: 10px 16px; } }

@@ -131,6 +131,8 @@
     .page-hero { padding: 48px 0 40px; }
     .header-actions .link-login { display: none; }
     .header-actions .user-chip span:last-child { display: none; }
+    /* Nút Bảng điều khiển đã có trong menu di động → ẩn bớt để header không tràn ngang */
+    .header-actions .btn-primary { display: none; }
     .check-list { grid-template-columns: 1fr; }
     .cta-panel { padding: 32px 22px; }
     .footer-grid { grid-template-columns: 1fr; gap: 28px; }

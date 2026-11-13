@@ -14,7 +14,10 @@
         const me = FS.auth.current();
         $('bigAvatar').textContent = FS.initial(me.name);
         $('pName').textContent = me.name;
-        $('pSince').textContent = 'Thành viên từ ' + new Date(me.createdAt).toLocaleDateString('vi-VN');
+        const joined = me.createdAt ? new Date(me.createdAt) : null;
+        $('pSince').textContent = joined && !isNaN(joined)
+            ? 'Thành viên từ ' + joined.toLocaleDateString('vi-VN')
+            : 'Thành viên FinStart';
         $('planBadge').textContent = PLAN[me.plan || 'free'];
         const f = $('profileForm');
         f.fullName.value = me.name;
@@ -79,6 +82,78 @@
         FS.download(JSON.stringify(payload, null, 2), 'finstart-sao-luu-' + FS.fmt.today() + '.json', 'application/json');
         FS.toast('Đã tải bản sao lưu.', 'success');
     });
+
+    /* Chuẩn hóa file sao lưu trước khi ghi vào máy: loại bỏ giá trị lạ
+       (id chứa ký tự đặc biệt, loại/trạng thái không hợp lệ, số tiền NaN…)
+       để dữ liệu hỏng không làm vỡ giao diện các trang. */
+    function sanitizeBackup(data) {
+        const usedIds = new Set();
+        const uniqueId = (raw, prefix) => {
+            let id = String(raw == null ? '' : raw).replace(/[^A-Za-z0-9_-]/g, '');
+            if (!id) id = prefix + Math.random().toString(36).slice(2, 8);
+            while (usedIds.has(id)) id += '-' + Math.random().toString(36).slice(2, 5);
+            usedIds.add(id);
+            return id;
+        };
+        const num = (v, fallback) => {
+            const n = Number(v);
+            return isFinite(n) && n >= 0 ? n : fallback;
+        };
+
+        const accounts = data.accounts.map((raw, i) => {
+            const a = raw && typeof raw === 'object' ? raw : {};
+            return {
+                id: uniqueId(a.id, 'acc'),
+                name: String(a.name || 'Tài khoản ' + (i + 1)).slice(0, 120),
+                type: FS.ACCOUNT_TYPES.includes(a.type) ? a.type : 'Tiền mặt',
+                initial: num(a.initial, 0),
+                status: ['Đang hoạt động', 'Đang tích lũy', 'Tạm khóa'].includes(a.status) ? a.status : 'Đang hoạt động',
+                inReport: a.inReport !== false,
+                note: String(a.note == null ? '' : a.note).slice(0, 300)
+            };
+        });
+        if (!accounts.length) {
+            accounts.push({ id: uniqueId('', 'acc'), name: 'Ví tiền mặt', type: 'Tiền mặt', initial: 0,
+                status: 'Đang hoạt động', inReport: true, note: '' });
+        }
+
+        const accIds = new Set(accounts.map(a => a.id));
+        const today = FS.fmt.today();
+        const transactions = data.transactions.map(raw => {
+            const t = raw && typeof raw === 'object' ? raw : {};
+            let type = ['thu', 'chi', 'chuyen'].includes(t.type) ? t.type : 'chi';
+            const accountId = accIds.has(t.accountId) ? t.accountId : accounts[0].id;
+            let toAccountId;
+            if (type === 'chuyen') {
+                toAccountId = accIds.has(t.toAccountId) ? t.toAccountId : null;
+                if (!toAccountId || toAccountId === accountId) type = 'chi'; // chuyển khoản không hợp lệ → ghi là chi
+            }
+            return {
+                id: uniqueId(t.id, 'tx'),
+                type,
+                amount: isFinite(Math.abs(Number(t.amount))) ? Math.abs(Number(t.amount)) : 0,
+                category: String(t.category == null ? 'chi-khac' : t.category).slice(0, 40),
+                accountId,
+                toAccountId,
+                note: String(t.note == null ? '' : t.note).slice(0, 300),
+                date: /^\d{4}-\d{2}-\d{2}$/.test(t.date) ? t.date : today,
+                time: /^([01]\d|2[0-3]):[0-5]\d$/.test(t.time) ? t.time : '12:00',
+                createdAt: num(t.createdAt, Date.now())
+            };
+        });
+
+        const s = data.settings && typeof data.settings === 'object' ? data.settings : {};
+        return {
+            accounts,
+            transactions,
+            settings: {
+                monthlyBudget: num(s.monthlyBudget, 5000000),
+                savingGoal: num(s.savingGoal, 3000000),
+                savingGoalName: String(s.savingGoalName || 'Quỹ dự phòng').slice(0, 80)
+            }
+        };
+    }
+
     $('restoreFile').addEventListener('change', e => {
         const file = e.target.files[0];
         if (!file) return;
@@ -88,8 +163,9 @@
                 const json = JSON.parse(reader.result);
                 const data = json.data || json;
                 if (!Array.isArray(data.accounts) || !Array.isArray(data.transactions)) throw new Error('File không đúng định dạng sao lưu FinStart.');
-                if (!(await FS.confirm('Khôi phục sẽ thay thế toàn bộ dữ liệu hiện tại bằng ' + data.transactions.length + ' giao dịch trong file. Tiếp tục?', 'Khôi phục'))) return;
-                FS.db.replace(data);
+                const clean = sanitizeBackup(data);
+                if (!(await FS.confirm('Khôi phục sẽ thay thế toàn bộ dữ liệu hiện tại bằng ' + clean.transactions.length + ' giao dịch trong file. Tiếp tục?', 'Khôi phục'))) return;
+                FS.db.replace(clean);
                 FS.toast('Khôi phục dữ liệu thành công.', 'success');
             } catch (err) { FS.toast(err.message || 'Không đọc được file.', 'error'); }
             e.target.value = '';
@@ -122,6 +198,13 @@
         location.replace('../../index.html');
     });
 
+    /* ---------- 6. Chế độ khách: ẩn phần chỉ dành cho tài khoản thật ---------- */
+    if (FS.auth.isGuest()) {
+        $('bao-mat').hidden = true;
+        $('deleteBtn').textContent = 'Thoát chế độ khách';
+    }
+
     document.addEventListener('fs:change', () => { renderStats(); renderBudget(); });
     renderProfile(); renderBudget(); renderStats();
+    if (FS.auth.isGuest()) $('sEmail').value = 'Chế độ khách – chưa có email';
 })();

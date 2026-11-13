@@ -326,17 +326,11 @@ label, .label { font-size: 13px; font-weight: 600; color: var(--text); }
 .grow { flex: 1; }
 .mt-8 { margin-top: 8px; } .mt-16 { margin-top: 16px; } .mt-24 { margin-top: 24px; }
 
-/* Icon SVG đổi màu bằng mask – dùng cho các icon của nhóm trong assets/icons
-   Cách dùng: <span class="mask-icon" style="mask-image:url('...svg')"></span> */
-.mask-icon {
-    display: inline-block;
-    width: 22px; height: 22px;
-    background-color: currentColor;
-    -webkit-mask-position: center; mask-position: center;
-    -webkit-mask-size: contain;    mask-size: contain;
-    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-    flex-shrink: 0;
-}
+/* Icon của nhóm (assets/icons) hiển thị bằng <img class="mask-icon">.
+   Đổi màu bằng filter (chạy được cả khi mở file trực tiếp, không cần server). */
+.mask-icon { display: inline-block; width: 22px; height: 22px; flex-shrink: 0; object-fit: contain; }
+.icon-white { filter: brightness(0) invert(1); }
+.icon-green { filter: brightness(0) saturate(100%) invert(24%) sepia(93%) saturate(1352%) hue-rotate(141deg) brightness(93%) contrast(101%); }
 
 @media (max-width: 640px) {
     body { font-size: 14px; }

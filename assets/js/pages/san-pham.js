@@ -40,6 +40,7 @@
             if (!me) return; // chưa đăng nhập → đi tới trang Đăng ký như bình thường
             e.preventDefault();
             chosen = btn.dataset.plan;
+            // Gói hiện tại: không mở popup, cũng không chuyển trang
             if (chosen === (me.plan || 'free')) return;
             document.getElementById('planText').textContent =
                 'Chuyển sang gói "' + PLANS[chosen] + '". Đây là bản demo của đồ án nên không phát sinh thanh toán thật.';
