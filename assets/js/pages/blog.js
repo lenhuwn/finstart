@@ -6,7 +6,8 @@
     const FS = window.FS;
     const posts = FS.POSTS.slice().sort((a, b) => b.date.localeCompare(a.date));
     const params = new URLSearchParams(location.search);
-    let cat = FS.CATS[params.get('cat')] ? params.get('cat') : 'all';
+    let cat = FS.CATS[params.get('cat')] || params.get('cat') === 'jelb' ? params.get('cat') : 'all';
+    let jelbExpanded = false;
     let keyword = params.get('q') || '';
 
     const $ = id => document.getElementById(id);
@@ -25,14 +26,66 @@
           </article>`;
     }
 
+    /* ---------- Tin từ Tạp chí Kinh tế - Luật và Ngân hàng (assets/data/jelb.js) ---------- */
+    const timeAgo = iso => {
+        const mins = Math.round((Date.now() - new Date(iso)) / 60000);
+        if (mins < 1) return 'vừa xong';
+        if (mins < 60) return mins + ' phút trước';
+        if (mins < 1440) return Math.round(mins / 60) + ' giờ trước';
+        return Math.round(mins / 1440) + ' ngày trước';
+    };
+    const viDate = iso => iso ? new Date(iso).toLocaleDateString('vi-VN') : '';
+
+    function renderJelb() {
+        const data = window.FS_JELB;
+        const box = $('jelb');
+        const show = (cat === 'all' || cat === 'jelb') && data && data.items && data.items.length;
+        box.hidden = !show;
+        $('blogContent').hidden = cat === 'jelb';
+        if (!show) return;
+
+        if (data.issue) {
+            $('jelbIssue').textContent = data.issue.title;
+            if (data.issue.url) $('jelbIssueLink').href = data.issue.url;
+        }
+        const t = new Date(data.fetchedAt);
+        const hhmm = String(t.getHours()).padStart(2, '0') + ':' + String(t.getMinutes()).padStart(2, '0');
+        $('jelbUpdated').textContent = 'Đồng bộ ' + timeAgo(data.fetchedAt) + ' (' + hhmm + ' ' + viDate(data.fetchedAt) + ')';
+
+        const list = data.items.filter(it => !keyword || norm(it.title + ' ' + it.summary + ' ' + it.authors.join(' ')).includes(norm(keyword)));
+        const limit = cat === 'jelb' || jelbExpanded || keyword ? list.length : 4;
+        $('jelbGrid').innerHTML = list.slice(0, limit).map(it => `
+            <article class="jelb-card">
+              <div class="jelb-card-top"><span class="badge badge-blue">${esc(it.issue || 'Tạp chí KT-Luật-NH')}</span><small>${viDate(it.published || it.updated)}</small></div>
+              <h3><a href="${esc(it.link)}" target="_blank" rel="noopener">${esc(it.title)}</a></h3>
+              <p class="jelb-authors">${esc(it.authors.join(', '))}</p>
+              <p class="jelb-summary">${esc(it.summary)}</p>
+              <a class="jelb-read" href="${esc(it.link)}" target="_blank" rel="noopener">Đọc toàn văn trên tạp chí ↗</a>
+            </article>`).join('');
+        $('jelbEmpty').hidden = list.length > 0;
+        $('jelbMore').hidden = limit >= list.length;
+        $('jelbMore').textContent = 'Xem thêm ' + (list.length - limit) + ' bài từ tạp chí';
+    }
+    $('jelbMore').addEventListener('click', () => { jelbExpanded = true; renderJelb(); });
+
+    // Trang mở lâu: cứ 10 phút tải lại file dữ liệu (GitHub Actions cập nhật mỗi giờ) – không cần F5
+    setInterval(() => {
+        const s = document.createElement('script');
+        s.src = '../assets/data/jelb.js?t=' + Date.now();
+        s.onload = () => { renderJelb(); s.remove(); };
+        s.onerror = () => s.remove();
+        document.body.appendChild(s);
+    }, 10 * 60 * 1000);
+
     function render() {
+        renderJelb();
         const list = posts.filter(p =>
             (cat === 'all' || p.cat === cat) &&
             (!keyword || norm(p.title + ' ' + p.excerpt + ' ' + p.author).includes(norm(keyword))));
 
         // Bài nổi bật chỉ hiện khi xem "Tất cả" và không tìm kiếm
         const featured = posts.find(p => p.featured);
-        const showFeatured = cat === 'all' && !keyword && featured;
+        const showFeatured = cat === 'all' && !keyword && !!featured;
         $('featured').hidden = !showFeatured;
         if (showFeatured) {
             $('featured').innerHTML = `

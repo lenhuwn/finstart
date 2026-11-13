@@ -1,0 +1,42 @@
+# Tự động cập nhật tin từ "Tạp chí Kinh tế - Luật và Ngân hàng" mỗi giờ
+# → ghi vào assets/data/jelb.js để trang Blog hiển thị.
+name: Cập nhật tin Tạp chí Kinh tế - Luật và Ngân hàng
+
+on:
+  schedule:
+    - cron: '17 * * * *'      # phút 17 mỗi giờ (tránh giờ chẵn GitHub hay quá tải)
+  workflow_dispatch: {}       # cho phép bấm "Run workflow" để cập nhật ngay
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-jelb
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Lấy tin mới từ nguồn Atom của tạp chí
+        run: node scripts/update-jelb.mjs
+
+      - name: Lưu lại nếu có thay đổi
+        run: |
+          # Bỏ qua thay đổi chỉ ở thời điểm lấy tin (fetchedAt) để không tạo commit rác mỗi giờ
+          if git diff --unified=0 -- assets/data/jelb.js | grep -E '^[+-] ' | grep -vq '"fetchedAt"'; then
+            git config user.name  "finstart-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add assets/data/jelb.js
+            git commit -m "Cập nhật tin Tạp chí Kinh tế - Luật và Ngân hàng"
+            git push
+          else
+            echo "Không có bài mới."
+          fi

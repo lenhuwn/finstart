@@ -36,6 +36,7 @@
                     <button type="button" data-cat="viec-lam">Việc làm &amp; Part-time</button>
                     <button type="button" data-cat="hoc-bong">Học bổng</button>
                     <button type="button" data-cat="giang-duong">Chuyện giảng đường</button>
+                    <button type="button" data-cat="jelb">📰 Tạp chí KT-Luật-NH</button>
                 </div>
                 <label class="search-box">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
@@ -46,8 +47,31 @@
             <!-- ========== 3. BÀI NỔI BẬT ========== -->
             <section id="featured" class="featured-post" aria-label="Bài viết nổi bật"></section>
 
+            <!-- ========== 3B. TIN TỪ TẠP CHÍ KINH TẾ - LUẬT VÀ NGÂN HÀNG ==========
+                 Dữ liệu: assets/data/jelb.js – GitHub Actions tự cập nhật mỗi giờ
+                 từ nguồn Atom chính thức của tạp chí (scripts/update-jelb.mjs) -->
+            <section class="jelb" id="jelb" aria-labelledby="jelbTitle">
+                <div class="jelb-head">
+                    <div class="jelb-brand">
+                        <span class="jelb-badge" aria-hidden="true">JELB</span>
+                        <div>
+                            <span class="jelb-live"><i class="dot"></i>Tự động cập nhật mỗi giờ</span>
+                            <h2 id="jelbTitle">Tạp chí Kinh tế – Luật và Ngân hàng</h2>
+                            <p>Bài nghiên cứu mới nhất từ <a href="https://jelb.hvnh.edu.vn/index.php/jelb" target="_blank" rel="noopener">Học viện Ngân hàng</a> · <span id="jelbIssue">Số mới nhất</span></p>
+                        </div>
+                    </div>
+                    <div class="jelb-meta">
+                        <small id="jelbUpdated"></small>
+                        <a class="btn btn-outline btn-sm" id="jelbIssueLink" href="https://jelb.hvnh.edu.vn/index.php/jelb/issue/current" target="_blank" rel="noopener">Xem số hiện hành ↗</a>
+                    </div>
+                </div>
+                <div class="jelb-grid" id="jelbGrid"></div>
+                <div class="empty-state" id="jelbEmpty" hidden><strong>Chưa có bài phù hợp</strong>Thử từ khóa khác.</div>
+                <button class="btn btn-ghost btn-block" type="button" id="jelbMore" hidden>Xem thêm bài từ tạp chí</button>
+            </section>
+
             <!-- ========== 4. DANH SÁCH + ĐỌC NHIỀU ========== -->
-            <div class="blog-content">
+            <div class="blog-content" id="blogContent">
                 <section class="latest-posts">
                     <div class="posts-header">
                         <h2>Bài viết mới cập nhật</h2>
@@ -80,6 +104,7 @@
     <script src="../assets/js/store.js"></script>
     <script src="../assets/js/layout.js"></script>
     <script src="../assets/js/posts.js"></script>
+    <script src="../assets/data/jelb.js"></script>
     <script src="../assets/js/pages/blog.js"></script>
 </body>
 </html>

@@ -89,7 +89,7 @@
     function sanitizeBackup(data) {
         const usedIds = new Set();
         const uniqueId = (raw, prefix) => {
-            let id = String(raw == null ? '' : raw).replace(/[^A-Za-z0-9_-]/g, '');
+            let id = String(raw == null ? '' : raw).replace(/[^A-Za-z0-9_-]/g, '').slice(0, 64);
             if (!id) id = prefix + Math.random().toString(36).slice(2, 8);
             while (usedIds.has(id)) id += '-' + Math.random().toString(36).slice(2, 5);
             usedIds.add(id);
@@ -123,6 +123,7 @@
             const t = raw && typeof raw === 'object' ? raw : {};
             let type = ['thu', 'chi', 'chuyen'].includes(t.type) ? t.type : 'chi';
             const accountId = accIds.has(t.accountId) ? t.accountId : accounts[0].id;
+            const amount = Math.abs(Number(t.amount));
             let toAccountId;
             if (type === 'chuyen') {
                 toAccountId = accIds.has(t.toAccountId) ? t.toAccountId : null;
@@ -131,7 +132,7 @@
             return {
                 id: uniqueId(t.id, 'tx'),
                 type,
-                amount: isFinite(Math.abs(Number(t.amount))) ? Math.abs(Number(t.amount)) : 0,
+                amount: isFinite(amount) ? amount : 0,
                 category: String(t.category == null ? 'chi-khac' : t.category).slice(0, 40),
                 accountId,
                 toAccountId,

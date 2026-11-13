@@ -58,6 +58,15 @@ ban-goc-nhom/                 Toàn bộ code gốc của nhóm (giữ nguyên �
 - **Thêm bài blog:** tạo `pages/bai-viet-6.html` (copy từ bài 1) và thêm 1 dòng vào `assets/js/posts.js`.
 - Mỗi file CSS/JS có **mục lục ở đầu file** và chia phần bằng `/* ===== */`.
 
+## Tin từ Tạp chí Kinh tế - Luật và Ngân hàng (Blog)
+
+Trang Blog có khu **"Tạp chí Kinh tế – Luật và Ngân hàng"** (Học viện Ngân hàng – [jelb.hvnh.edu.vn](https://jelb.hvnh.edu.vn/index.php/jelb)), tự cập nhật bài mới:
+
+- `scripts/update-jelb.mjs` đọc nguồn Atom chính thức của tạp chí → ghi `assets/data/jelb.js` (không lưu email tác giả).
+- `.github/workflows/update-jelb.yml` chạy script **mỗi giờ** trên GitHub Actions và tự commit khi có bài mới.
+- Muốn cập nhật ngay: tab **Actions** trên GitHub → *Cập nhật tin Tạp chí…* → **Run workflow**, hoặc chạy `node scripts/update-jelb.mjs` trên máy.
+- Trang Blog đang mở sẽ tự tải lại dữ liệu mỗi 10 phút, không cần F5.
+
 ## Lưu ý kỹ thuật
 
 - Dữ liệu người dùng lưu trong **localStorage của trình duyệt** (không có máy chủ). Mật khẩu được băm SHA-256 + salt trước khi lưu. Dùng *Cài đặt → Tải bản sao lưu* để mang dữ liệu sang máy khác.
